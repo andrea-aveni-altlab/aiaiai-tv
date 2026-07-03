@@ -53,6 +53,11 @@ class LocalSource(DataSource):
 
 
 class S3Source(DataSource):
+    """
+    Lista solo metadata (economico), scarica un singolo file solo quando
+    esplicitamente richiesto da fetch(). Evita di scaricare l'intero bucket
+    ad ogni list_auditel_files().
+    """
     def __init__(self):
         try:
             import boto3
@@ -60,28 +65,43 @@ class S3Source(DataSource):
         except ImportError:
             raise RuntimeError("boto3 non installato: pip install boto3")
         self._tmp = Path(tempfile.mkdtemp(prefix="aiaiai_s3_"))
+        self._keys_cache: dict[date, str] = {}      # date -> S3 key (tar.gz)
+        self._prog_keys_cache: dict[date, str] = {} # date -> S3 key (xlsx)
 
-    def list_auditel_files(self):
-        return self._list_and_download(S3_PREFIX + "auditel/", ".tar.gz")
-
-    def list_programmi_files(self):
-        return self._list_and_download(S3_PREFIX + "programmi/", ".xlsx")
-
-    def _list_and_download(self, prefix, suffix):
+    def _list_keys(self, suffix: str) -> dict[date, str]:
         paginator = self._s3.get_paginator("list_objects_v2")
-        result = []
-        for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=prefix):
+        result = {}
+        for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=S3_PREFIX):
             for obj in page.get("Contents", []):
                 key = obj["Key"]
                 if not key.endswith(suffix): continue
                 fname = Path(key).name
                 d = _parse_date_from_filename(fname)
                 if not d: continue
-                local = self._tmp / fname
-                if not local.exists():
-                    self._s3.download_file(S3_BUCKET, key, str(local))
-                result.append((d, local))
-        return sorted(result)
+                result[d] = key
+        return result
+
+    def list_auditel_files(self):
+        if not self._keys_cache:
+            self._keys_cache = self._list_keys(".tar.gz")
+        # Path fittizio (non ancora scaricato): il download reale avviene in fetch()
+        return sorted((d, self._tmp / Path(k).name) for d, k in self._keys_cache.items())
+
+    def list_programmi_files(self):
+        if not self._prog_keys_cache:
+            self._prog_keys_cache = self._list_keys(".xlsx")
+        return sorted((d, self._tmp / Path(k).name) for d, k in self._prog_keys_cache.items())
+
+    def fetch(self, target_date: date, is_programmi: bool = False) -> Path:
+        """Scarica il singolo file per la data richiesta, se non già in cache locale."""
+        cache = self._prog_keys_cache if is_programmi else self._keys_cache
+        if target_date not in cache:
+            raise FileNotFoundError(f"Nessuna chiave S3 per {target_date}")
+        key = cache[target_date]
+        local = self._tmp / Path(key).name
+        if not local.exists():
+            self._s3.download_file(S3_BUCKET, key, str(local))
+        return local
 
 
 def get_source() -> DataSource:
