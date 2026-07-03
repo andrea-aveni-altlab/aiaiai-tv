@@ -232,6 +232,53 @@ def _parse_programmi(path: Path, target_date: date) -> list[tuple]:
     return rows
 
 
+def _insert_programmi_dedup(conn: duckdb.DuckDBPyConnection, df_p) -> int:
+    """
+    Inserisce il palinsesto del giorno deduplicando gli eventi spuri:
+    stesso (cod_emit, programma, t_start) con t_end divergenti sono errori
+    di rilevazione (non frammentazione da break: i frammenti avrebbero
+    t_start progressivi). Nel gruppo di duplicati si tiene il t_end massimo
+    che non sfora nel primo evento successivo del canale (contiguita'
+    t_end == next_start ammessa; ultimo evento del canale: nessun vincolo).
+    Se tutti sforano, il gruppo viene scartato per intero: nessun candidato
+    e' affidabile. Ritorna il numero di righe inserite.
+    """
+    return conn.execute("""
+        INSERT INTO programmi
+        WITH eventi AS (
+            SELECT *,
+                   COUNT(*) OVER (PARTITION BY data, cod_emit, programma, t_start) AS n_dup
+            FROM df_p
+        ),
+        successivi AS (
+            -- primo t_start strettamente successivo sul canale: LEAD sui
+            -- t_start DISTINTI, cosi' i duplicati dello stesso istante
+            -- non contano mai come "evento successivo"
+            SELECT data, cod_emit, t_start,
+                   LEAD(t_start) OVER (PARTITION BY data, cod_emit ORDER BY t_start) AS next_start
+            FROM (SELECT DISTINCT data, cod_emit, t_start FROM df_p)
+        ),
+        validi AS (
+            -- le righe non duplicate passano sempre; un duplicato e'
+            -- candidato solo se non sfora nell'evento successivo
+            SELECT e.*
+            FROM eventi e
+            JOIN successivi s USING (data, cod_emit, t_start)
+            WHERE e.n_dup = 1
+               OR s.next_start IS NULL
+               OR e.t_end <= s.next_start
+        )
+        -- tra i candidati del gruppo tiene il t_end massimo; se nessun
+        -- duplicato e' candidato, il gruppo sparisce del tutto
+        SELECT data, cod_emit, tv, programma, t_start, t_end, durata_sec
+        FROM validi
+        QUALIFY ROW_NUMBER() OVER (
+            PARTITION BY data, cod_emit, programma, t_start
+            ORDER BY t_end DESC
+        ) = 1
+    """).fetchone()[0]
+
+
 # ── Calcolo audience_cache ────────────────────────────────────────────────────
 
 def _build_audience_cache(conn: duckdb.DuckDBPyConnection, target_date: date) -> int:
@@ -399,13 +446,14 @@ def ingest_date(target_date: date, force: bool = False) -> dict:
 
     log.info("  Parsing programmi...")
     rows_prog = _parse_programmi(prog_path, target_date)
+    n_prog = 0
     if rows_prog:
         import pandas as pd
         cols_p = ['data','cod_emit','tv','programma','t_start','t_end','durata_sec']
         df_p = pd.DataFrame(rows_prog, columns=cols_p)
-        conn.execute("INSERT INTO programmi SELECT * FROM df_p")
+        n_prog = _insert_programmi_dedup(conn, df_p)
 
-    log.info(f"  {len(rows_prog)} eventi programma inseriti")
+    log.info(f"  {n_prog} eventi programma inseriti ({len(rows_prog) - n_prog} duplicati scartati)")
 
     conn.execute("CREATE INDEX IF NOT EXISTS idx_stmt_data_emit ON statements(data, cod_emit)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_ind_data ON individui(data, panel, prg)")
@@ -417,11 +465,11 @@ def ingest_date(target_date: date, force: bool = False) -> dict:
 
     conn.execute("INSERT OR REPLACE INTO ingest_log VALUES (?,?,?,?,?,?,?)", [
         target_date, datetime.now(), len(rows_stmt), len(rows_ind),
-        len(rows_prog), "ok", f"cache_rows={cache_rows}",
+        n_prog, "ok", f"cache_rows={cache_rows}",
     ])
 
     result = {"date": date_str, "status": "ok", "statements": len(rows_stmt),
-              "individui": len(rows_ind), "programmi": len(rows_prog), "cache_rows": cache_rows}
+              "individui": len(rows_ind), "programmi": n_prog, "cache_rows": cache_rows}
     # calcola-e-scarta: le tabelle grezze non servono dopo la cache.
     # Il tar.gz resta su S3 come source of truth ricostruibile.
     conn.execute("DELETE FROM statements WHERE data = ?", [target_date])
