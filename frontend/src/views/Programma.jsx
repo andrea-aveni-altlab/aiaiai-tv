@@ -29,7 +29,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   )
 }
 
-export default function Programma({ date, target }) {
+export default function Programma({ from, to, target }) {
   const [query, setQuery]           = useState('')
   const [suggestions, setSugg]      = useState([])
   const [selected, setSelected]     = useState(null)
@@ -50,10 +50,10 @@ export default function Programma({ date, target }) {
   useEffect(() => {
     if (!selected) return
     setLoading(true)
-    api.storico(selected.programma, target, null, null, selected.cod_emit)
+    api.storico(selected.programma, target, from || null, to || null, selected.cod_emit)
       .then(data => { setStorico(data); setLoading(false) })
       .catch(() => { setStorico([]); setLoading(false) })
-  }, [selected, target])
+  }, [selected, target, from, to])
 
   function handleSelect(s) {
     setSelected(s); setQuery(s.programma); setSugg([])

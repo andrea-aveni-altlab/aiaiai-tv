@@ -11,6 +11,7 @@ async function apiFetch(path, opts = {}) {
 
 export const api = {
   status:    () => apiFetch('/api/status'),
+  dates:     () => apiFetch('/api/dates'),
   targets:   () => apiFetch('/api/targets'),
   emittenti: () => apiFetch('/api/emittenti'),
 

@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Tv, BarChart2, TrendingUp, MessageSquare } from 'lucide-react'
 import { api } from './api'
 import Giornaliera from './views/Giornaliera'
 import PrimeTime from './views/PrimeTime'
 import Programma from './views/Programma'
 import NLQuery from './components/NLQuery'
+import DatePicker from './components/DatePicker'
 
 const VIEWS = [
   { id: 'giornaliera', label: 'Giornaliera', Icon: Tv },
@@ -18,15 +19,20 @@ export default function App() {
   const [target, setTarget]   = useState('4plus')
   const [dates, setDates]     = useState([])
   const [date, setDate]       = useState('')
+  const [range, setRange]     = useState({ from: '', to: '' })
+  const [bounds, setBounds]   = useState({ min: null, max: null })
   const [nlOpen, setNlOpen]   = useState(false)
   const [loading, setLoading] = useState(true)
 
+  const availSet = useMemo(() => new Set(dates), [dates])
+
   useEffect(() => {
-    Promise.all([api.targets(), api.status()]).then(([tgts, status]) => {
+    Promise.all([api.targets(), api.dates()]).then(([tgts, dd]) => {
       setTargets(tgts)
-      const avail = status.available_dates || []
+      const avail = dd.dates || []
       setDates(avail)
-      if (avail.length > 0) setDate(avail[0])
+      setBounds({ min: dd.min, max: dd.max })
+      if (dd.max) { setDate(dd.max); setRange({ from: dd.min, to: dd.max }) }
       setLoading(false)
     }).catch(err => { console.error(err); setLoading(false) })
   }, [])
@@ -55,15 +61,15 @@ export default function App() {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <select
-              value={date}
-              onChange={e => setDate(e.target.value)}
-              className="text-sm bg-blue-900 border border-blue-700 rounded px-2 py-1
-                         text-white focus:outline-none focus:ring-1 focus:ring-orange-400"
-            >
-              {dates.map(d => <option key={d} value={d}>{d}</option>)}
-              {dates.length === 0 && <option value="">Nessun dato disponibile</option>}
-            </select>
+            {dates.length === 0 ? (
+              <span className="text-blue-200 text-xs">Nessun dato disponibile</span>
+            ) : view === 'programma' ? (
+              <DatePicker mode="range" value={range} onChange={setRange}
+                          availableDates={availSet} min={bounds.min} max={bounds.max} />
+            ) : (
+              <DatePicker mode="single" value={date} onChange={setDate}
+                          availableDates={availSet} min={bounds.min} max={bounds.max} />
+            )}
             <button
               onClick={() => setNlOpen(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium"
@@ -126,7 +132,7 @@ export default function App() {
           <>
             {view === 'giornaliera' && <Giornaliera date={date} target={target} />}
             {view === 'primetime'   && <PrimeTime   date={date} target={target} />}
-            {view === 'programma'   && <Programma   date={date} target={target} />}
+            {view === 'programma'   && <Programma   from={range.from} to={range.to} target={target} />}
           </>
         )}
       </main>
