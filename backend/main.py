@@ -43,6 +43,18 @@ def _check_api_key(x_api_key: str | None):
 def status():
     return get_status()
 
+@app.get("/api/dates")
+def list_dates():
+    # Elenco leggero delle sole date in cache (status ok), per il date picker
+    # del frontend. Fonte: available_dates() in db.py (nessun LIMIT, a
+    # differenza di get_status che tronca a 10).
+    dates = available_dates()
+    return {
+        "dates": sorted(dates),
+        "min": min(dates) if dates else None,
+        "max": max(dates) if dates else None,
+    }
+
 @app.get("/api/targets")
 def list_targets():
     return [{"id": t.id, "label": t.label, "short": t.short} for t in TARGETS.values()]
