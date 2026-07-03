@@ -36,24 +36,6 @@ def _check_api_key(x_api_key: str | None):
         raise HTTPException(401, "API key non valida")
 
 
-@app.get("/api/debug/fs")
-def debug_fs():
-    import os
-    from config import STATIC_PROGRAMMI_PATH, PROGRAMMI_DIR, BASE_DIR
-    backend_dir = os.path.dirname(os.path.abspath(__file__))
-    return {
-        "backend_dir": backend_dir,
-        "backend_dir_contents": os.listdir(backend_dir),
-        "static_data_exists": os.path.isdir(os.path.join(backend_dir, "static_data")),
-        "static_data_contents": os.listdir(os.path.join(backend_dir, "static_data"))
-            if os.path.isdir(os.path.join(backend_dir, "static_data")) else None,
-        "STATIC_PROGRAMMI_PATH": str(STATIC_PROGRAMMI_PATH),
-        "STATIC_PROGRAMMI_PATH_exists": STATIC_PROGRAMMI_PATH.exists(),
-        "PROGRAMMI_DIR": str(PROGRAMMI_DIR),
-        "PROGRAMMI_DIR_exists": PROGRAMMI_DIR.exists(),
-        "BASE_DIR": str(BASE_DIR),
-    }
-
 @app.get("/api/status")
 def status():
     return get_status()
