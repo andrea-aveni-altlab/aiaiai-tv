@@ -9,8 +9,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from config import INGEST_API_KEY, CLAUDE_API_KEY, CLAUDE_MODEL, TV_LABELS, FASCE
-from db import get_conn, available_dates, last_ingested_date
-from ingest import ingest_date, ingest_all
+from db import get_conn, available_dates, last_ingested_date, register_write_conn, unregister_write_conn
+from ingest import ingest_date, ingest_all, ingest_range
+import threading
+
+_ingest_lock = threading.Lock()
 from queries import (
     get_programmi_giorno, get_prime_time, get_prime_time_summary,
     get_storico_programma, search_programmi, get_top_programmi, get_status,
@@ -177,6 +180,44 @@ def trigger_ingest_all(
     _check_api_key(x_api_key)
     background_tasks.add_task(ingest_all, force)
     return {"status": "started"}
+
+@app.post("/api/ingest-range")
+def trigger_ingest_range(
+    start: str,
+    end: str,
+    force: bool = Query(False),
+    x_api_key: str | None = Header(None),
+):
+    _check_api_key(x_api_key)
+    d_start = _parse_date(start)
+    d_end = _parse_date(end)
+    if d_end < d_start:
+        raise HTTPException(400, "end precede start")
+    if _ingest_lock.locked():
+        raise HTTPException(409, "Ingest gia' in corso, riprova a fine job")
+
+    # Thread reale: ingest_range e' sincrono e lungo, non deve bloccare
+    # l'event loop di Uvicorn (altrimenti /api/status non risponde).
+    t = threading.Thread(target=_run_ingest_range, args=(d_start, d_end, force), daemon=True)
+    t.start()
+    giorni = (d_end - d_start).days + 1
+    return {"status": "started", "start": start, "end": end, "giorni": giorni}
+
+
+def _run_ingest_range(start: date, end: date, force: bool):
+    if not _ingest_lock.acquire(blocking=False):
+        log.warning("ingest_range: lock occupato, esco")
+        return
+    register_write_conn()   # connessione dedicata a questo thread
+    try:
+        esiti = ingest_range(start, end, force=force)
+        log.info(f"ingest_range esiti: {esiti}")
+    except Exception as e:
+        log.error(f"ingest_range fallito: {e}")
+    finally:
+        unregister_write_conn()
+        _ingest_lock.release()
+
 
 def _run_ingest(d: date, force: bool):
     try:

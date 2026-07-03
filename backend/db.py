@@ -5,9 +5,15 @@ from config import DB_PATH
 
 _lock = threading.Lock()
 _conn: duckdb.DuckDBPyConnection | None = None
+_thread_local = threading.local()   # connessione dedicata per-thread (writer ingest)
 
 
 def get_conn() -> duckdb.DuckDBPyConnection:
+    # Se il thread corrente ha una connessione dedicata (writer ingest) usa
+    # quella; altrimenti il singleton condiviso per le letture HTTP.
+    local = getattr(_thread_local, "conn", None)
+    if local is not None:
+        return local
     global _conn
     if _conn is None:
         with _lock:
@@ -16,6 +22,26 @@ def get_conn() -> duckdb.DuckDBPyConnection:
                 _conn = duckdb.connect(str(DB_PATH))
                 _init_schema(_conn)
     return _conn
+
+
+def register_write_conn() -> duckdb.DuckDBPyConnection:
+    """
+    Apre una connessione dedicata e la registra come thread-local del thread
+    corrente. Da qui get_conn() in questo thread restituisce lei, non il
+    singleton condiviso: writer di ingest e letture HTTP non condividono lo
+    stesso oggetto connessione (non thread-safe). Chiamare unregister a fine
+    lavoro. Assume schema gia' creato dal singleton di lettura.
+    """
+    conn = duckdb.connect(str(DB_PATH))
+    _thread_local.conn = conn
+    return conn
+
+
+def unregister_write_conn() -> None:
+    conn = getattr(_thread_local, "conn", None)
+    if conn is not None:
+        conn.close()
+        _thread_local.conn = None
 
 
 def _init_schema(conn: duckdb.DuckDBPyConnection) -> None:

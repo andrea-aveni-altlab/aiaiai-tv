@@ -422,8 +422,53 @@ def ingest_date(target_date: date, force: bool = False) -> dict:
 
     result = {"date": date_str, "status": "ok", "statements": len(rows_stmt),
               "individui": len(rows_ind), "programmi": len(rows_prog), "cache_rows": cache_rows}
+    # calcola-e-scarta: le tabelle grezze non servono dopo la cache.
+    # Il tar.gz resta su S3 come source of truth ricostruibile.
+    conn.execute("DELETE FROM statements WHERE data = ?", [target_date])
+    conn.execute("DELETE FROM individui  WHERE data = ?", [target_date])
+
     log.info(f"Ingestion completata: {result}")
     return result
+
+
+def ingest_range(start: date, end: date, force: bool = False) -> dict:
+    """
+    Ingesta tutti i giorni nell'intervallo [start, end] inclusi.
+    Salta i giorni gia' in cache (a meno di force). Checkpoint ogni 5 giorni
+    per contenere la crescita del file DuckDB dovuta al MVCC.
+    Pensata per girare in background: non solleva, accumula esiti per giorno.
+    """
+    from datetime import timedelta
+    conn = get_conn()
+
+    esiti = {"ok": [], "skip": [], "error": []}
+    processed = 0
+
+    d = start
+    while d <= end:
+        try:
+            r = ingest_date(d, force=force)
+            if r.get("status") == "ok":
+                esiti["ok"].append(str(d))
+                processed += 1
+                if processed % 5 == 0:
+                    conn.execute("CHECKPOINT")
+                    log.info(f"  checkpoint dopo {processed} giorni")
+            else:
+                esiti["skip"].append(str(d))
+        except FileNotFoundError as e:
+            # tar.gz non ancora su S3, o programmi mancanti: ritentabile
+            log.warning(f"  {d} saltato: {e}")
+            esiti["skip"].append(str(d))
+        except Exception as e:
+            log.error(f"  {d} errore: {e}")
+            esiti["error"].append(str(d))
+        d += timedelta(days=1)
+
+    conn.execute("CHECKPOINT")
+    log.info(f"ingest_range completato: {len(esiti['ok'])} ok, "
+             f"{len(esiti['skip'])} skip, {len(esiti['error'])} error")
+    return esiti
 
 
 def ingest_all(force: bool = False) -> list[dict]:
