@@ -8,7 +8,7 @@ from pathlib import Path
 import duckdb
 
 from config import (
-    AUDITEL_DIR, PROGRAMMI_DIR, DATA_SOURCE,
+    AUDITEL_DIR, PROGRAMMI_DIR, STATIC_PROGRAMMI_PATH, DATA_SOURCE,
     S3_BUCKET, S3_PREFIX,
     TV_TO_CODE, CODE_TO_TV, TV_LABELS,
     CLASSIFICAZIONI_AUDITEL, CODICE_NON_RICONOSCIUTO,
@@ -46,9 +46,11 @@ class LocalSource(DataSource):
             d = _parse_date_from_filename(p.name)
             if d:
                 result.append((d, p))
-        master = PROGRAMMI_DIR / "programmi_master.xlsx"
-        if not result and master.exists():
-            result.append((date(1970, 1, 1), master))
+        if not result:
+            for candidate in (PROGRAMMI_DIR / "programmi_master.xlsx", STATIC_PROGRAMMI_PATH):
+                if candidate.exists():
+                    result.append((date(1970, 1, 1), candidate))
+                    break
         return result
 
 

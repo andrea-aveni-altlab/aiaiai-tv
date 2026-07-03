@@ -8,6 +8,10 @@ DB_PATH       = Path(os.getenv("DB_PATH",  DATA_DIR / "tv.duckdb"))
 AUDITEL_DIR   = DATA_DIR / "auditel"
 PROGRAMMI_DIR = DATA_DIR / "programmi"
 
+# Asset bundlato con l'immagine — fallback quando PROGRAMMI_DIR è vuota
+# (es. su Railway dove /data è solo il volume dei tar.gz scaricati da S3)
+STATIC_PROGRAMMI_PATH = Path(__file__).parent / "static_data" / "programmi_master.xlsx"
+
 # ── DataSource ───────────────────────────────────────────────────────────────
 DATA_SOURCE = os.getenv("DATA_SOURCE", "local")
 S3_BUCKET   = os.getenv("S3_BUCKET", "")
