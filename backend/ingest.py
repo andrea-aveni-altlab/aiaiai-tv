@@ -330,14 +330,27 @@ def ingest_date(target_date: date, force: bool = False) -> dict:
     source = get_source()
     log.info(f"Inizio ingestion {date_str}")
 
-    auditel_files   = dict(source.list_auditel_files())
-    programmi_files = dict(source.list_programmi_files())
+    auditel_files = dict(source.list_auditel_files())
 
     if target_date not in auditel_files:
         raise FileNotFoundError(f"Nessun tar.gz trovato per {date_str}")
 
     tar_path  = auditel_files[target_date]
-    prog_path = programmi_files.get(target_date) or programmi_files.get(date(1970, 1, 1))
+    # Se la source è S3, il tar_path sopra è un placeholder: materializza il download
+    if isinstance(source, S3Source):
+        tar_path = source.fetch(target_date, is_programmi=False)
+
+    # I programmi sono un asset statico dell'app, indipendente dalla data source:
+    # file datato in PROGRAMMI_DIR, poi master locale, poi bundle statico.
+    prog_path = None
+    for cand in (
+        PROGRAMMI_DIR / f"programmi_{date_str}.xlsx",
+        PROGRAMMI_DIR / "programmi_master.xlsx",
+        STATIC_PROGRAMMI_PATH,
+    ):
+        if cand.exists():
+            prog_path = cand
+            break
     if prog_path is None:
         raise FileNotFoundError(f"Nessun file programmi trovato per {date_str}")
 
