@@ -3,7 +3,7 @@ Tutte le query UI leggono da audience_cache — mai dai dati grezzi.
 """
 
 from datetime import date
-from db import get_conn
+from db import get_conn, available_dates
 from config import TV_LABELS
 from targets import get_target, DEFAULT_TARGET
 
@@ -217,8 +217,15 @@ def get_status() -> dict:
                stmt_count, ind_count, prog_count, status
         FROM ingest_log ORDER BY data DESC LIMIT 10
     """).fetchall()
+    # Lista completa delle date ok (il frontend ci popola il date picker) e
+    # copertura complessiva: il solo top-10 del log faceva sembrare "fermo"
+    # un bootstrap lungo che aggiunge date in fondo all'ordinamento DESC.
+    ok_dates = available_dates()
     return {
-        "available_dates": [r[0] for r in rows if r[5] == "ok"],
+        "available_dates": ok_dates,
+        "total_days": len(ok_dates),
+        "date_min": ok_dates[-1] if ok_dates else None,
+        "date_max": ok_dates[0] if ok_dates else None,
         "last_ingest": rows[0] if rows else None,
         "log": [dict(zip(["data","ingested_at","stmt_count","ind_count","prog_count","status"], r))
                 for r in rows],
