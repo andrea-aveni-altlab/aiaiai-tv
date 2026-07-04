@@ -8,8 +8,11 @@ from fastapi import FastAPI, HTTPException, Query, Header, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from contextlib import asynccontextmanager
+
 from config import INGEST_API_KEY, CLAUDE_API_KEY, CLAUDE_MODEL, TV_LABELS, FASCE
-from db import get_conn, available_dates, last_ingested_date, register_write_conn, unregister_write_conn
+from db import (get_conn, available_dates, last_ingested_date,
+                register_write_conn, unregister_write_conn, migrate_schema)
 from ingest import ingest_date, ingest_all, ingest_range
 import threading
 
@@ -18,12 +21,21 @@ from queries import (
     get_programmi_giorno, get_prime_time, get_prime_time_summary,
     get_storico_programma, search_programmi, get_top_programmi, get_status,
 )
-from targets import TARGETS, DEFAULT_TARGET
+from cells import list_presets, DEFAULT_TARGET
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s — %(message)s")
 log = logging.getLogger(__name__)
 
-app = FastAPI(title="AIAIAI TV", version="1.0.0")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Migrazione schema audience_cache (a celle atomiche) prima di servire e
+    # prima di accettare ingest — idempotente sui restart.
+    migrate_schema()
+    yield
+
+
+app = FastAPI(title="AIAIAI TV", version="1.0.0", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
@@ -57,7 +69,7 @@ def list_dates():
 
 @app.get("/api/targets")
 def list_targets():
-    return [{"id": t.id, "label": t.label, "short": t.short} for t in TARGETS.values()]
+    return list_presets()
 
 @app.get("/api/emittenti")
 def list_emittenti():

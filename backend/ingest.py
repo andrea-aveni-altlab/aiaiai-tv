@@ -14,7 +14,7 @@ from config import (
     CLASSIFICAZIONI_AUDITEL, CODICE_NON_RICONOSCIUTO,
 )
 from db import get_conn
-from targets import TARGETS
+import cells
 
 log = logging.getLogger(__name__)
 
@@ -281,83 +281,141 @@ def _insert_programmi_dedup(conn: duckdb.DuckDBPyConnection, df_p) -> int:
 
 # ── Calcolo audience_cache ────────────────────────────────────────────────────
 
+def _assert_age_tiling(conn: duckdb.DuckDBPyConnection, date_str: str) -> None:
+    """Guardia di tiling della partizione età. Ogni individuo deve stare in
+    kids∪demo: nel SuperPanel sesso ed età sono sempre valorizzati, quindi un
+    individuo fuori dominio (sesso=0 o nuove_classi_eta fuori 1..11) è un errore
+    di parsing, NON una categoria residua. Si logga con panel/prg e si fa fallire
+    l'ingest del giorno (che finisce come error, come i giorni con PK duplicata),
+    invece di produrre un 4+ silenziosamente sbagliato."""
+    uncovered = (
+        "NOT ("
+        " (nuove_classi_eta BETWEEN 1 AND 4)"
+        " OR (nuove_classi_eta BETWEEN 5 AND 11 AND sesso IN (1,2) AND resp_acquisto IN (0,1))"
+        " )"
+    )
+    n = conn.execute(
+        f"SELECT COUNT(*) FROM individui WHERE data = DATE '{date_str}' AND {uncovered}"
+    ).fetchone()[0]
+    if n:
+        sample = conn.execute(
+            f"SELECT panel, prg, nuove_classi_eta, sesso, resp_acquisto "
+            f"FROM individui WHERE data = DATE '{date_str}' AND {uncovered} LIMIT 20"
+        ).fetchall()
+        log.error(f"{date_str}: {n} individui fuori da kids∪demo (errore parsing?): {sample}")
+        raise ValueError(
+            f"{date_str}: {n} individui non classificabili per età/sesso "
+            f"(fuori da kids∪demo) — ingest fallito, dato da verificare"
+        )
+
+
+def _block_insert_sql(cfg: dict, date_str: str, classif_in: str, nr: str) -> str:
+    g = cfg["gcols"]
+    sel_p  = "".join(f", p.{c}"  for c in g)   # colonne cella in pop → sp
+    sel_sp = "".join(f", sp.{c}" for c in g)   # colonne cella in num/den/reached
+    sel_c  = "".join(f", {c}"    for c in g)   # nomi colonna nudi (carry-through)
+    jn = "".join(f" AND num.{c} = b.{c}" for c in g)
+    jc = "".join(f" AND cop.{c} = b.{c}" for c in g)
+
+    if cfg["block"] == "demo":
+        cell_id = "'D' || lpad(b.nuove_classi_eta::VARCHAR, 2, '0') || '_' || b.sesso || '_' || b.resp_acquisto"
+        age_e, sesso_e, ra_e, cse_e = "b.nuove_classi_eta", "b.sesso", "b.resp_acquisto", "NULL"
+    elif cfg["block"] == "kids":
+        cell_id = "'K'"
+        age_e = sesso_e = ra_e = cse_e = "NULL"
+    else:  # cse
+        cell_id = "'C' || b.cse::VARCHAR"
+        age_e, sesso_e, ra_e, cse_e = "NULL", "NULL", "NULL", "b.cse"
+
+    ov = "GREATEST(0, LEAST(sp.s_e, pr.t_end) - GREATEST(sp.s_s, pr.t_start))"
+    return f"""
+        INSERT INTO audience_cache
+        WITH pop AS (      -- popolazione del blocco (individui), con la chiave-cella
+            SELECT panel, prg, fat_exp{sel_c}
+            FROM individui
+            WHERE data = DATE '{date_str}' AND {cfg['pop']}
+        ),
+        sp AS (            -- statements degli individui della popolazione
+            SELECT s.cod_emit AS s_emit, s.t_start AS s_s, s.t_end AS s_e,
+                   s.classificazione, p.fat_exp, p.panel, p.prg{sel_p}
+            FROM statements s
+            JOIN pop p ON s.data = DATE '{date_str}' AND s.panel = p.panel AND s.prg = p.prg
+        ),
+        num AS (           -- numeratore audience: statement sullo STESSO canale del programma
+            SELECT pr.cod_emit, pr.programma, pr.t_start, pr.t_end{sel_sp},
+                   SUM({ov} * sp.fat_exp / 1000.0) / NULLIF(pr.durata_sec, 0) AS num_audience
+            FROM programmi pr
+            JOIN sp ON sp.s_emit = pr.cod_emit AND sp.s_s < pr.t_end AND sp.s_e > pr.t_start
+            WHERE pr.data = DATE '{date_str}'
+            GROUP BY pr.cod_emit, pr.programma, pr.t_start, pr.t_end, pr.durata_sec{sel_sp}
+        ),
+        reached AS (       -- (evento, cella, individuo) con overlap massimo, per la copertura
+            SELECT pr.cod_emit, pr.programma, pr.t_start, pr.t_end{sel_sp}, sp.panel, sp.prg,
+                   ANY_VALUE(sp.fat_exp) AS fat_exp, MAX({ov}) AS max_ov
+            FROM programmi pr
+            JOIN sp ON sp.s_emit = pr.cod_emit AND sp.s_s < pr.t_end AND sp.s_e > pr.t_start
+            WHERE pr.data = DATE '{date_str}'
+            GROUP BY pr.cod_emit, pr.programma, pr.t_start, pr.t_end{sel_sp}, sp.panel, sp.prg
+        ),
+        cop AS (           -- copertura additiva ESATTA: Σ fat_exp/1000 sui distinti raggiunti (overlap>=60s)
+            SELECT cod_emit, programma, t_start, t_end{sel_c},
+                   SUM(CASE WHEN max_ov >= 60 THEN fat_exp / 1000.0 END) AS copertura
+            FROM reached
+            GROUP BY cod_emit, programma, t_start, t_end{sel_c}
+        ),
+        den AS (           -- denominatori di fascia: QUALUNQUE canale nella finestra del programma
+            SELECT pr.cod_emit, pr.tv, pr.programma, pr.t_start, pr.t_end, pr.durata_sec{sel_sp},
+                   SUM({ov} * sp.fat_exp / 1000.0) / NULLIF(pr.t_end - pr.t_start, 0) AS den_reale,
+                   SUM(CASE WHEN sp.classificazione IN ({classif_in}) AND sp.s_emit != '{nr}'
+                            THEN {ov} * sp.fat_exp / 1000.0 END)
+                     / NULLIF(pr.t_end - pr.t_start, 0) AS den_auditel
+            FROM programmi pr
+            JOIN sp ON sp.s_s < pr.t_end AND sp.s_e > pr.t_start
+            WHERE pr.data = DATE '{date_str}'
+            GROUP BY pr.cod_emit, pr.tv, pr.programma, pr.t_start, pr.t_end, pr.durata_sec{sel_sp}
+        )
+        -- base = den (tutte le celle con qualche ascolto nella finestra); num/cop
+        -- in LEFT JOIN (0 se la cella non ha visto QUESTO programma). Nessuna
+        -- soglia per-cella: le celle memorizzano tutto, la soglia audience>500
+        -- si applica a query-time sul target ricomposto.
+        SELECT
+            DATE '{date_str}', b.cod_emit, b.tv, b.programma,
+            b.t_start, b.t_end, b.durata_sec / 60,
+            '{cfg['partizione']}', '{cfg['block']}', {cell_id},
+            {age_e}, {sesso_e}, {ra_e}, {cse_e},
+            COALESCE(num.num_audience, 0), b.den_auditel, b.den_reale, COALESCE(cop.copertura, 0)
+        FROM den b
+        LEFT JOIN num ON num.cod_emit = b.cod_emit AND num.programma = b.programma
+             AND num.t_start = b.t_start AND num.t_end = b.t_end{jn}
+        LEFT JOIN cop ON cop.cod_emit = b.cod_emit AND cop.programma = b.programma
+             AND cop.t_start = b.t_start AND cop.t_end = b.t_end{jc}
+        WHERE b.den_reale > 0
+    """
+
+
 def _build_audience_cache(conn: duckdb.DuckDBPyConnection, target_date: date) -> int:
+    """Costruisce le 34 celle atomiche del giorno (3 query, una per blocco, con
+    GROUP BY sulle dimensioni-cella). Per ogni (evento × cella) memorizza gli
+    ingredienti grezzi additivi: num_audience, den_auditel/den_reale (audience di
+    fascia sulla popolazione della cella), copertura (Σ fat_exp sui distinti
+    raggiunti). Mai la share divisa: si ricompone a query-time."""
     date_str = target_date.strftime("%Y-%m-%d")
     classif_in = ",".join(str(c) for c in CLASSIFICAZIONI_AUDITEL)
-    total_rows = 0
+    nr = CODICE_NON_RICONOSCIUTO
 
-    for target_id, target in TARGETS.items():
-        conn.execute(f"""
-            INSERT OR REPLACE INTO audience_cache
-            WITH stmt_exp AS (
-                SELECT s.cod_emit, s.t_start AS s_s, s.t_end AS s_e,
-                       s.classificazione, s.cod_emit AS s_emit,
-                       i.fat_exp, i.panel, i.prg
-                FROM statements s
-                JOIN individui i
-                  ON s.data = i.data AND s.panel = i.panel AND s.prg = i.prg
-                WHERE s.data = '{date_str}' AND {target.sql_where}
-            ),
-            tv_fascia_reale AS (
-                SELECT p.cod_emit AS p_emit, p.t_start AS p_s, p.t_end AS p_e, p.programma,
-                       SUM(GREATEST(0, LEAST(s.s_e, p.t_end) - GREATEST(s.s_s, p.t_start))
-                           * s.fat_exp / 1000.0
-                       ) / NULLIF(p.t_end - p.t_start, 0) AS tv_reale
-                FROM programmi p
-                JOIN stmt_exp s ON s.s_s < p.t_end AND s.s_e > p.t_start
-                WHERE p.data = '{date_str}'
-                GROUP BY p.cod_emit, p.t_start, p.t_end, p.programma
-            ),
-            tv_fascia_auditel AS (
-                SELECT p.cod_emit AS p_emit, p.t_start AS p_s, p.t_end AS p_e, p.programma,
-                       SUM(GREATEST(0, LEAST(s.s_e, p.t_end) - GREATEST(s.s_s, p.t_start))
-                           * s.fat_exp / 1000.0
-                       ) / NULLIF(p.t_end - p.t_start, 0) AS tv_auditel
-                FROM programmi p
-                JOIN stmt_exp s ON s.s_s < p.t_end AND s.s_e > p.t_start
-                  AND s.classificazione IN ({classif_in})
-                  AND s.s_emit != '{CODICE_NON_RICONOSCIUTO}'
-                WHERE p.data = '{date_str}'
-                GROUP BY p.cod_emit, p.t_start, p.t_end, p.programma
-            ),
-            prog_audience AS (
-                SELECT p.cod_emit, p.tv, p.programma, p.t_start, p.t_end, p.durata_sec,
-                       SUM(GREATEST(0, LEAST(s.s_e, p.t_end) - GREATEST(s.s_s, p.t_start))
-                           * s.fat_exp / 1000.0
-                       ) / NULLIF(p.durata_sec, 0) AS audience,
-                       COUNT(DISTINCT CASE
-                           WHEN GREATEST(0, LEAST(s.s_e, p.t_end) - GREATEST(s.s_s, p.t_start)) >= 60
-                           THEN s.panel || '|' || s.prg::VARCHAR
-                       END) * AVG(s.fat_exp) / 1000000.0 AS copertura
-                FROM programmi p
-                JOIN stmt_exp s ON s.cod_emit = p.cod_emit
-                  AND s.s_s < p.t_end AND s.s_e > p.t_start
-                WHERE p.data = '{date_str}'
-                GROUP BY p.cod_emit, p.tv, p.programma, p.t_start, p.t_end, p.durata_sec
-                HAVING audience > 500
-            )
-            SELECT
-                DATE '{date_str}', pa.cod_emit, pa.tv, pa.programma,
-                pa.t_start, pa.t_end, pa.durata_sec / 60,
-                '{target_id}',
-                pa.audience,
-                pa.audience / NULLIF(fa.tv_auditel, 0) * 100,
-                pa.audience / NULLIF(fr.tv_reale, 0)   * 100,
-                pa.copertura
-            FROM prog_audience pa
-            JOIN tv_fascia_reale   fr ON fr.p_emit = pa.cod_emit
-                AND fr.p_s = pa.t_start AND fr.p_e = pa.t_end AND fr.programma = pa.programma
-            JOIN tv_fascia_auditel fa ON fa.p_emit = pa.cod_emit
-                AND fa.p_s = pa.t_start AND fa.p_e = pa.t_end AND fa.programma = pa.programma
-        """)
-        n = conn.execute(f"""
-            SELECT COUNT(*) FROM audience_cache
-            WHERE data = '{date_str}' AND target_id = '{target_id}'
-        """).fetchone()[0]
-        total_rows += n
-        log.info(f"  cache {target_id}: {n} righe")
+    _assert_age_tiling(conn, date_str)
 
-    return total_rows
+    total = 0
+    for cfg in cells.BLOCKS:
+        conn.execute(_block_insert_sql(cfg, date_str, classif_in, nr))
+        n = conn.execute(
+            f"SELECT COUNT(*) FROM audience_cache "
+            f"WHERE data = DATE '{date_str}' AND block = '{cfg['block']}'"
+        ).fetchone()[0]
+        total += n
+        log.info(f"  cache blocco {cfg['block']}: {n} righe")
+
+    return total
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
@@ -458,7 +516,7 @@ def ingest_date(target_date: date, force: bool = False) -> dict:
     conn.execute("CREATE INDEX IF NOT EXISTS idx_stmt_data_emit ON statements(data, cod_emit)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_ind_data ON individui(data, panel, prg)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_prog_data ON programmi(data, cod_emit)")
-    conn.execute("CREATE INDEX IF NOT EXISTS idx_cache_data ON audience_cache(data, target_id)")
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_cache_data ON audience_cache(data, block)")
 
     log.info("  Calcolo audience cache...")
     cache_rows = _build_audience_cache(conn, target_date)
