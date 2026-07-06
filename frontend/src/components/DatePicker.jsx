@@ -140,10 +140,10 @@ export default function DatePicker({ mode, value, onChange, availableDates, min,
                 return <div key={d} className={`${base} text-gray-600 cursor-not-allowed`}>{d}</div>
               if (st === 'sel')
                 return <button key={d} onClick={() => clickDay(d)}
-                  className={`${base} font-medium`} style={{ background:'#E8860C', color:'#2a1c05' }}>{d}</button>
+                  className={`${base} font-medium`} style={{ background:'#8f7547', color:'#ffffff' }}>{d}</button>
               if (st === 'inr')
                 return <button key={d} onClick={() => clickDay(d)}
-                  className={`${base} text-blue-100`} style={{ background:'rgba(12,68,124,0.6)' }}>{d}</button>
+                  className={`${base} text-white`} style={{ background:'rgba(143,117,71,0.3)' }}>{d}</button>
               return <button key={d} onClick={() => clickDay(d)}
                 className={`${base} text-gray-200 bg-gray-800 hover:bg-gray-700`}>{d}</button>
             })}

@@ -33,7 +33,7 @@ function AudienceBar({ value, max }) {
   return (
     <div className="flex items-center gap-2">
       <div className="w-20 h-1.5 bg-gray-800 rounded-full overflow-hidden">
-        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: '#E8860C' }} />
+        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: '#8f7547' }} />
       </div>
       <span className="text-white tabular-nums text-sm">{fmt(value)}</span>
     </div>
@@ -95,7 +95,7 @@ export default function Giornaliera({ date, target }) {
             {emittenti.map(e => (
               <button key={e} onClick={() => setFilterEmit(e === filterEmit ? 'ALL' : e)}
                 className={`px-2 py-0.5 rounded text-xs font-medium transition-colors ${filterEmit===e ? 'text-white' : 'bg-gray-800 text-gray-400'}`}
-                style={filterEmit===e ? {background:'#0C447C'} : {}}>
+                style={filterEmit===e ? {background:'#000000'} : {}}>
                 {TV_DISPLAY[e] || e}
               </button>
             ))}
@@ -117,7 +117,7 @@ export default function Giornaliera({ date, target }) {
           </button>
           <button onClick={() => setShowReale(true)}
             className={`px-2 py-1 rounded text-xs font-medium ${showReale ? 'text-white' : 'text-gray-400'}`}
-            style={showReale ? {background:'#E8860C'} : {}}>
+            style={showReale ? {background:'#8f7547'} : {}}>
             Share Reale
           </button>
         </div>

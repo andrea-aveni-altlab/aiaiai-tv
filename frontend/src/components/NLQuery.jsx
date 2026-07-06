@@ -49,7 +49,7 @@ export default function NLQuery({ date, target, onClose }) {
 
         <div className="flex items-center justify-between p-4 border-b border-gray-800">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full animate-pulse" style={{background:'#E8860C'}} />
+            <div className="w-2 h-2 rounded-full animate-pulse" style={{background:'#8f7547'}} />
             <span className="font-semibold text-white text-sm">Chiedi agli ascolti</span>
             <span className="text-gray-500 text-xs">{date} · {target}</span>
           </div>
@@ -79,7 +79,7 @@ export default function NLQuery({ date, target, onClose }) {
                 m.role === 'user' ? 'text-white rounded-br-sm'
                 : m.role === 'error' ? 'bg-red-900/50 border border-red-800 text-red-300'
                 : 'bg-gray-800 text-gray-200 rounded-bl-sm'
-              }`} style={m.role === 'user' ? {background:'#0C447C'} : {}}>
+              }`} style={m.role === 'user' ? {background:'#000000'} : {}}>
                 <p className="whitespace-pre-wrap leading-relaxed">{m.text}</p>
               </div>
             </div>
@@ -111,7 +111,7 @@ export default function NLQuery({ date, target, onClose }) {
               style={{maxHeight:120}} />
             <button onClick={send} disabled={!input.trim() || loading}
               className="p-1.5 rounded-lg transition-colors disabled:opacity-30"
-              style={{background: input.trim() ? '#E8860C' : '#374151'}}>
+              style={{background: input.trim() ? '#8f7547' : '#374151'}}>
               <Send size={14} className="text-white" />
             </button>
           </div>

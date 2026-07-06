@@ -76,7 +76,7 @@ export default function Programma({ from, to, target }) {
           </button>
           <button onClick={() => setShowReale(true)}
             className={`px-3 py-1 rounded text-xs font-medium ${showReale ? 'text-white' : 'text-gray-400'}`}
-            style={showReale ? {background:'#E8860C'} : {}}>
+            style={showReale ? {background:'#8f7547'} : {}}>
             Reale
           </button>
         </div>
@@ -130,7 +130,7 @@ export default function Programma({ from, to, target }) {
             </div>
             <div className="bg-gray-900 rounded-xl p-4">
               <div className="text-gray-500 text-xs mb-1">Picco</div>
-              <div className="text-2xl font-black" style={{color:'#E8860C'}}>{maxShare}%</div>
+              <div className="text-2xl font-black" style={{color:'#8f7547'}}>{maxShare}%</div>
               <div className="text-gray-600 text-xs mt-1">
                 {storico.find(r => r[shareKey]?.toFixed(1) === maxShare)?.data}
               </div>
@@ -165,9 +165,9 @@ export default function Programma({ from, to, target }) {
                     label={{value:`media ${avgShare}%`, fill:'#6b7280', fontSize:10}} />
                 )}
                 <Line type="monotone" dataKey={shareKey} name="Share"
-                  stroke={TV_COLORS[selected.cod_emit] || '#E8860C'}
+                  stroke={TV_COLORS[selected.cod_emit] || '#8f7547'}
                   strokeWidth={2}
-                  dot={{r:3, fill: TV_COLORS[selected.cod_emit] || '#E8860C'}}
+                  dot={{r:3, fill: TV_COLORS[selected.cod_emit] || '#8f7547'}}
                   activeDot={{r:5}} />
               </LineChart>
             </ResponsiveContainer>
@@ -192,7 +192,7 @@ export default function Programma({ from, to, target }) {
                     <td className="py-1.5 text-gray-400">{r.ora_inizio}</td>
                     <td className="py-1.5 pr-4 text-right text-gray-300 tabular-nums">{fmt(r.audience)}</td>
                     <td className="py-1.5 pr-4 text-right font-semibold text-white tabular-nums">{r.share_auditel}%</td>
-                    <td className="py-1.5 text-right tabular-nums" style={{color:'#E8860C'}}>{r.share_reale}%</td>
+                    <td className="py-1.5 text-right tabular-nums" style={{color:'#8f7547'}}>{r.share_reale}%</td>
                   </tr>
                 ))}
               </tbody>

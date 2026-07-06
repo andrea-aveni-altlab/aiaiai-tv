@@ -14,6 +14,12 @@ const VIEWS = [
 ]
 
 export default function App() {
+  const [authorized, setAuthorized] = useState(
+    () => localStorage.getItem('mm_tv_auth') === 'true'
+  )
+  const [inviteCode, setInviteCode] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+
   const [view, setView]       = useState('giornaliera')
   const [targets, setTargets] = useState([])
   const [target, setTarget]   = useState('4plus')
@@ -37,11 +43,64 @@ export default function App() {
     }).catch(err => { console.error(err); setLoading(false) })
   }, [])
 
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const validCodes = ['MEDIA2026', 'INSIGHT2026', 'ALTLAB2026', 'BETA2026']
+    if (validCodes.includes(inviteCode.trim().toUpperCase())) {
+      localStorage.setItem('mm_tv_auth', 'true')
+      setAuthorized(true)
+    } else {
+      setErrorMsg('Codice di invito non valido. Riprova.')
+    }
+  }
+
+  if (!authorized) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white p-4">
+        <div className="max-w-md w-full bg-slate-900 border border-slate-800 rounded-xl p-8 shadow-2xl">
+          <div className="flex justify-center mb-6">
+            <span className="bg-red-600/20 text-red-500 font-mono text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-red-500/20">
+              Anteprima Privata
+            </span>
+          </div>
+          <h2 className="text-2xl font-bold text-center mb-2 font-serif">AIAIAI TV</h2>
+          <p className="text-slate-400 text-sm text-center mb-8">
+            Questo strumento è riservato ai partner e agli utenti invitati da MediaMetrics Italia. Inserisci il codice per sbloccare l'accesso.
+          </p>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+                Codice di Invito
+              </label>
+              <input
+                type="text"
+                value={inviteCode}
+                onChange={(e) => setInviteCode(e.target.value)}
+                placeholder="Inserisci il codice..."
+                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-red-500 transition-colors placeholder:text-slate-600 uppercase"
+                required
+              />
+            </div>
+            {errorMsg && (
+              <p className="text-red-500 text-xs font-mono">{errorMsg}</p>
+            )}
+            <button
+              type="submit"
+              className="w-full bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-mono text-xs uppercase tracking-wider font-bold py-3 rounded-lg transition-colors"
+            >
+              Accedi allo Strumento
+            </button>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950">
       <div className="text-center">
         <div className="text-4xl font-black text-white tracking-tight mb-2">
-          AIAIAI<span style={{color:'#E8860C'}}>TV</span>
+          AIAIAI<span style={{color:'#8f7547'}}>TV</span>
         </div>
         <div className="text-gray-400 text-sm animate-pulse">Caricamento...</div>
       </div>
@@ -50,11 +109,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col">
-      <header className="border-b border-gray-800" style={{background:'#0C447C'}}>
+      <header className="border-b border-gray-800" style={{background:'#000000'}}>
         <div className="max-w-screen-xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-xl font-black tracking-tight">
-              AIAIAI<span style={{color:'#E8860C'}}>TV</span>
+              AIAIAI<span style={{color:'#8f7547'}}>TV</span>
             </span>
             <span className="text-blue-200 text-xs hidden sm:block">
               AI-powered TV Audience Analytics
@@ -73,7 +132,7 @@ export default function App() {
             <button
               onClick={() => setNlOpen(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium"
-              style={{background:'#E8860C'}}
+              style={{background:'#8f7547'}}
             >
               <MessageSquare size={14} />
               <span className="hidden sm:inline">Chiedi</span>
@@ -91,7 +150,7 @@ export default function App() {
               className={`flex items-center gap-1.5 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                 view === id ? 'border-orange-400 text-white' : 'border-transparent text-gray-400 hover:text-gray-200'
               }`}
-              style={view === id ? {borderColor:'#E8860C'} : {}}
+              style={view === id ? {borderColor:'#8f7547'} : {}}
             >
               <Icon size={14} />{label}
             </button>
@@ -109,7 +168,7 @@ export default function App() {
               className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
                 target === t.id ? 'text-white' : 'bg-gray-800 text-gray-400 hover:text-gray-200'
               }`}
-              style={target === t.id ? {background:'#0C447C'} : {}}
+              style={target === t.id ? {background:'#000000'} : {}}
             >
               {t.short}
             </button>

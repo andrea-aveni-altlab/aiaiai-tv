@@ -24,7 +24,7 @@ const CustomTooltip = ({ active, payload }) => {
       <div className="font-bold text-white mb-1">{d.tv_label}</div>
       <div className="text-gray-300">Audience: <span className="text-white">{fmt(d.audience_media)}</span></div>
       <div className="text-gray-300">Share Auditel: <span className="text-white">{d.share_auditel}%</span></div>
-      <div className="text-gray-300">Share Reale: <span style={{color:'#E8860C'}}>{d.share_reale}%</span></div>
+      <div className="text-gray-300">Share Reale: <span style={{color:'#8f7547'}}>{d.share_reale}%</span></div>
     </div>
   )
 }
@@ -66,7 +66,7 @@ export default function PrimeTime({ date, target }) {
           </button>
           <button onClick={() => setShowReale(true)}
             className={`px-3 py-1 rounded text-xs font-medium ${showReale ? 'text-white' : 'text-gray-400'}`}
-            style={showReale ? {background:'#E8860C'} : {}}>
+            style={showReale ? {background:'#8f7547'} : {}}>
             Reale
           </button>
         </div>
@@ -88,7 +88,7 @@ export default function PrimeTime({ date, target }) {
             <Bar dataKey={shareKey} radius={[4,4,0,0]} cursor="pointer">
               {chartData.map(entry => (
                 <Cell key={entry.cod_emit}
-                  fill={selectedEmit === entry.cod_emit ? '#E8860C' : TV_COLORS[entry.cod_emit] || '#4b5563'}
+                  fill={selectedEmit === entry.cod_emit ? '#8f7547' : TV_COLORS[entry.cod_emit] || '#4b5563'}
                   opacity={selectedEmit && selectedEmit !== entry.cod_emit ? 0.4 : 1} />
               ))}
             </Bar>
@@ -121,7 +121,7 @@ export default function PrimeTime({ date, target }) {
                   {Number(r.audience_media).toLocaleString('it-IT')}
                 </td>
                 <td className="py-2 pr-4 text-right font-semibold text-white">{r.share_auditel}%</td>
-                <td className="py-2 text-right" style={{color:'#E8860C'}}>{r.share_reale}%</td>
+                <td className="py-2 text-right" style={{color:'#8f7547'}}>{r.share_reale}%</td>
               </tr>
             ))}
           </tbody>
