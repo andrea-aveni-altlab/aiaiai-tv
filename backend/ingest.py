@@ -125,9 +125,13 @@ def _parse_date_from_filename(name: str) -> date | None:
     return None
 
 
-def _hhmm_to_sec(s: str) -> int:
-    s = str(s).zfill(4)
-    return int(s[:2]) * 3600 + int(s[2:]) * 60
+def _hhmmss_to_sec(s: str) -> int:
+    """Ora statement del feed AltlabFilteredMDA: HHMMSS (6 cifre, ore 02-25).
+    NB: il tracciato ufficiale dice HHMM, ma il feed reale ha i secondi —
+    interpretarlo come HHMM proietta gli orari fino a +97h (bug luglio 2026).
+    Vedi tests/test_parse_statements.py."""
+    s = str(s).strip().zfill(6)
+    return int(s[:2]) * 3600 + int(s[2:4]) * 60 + int(s[4:6])
 
 
 def _timestr_to_sec(s: str) -> int:
@@ -155,7 +159,7 @@ def _parse_statements(path: Path, target_date: date) -> list[tuple]:
             prg        = fields[4]
             cod_emit   = fields[6]
             ora_ini    = fields[7]
-            durata_min = fields[8]
+            durata_sec = fields[8]   # il feed la fornisce GIA' in secondi
             piattaf    = fields[10]
             classif    = fields[18]
             dig_vod    = fields[20]
@@ -164,8 +168,8 @@ def _parse_statements(path: Path, target_date: date) -> list[tuple]:
             if tipo_ppl != "I": continue
             if dig_vod == "1": continue
             try:
-                t_start = _hhmm_to_sec(ora_ini)
-                dur_sec = int(durata_min) * 60
+                t_start = _hhmmss_to_sec(ora_ini)
+                dur_sec = int(durata_sec)
                 if dur_sec <= 0: continue
                 rows.append((
                     target_date, panel, int(prg), tipo_stmt, cod_emit,
@@ -418,6 +422,48 @@ def _build_audience_cache(conn: duckdb.DuckDBPyConnection, target_date: date) ->
     return total
 
 
+# ── Spia di plausibilita' ─────────────────────────────────────────────────────
+# Programmi-ancora con ordine di grandezza noto dal mondo reale (audience 4+,
+# picco-evento del giorno). Range volutamente larghi: e' una spia, non un test
+# rigido — se scatta, qualcosa a monte (parsing, pesi, feed) si e' quasi
+# certamente rotto. Ancoraggio a valori esterni, non solo a coerenza interna:
+# il bug HHMM/x60 (luglio 2026) dava Affari Tuoi a 2,4M ed era internamente
+# coerentissimo. Con questi range sarebbe scattata al primo ingest.
+ANCHORS = [
+    ("AFFARI TUOI%",            "0001", 3_000_000, 8_000_000),
+    ("TG1 SERA%",               "0001", 2_500_000, 6_000_000),
+    ("LA RUOTA DELLA FORTUNA%", "0004", 3_000_000, 8_000_000),
+    ("TG5 (20%",                "0004", 2_000_000, 6_000_000),
+]
+
+
+def _check_anchors(conn: duckdb.DuckDBPyConnection, target_date: date) -> str:
+    """Controllo di plausibilita' esterno post-ingest: per ogni programma-ancora
+    in onda nel giorno, il picco-evento di audience 4+ deve cadere nel range
+    noto. Logga WARNING se fuori; ritorna il riassunto per ingest_log."""
+    esiti = []
+    for pattern, emit, lo, hi in ANCHORS:
+        aud = conn.execute("""
+            SELECT MAX(aud) FROM (
+                SELECT SUM(num_audience) AS aud
+                FROM audience_cache
+                WHERE data = ? AND cod_emit = ? AND programma LIKE ?
+                  AND block IN ('kids','demo')
+                GROUP BY programma, t_start
+            )
+        """, [target_date, emit, pattern]).fetchone()[0]
+        if aud is None:
+            continue    # ancora non in onda quel giorno
+        nome = pattern.rstrip("%")
+        if lo <= aud <= hi:
+            esiti.append(f"{nome}={aud/1e6:.1f}M ok")
+        else:
+            log.warning(f"  SPIA PLAUSIBILITA' {target_date}: {nome} = {aud:,.0f} "
+                        f"fuori range [{lo/1e6:.1f}M-{hi/1e6:.1f}M] — pipeline da verificare")
+            esiti.append(f"{nome}={aud/1e6:.1f}M FUORI RANGE [{lo/1e6:.1f}-{hi/1e6:.1f}]")
+    return "; ".join(esiti) if esiti else "nessuna ancora in onda"
+
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def ingest_date(target_date: date, force: bool = False) -> dict:
@@ -520,10 +566,12 @@ def ingest_date(target_date: date, force: bool = False) -> dict:
 
     log.info("  Calcolo audience cache...")
     cache_rows = _build_audience_cache(conn, target_date)
+    spia = _check_anchors(conn, target_date)
+    log.info(f"  spia plausibilita': {spia}")
 
     conn.execute("INSERT OR REPLACE INTO ingest_log VALUES (?,?,?,?,?,?,?)", [
         target_date, datetime.now(), len(rows_stmt), len(rows_ind),
-        n_prog, "ok", f"cache_rows={cache_rows}",
+        n_prog, "ok", f"cache_rows={cache_rows}; spia: {spia}",
     ])
 
     result = {"date": date_str, "status": "ok", "statements": len(rows_stmt),
