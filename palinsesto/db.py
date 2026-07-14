@@ -38,6 +38,14 @@ def connect(path: Path | str | None = None) -> duckdb.DuckDBPyConnection:
 
 def init_schema(conn: duckdb.DuckDBPyConnection) -> None:
     conn.execute((BASE / "schema.sql").read_text())
+    # migrazione additiva per DB creati prima della colonna (cache rigenerabile).
+    # ATTENZIONE: niente "ADD COLUMN IF NOT EXISTS" — in DuckDB, se la colonna
+    # esiste gia', RIAZZERA i valori al DEFAULT a ogni connect (verificato).
+    cols = {r[1] for r in conn.execute(
+        "PRAGMA table_info('palinsesto_composto')").fetchall()}
+    if "lettura_incerta" not in cols:
+        conn.execute("ALTER TABLE palinsesto_composto "
+                     "ADD COLUMN lettura_incerta BOOLEAN DEFAULT FALSE")
     for cz in ("rai", "cairo", "publitalia"):
         for f, a, b in FASCE_DEFAULT:
             conn.execute(

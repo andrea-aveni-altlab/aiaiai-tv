@@ -6,6 +6,17 @@ import json
 from datetime import date, timedelta
 
 DOW = "DLMMGVS"          # indice 0=domenica ... 6=sabato (come le griglie)
+
+# Specificità base-vs-base: una finestra di validità breve ("evento": speciale
+# datato, torneo, festività) sopprime lo slot regolare che copre negli stessi
+# giorni. Questo è il tetto oltre il quale una finestra NON conta più come
+# evento: le finestre semi-limitate ("f. al 29/5" ≈ tutto il periodo del doc)
+# non devono sopprimere i vicini per overlap di 15-20' dovuti al lattice delle
+# griglie. Tarato sul dato 2026 (evento più lungo visto: ~21 gg, Giro/qualif.);
+# se un giorno un evento supera il tetto (Mondiali ~32 gg, Olimpiadi ~17 gg ok)
+# il sintomo sarà uno slot regolare che NON sparisce nei giorni dell'evento:
+# alzare qui, con giudizio.
+FINESTRA_EVENTO_MAX_GIORNI = 31
 CONCESSIONARIA_DI = {"RAI1": "rai", "RAI2": "rai", "RAI3": "rai", "LA7": "cairo",
                      "CAN5": "publitalia", "ITA1": "publitalia", "RETE4": "publitalia"}
 
@@ -129,10 +140,8 @@ def palinsesto_del_giorno(conn, giorno: date, rete: str | None = None,
                 s["alternanza_irrisolta"] = True
     attivi = [s for s in attivi if s["slot_id"] not in scarta]
 
-    # specificità base-vs-base: una finestra-EVENTO (breve, <=31 gg) sopprime
-    # lo slot regolare che copre. Il limite serve: una finestra semi-limitata
-    # ("f. al 29/5" = quasi tutto il periodo) non è un evento e non deve
-    # sopprimere i vicini su overlap di 15-20' dovuti al lattice delle griglie.
+    # specificità base-vs-base: solo una finestra-EVENTO sopprime lo slot
+    # regolare che copre (vedi FINESTRA_EVENTO_MAX_GIORNI)
     soppressi = set()
     for a in attivi:
         for b in attivi:
@@ -141,7 +150,7 @@ def palinsesto_del_giorno(conn, giorno: date, rete: str | None = None,
             if _si_sovrappone(a, b):
                 da_a = (a["valido_a"] or date(2099,1,1)) - (a["valido_da"] or date(2000,1,1))
                 da_b = (b["valido_a"] or date(2099,1,1)) - (b["valido_da"] or date(2000,1,1))
-                if da_a.days <= 31 and da_a.days < da_b.days - 2:
+                if da_a.days <= FINESTRA_EVENTO_MAX_GIORNI and da_a.days < da_b.days - 2:
                     soppressi.add(b["slot_id"])
     attivi = [s for s in attivi if s["slot_id"] not in soppressi]
     for s in attivi:
@@ -188,6 +197,9 @@ def palinsesto_del_giorno(conn, giorno: date, rete: str | None = None,
             "certezza_orario": s["certezza_orario"],
             "generico": bool(s["generico"]),
             "alternanza_irrisolta": bool(s.get("alternanza_irrisolta", False)),
+            # incertezza di LETTURA (OCR/parsing), distinta da quella di
+            # palinsesto: righe da curatela, non dati buoni
+            "lettura_incerta": bool(note.get("lettura_incerta", False)),
             "prima_tv": s["prima_tv"], "replica": s["replica"], "tipo": s["tipo"],
             "genere": note.get("genere_colore"),
             "doc_id": s["doc_id"], "pubblicato_il": str(s["pubblicato_il"]),
@@ -209,13 +221,14 @@ def costruisci_cache(conn, da: date, a: date, orizzonte: date | None = None,
             # (settimanali PT senza orario) usano -1; certezza_orario =
             # 'solo_fascia' li descrive gia'
             conn.execute("INSERT OR REPLACE INTO palinsesto_composto VALUES "
-                         "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
+                         "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
                 label, g, r["rete"],
                 r["t_start"] if r["t_start"] is not None else -1,
                 r["t_end"], r["fascia"],
                 r["blocco_id"], r["titolo"], r["certezza_contenuto"], r["certezza_orario"],
                 r["generico"], r["alternanza_irrisolta"], r["prima_tv"], r["replica"],
-                r["tipo"], r["genere"], r["doc_id"], r["pubblicato_il"]])
+                r["tipo"], r["genere"], r["doc_id"], r["pubblicato_il"],
+                r["lettura_incerta"]])
             n += 1
         g += timedelta(days=1)
     return n

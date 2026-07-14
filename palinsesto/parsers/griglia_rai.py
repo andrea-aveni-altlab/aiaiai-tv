@@ -55,6 +55,18 @@ RE_ORA = re.compile(r"^(\d{1,2})[.:](\d{2})\b")
 RE_DUR = re.compile(r"\(\s*\d{1,3}['’]?\s*\)")
 RE_RESIDUI = re.compile(r"\b(?:d|f|dal|fino\s+al|escl)\.?\s*(?=[;,)\s]|$)", re.I)
 
+# ── incertezza di LETTURA (≠ incertezza di palinsesto) ───────────────────────
+# Vision su queste griglie e' bimodale: conf=1.0 per il testo letto bene,
+# 0.3-0.5 esattamente sulle righe storpiate (misurato: 367/369 a 1.0, le 2
+# sotto erano 'HCTON 1S' e '19115'). Sotto questa soglia lo slot va in
+# curatela, non nel DB come dato buono.
+CONF_AFFIDABILE = 0.99
+# data spezzata: cifre + '/' senza cifre dopo ("f. al 24/" con il 5 illeggibile)
+RE_DATA_ROTTA = re.compile(r"\b\d{1,2}\s*/\s*(?![\d])")
+# titolo sospetto: residui numerici di 3-4 cifre (date non riparate) o
+# caratteri che l'OCR produce solo sbagliando
+RE_TITOLO_SOSPETTO = re.compile(r"\b\d{3,4}\b|[\[\]{}|\\ÃÀ̧ĄÅ§]")
+
 
 # ── OCR (Vision via helper Swift, compilato una volta per sessione) ──────────
 _HELPER_SRC = Path(__file__).parent / "ocr_helper.swift"
@@ -465,8 +477,8 @@ def _ripara_date(t, dow_idx, periodo_da, periodo_a):
             return f"{g}/{mm}"
         return None
 
-    # '_' = artefatto dei bordi tratteggiati (rompe i \b), '@' = '®' misletto
-    t = t.replace("_", " ").replace("@", "® ")
+    # '_' = artefatto dei bordi tratteggiati (rompe i \b); '@'/'©' = '®' misletto
+    t = t.replace("_", " ").replace("@", "® ").replace("©", "® ")
     toks = t.split()
     ha_data = [bool(re.search(r"\d{1,2}/\d{1,2}", tk) or "-" in tk or tk in "&;,")
                for tk in toks]
@@ -494,7 +506,8 @@ def _parse_alt(txt, dow_idx, periodo_da, periodo_a):
     dow_idx None = cella su piu' giorni (i range diventano solo finestra)."""
     t = " ".join(txt.split())
     out = {"replica": False, "valido_da": None, "valido_a": None,
-           "date_list": None, "escluse": None, "t_dich": None, "nel_corso": None}
+           "date_list": None, "escluse": None, "t_dich": None,
+           "nel_corso": None, "finestra_illeggibile": False}
     m = RE_ORA.match(t)
     if m and int(m.group(1)) < 30:
         out["t_dich"] = int(m.group(1)) * 60 + int(m.group(2))
@@ -558,6 +571,15 @@ def _parse_alt(txt, dow_idx, periodo_da, periodo_a):
     assert not (out["valido_da"] and out["valido_a"]
                 and out["valido_da"] > out["valido_a"]), f"finestra rovesciata: {txt!r}"
 
+    # data SPEZZATA nel testo ("f. al 24/" col mese illeggibile): la finestra
+    # dell'alternativa e' inaffidabile — meglio nessuna finestra e un flag di
+    # curatela che un dato sbagliato che sembra giusto (lo slot resta visibile
+    # tutti i giorni invece di sparire in quelli sbagliati)
+    out["finestra_illeggibile"] = bool(RE_DATA_ROTTA.search(t))
+    if out["finestra_illeggibile"]:
+        out["valido_da"] = out["valido_a"] = None
+        out["date_list"] = None
+
     t = RE_RESIDUI.sub(" ", t)              # 'd.'/'f. al' rimasti senza data
     out["titolo"] = " ".join(t.split()).strip(" -–;,+.")
     out["generico"] = out["titolo"].rstrip(".").upper() in GENERICI
@@ -565,22 +587,24 @@ def _parse_alt(txt, dow_idx, periodo_da, periodo_a):
 
 
 def _segmenta_alternative(righe):
-    """Righe OCR di una cella -> alternative: una riga che termina con una
-    data (o range) CHIUDE l'alternativa corrente; una riga che inizia con un
-    orario dichiarato ("10.55 SANTA MESSA") ne APRE una nuova (sequenza)."""
+    """Righe OCR (testo, conf) di una cella -> [(alternativa, conf_min)]:
+    una riga che termina con una data (o range) CHIUDE l'alternativa corrente;
+    una riga che inizia con un orario dichiarato ("10.55 SANTA MESSA") ne APRE
+    una nuova (sequenza). La confidenza dell'alternativa e' il minimo delle
+    sue righe: basta una riga storpiata a renderla da curare."""
     chiude = re.compile(r"\d{1,2}/\d{1,2}\s*[;,]?\s*$")
     apre = re.compile(r"^\d{1,2}[.:]\d{2}\b")
     alts, cur = [], []
-    for r in righe:
+    for r, c in righe:
         if cur and apre.match(r):
-            alts.append(" ".join(cur))
+            alts.append((" ".join(t for t, _ in cur), min(k for _, k in cur)))
             cur = []
-        cur.append(r)
+        cur.append((r, c))
         if chiude.search(r):
-            alts.append(" ".join(cur))
+            alts.append((" ".join(t for t, _ in cur), min(k for _, k in cur)))
             cur = []
     if cur:
-        alts.append(" ".join(cur))
+        alts.append((" ".join(t for t, _ in cur), min(k for _, k in cur)))
     return alts
 
 
@@ -682,15 +706,15 @@ def parse_griglia_rai(path: Path, conn, tmpdir: Path | None = None,
                     for bi, (by0, by1, bx0, bx1, bci) in enumerate(r["boxes"]):
                         if by0 <= yc < by1 and bx0 - 2 <= xc < bx1 + 2:
                             r["_box_linee"].setdefault(bi, []).append(
-                                (l["top"], l["x0"], txt))
+                                (l["top"], l["x0"], txt, l["conf"]))
                             break
                     else:
-                        r["_linee"].append((l["top"], l["x0"], txt))
+                        r["_linee"].append((l["top"], l["x0"], txt, l["conf"]))
                     break
         for r in rects:
-            r["righe"] = [t for _, _, t in sorted(r.pop("_linee"))]
-            r["alt_box"] = [(" ".join(t for _, _, t in sorted(ll)),
-                             r["boxes"][bi][4])
+            r["righe"] = [(t, c) for _, _, t, c in sorted(r.pop("_linee"))]
+            r["alt_box"] = [(" ".join(t for _, _, t, _ in sorted(ll)),
+                             min(c for _, _, _, c in ll), r["boxes"][bi][4])
                             for bi, ll in sorted(r.pop("_box_linee").items())]
 
         # cella vuota su banda a bordi sfalsati: eredita dal sibling a pari top
@@ -722,25 +746,26 @@ def parse_griglia_rai(path: Path, conn, tmpdir: Path | None = None,
             else:
                 t2 = min(t2, 26 * 60)       # il giorno TV finisce alle 02:00
             dow_idx = (r["cols"][0] + shift) % 7 if len(r["cols"]) == 1 else None
-            righe_rip = [_ripara_date(l, dow_idx, periodo_da, periodo_a)
-                         for l in r["righe"]]
-            specs = [(a, dow_idx, None) for a in _segmenta_alternative(righe_rip)]
+            righe_rip = [(_ripara_date(t_, dow_idx, periodo_da, periodo_a), c_)
+                         for t_, c_ in r["righe"]]
+            specs = [(a, cf, dow_idx, None)
+                     for a, cf in _segmenta_alternative(righe_rip)]
             # i sub-box sono slot autonomi con la maschera della SOLA colonna
             # del box: la specificita' base-vs-base del composer li fa vincere
             # nei loro giorni senza toccare le alternanze della cella
-            for testo_box, bci in r.get("alt_box", []):
+            for testo_box, conf_box, bci in r.get("alt_box", []):
                 db = (bci + shift) % 7
                 specs.append((_ripara_date(testo_box, db, periodo_da, periodo_a),
-                              db,
+                              conf_box, db,
                               "".join("1" if c == db else "0" for c in range(7))))
             parsed, pend_nc = [], None
-            for alt, dow_a, mask_a in specs:
+            for alt, conf, dow_a, mask_a in specs:
                 try:
                     p = _parse_alt(alt, dow_a, periodo_da, periodo_a)
                 except (ValueError, AssertionError):
                     p = {"replica": False, "valido_da": None, "valido_a": None,
                          "date_list": None, "escluse": None, "t_dich": None,
-                         "nel_corso": None,
+                         "nel_corso": None, "finestra_illeggibile": False,
                          "titolo": " ".join(alt.split()), "generico": False}
                 if not p["titolo"]:
                     # sotto-eventi 'nel corso' senza titolo: la nota passa
@@ -756,29 +781,30 @@ def parse_griglia_rai(path: Path, conn, tmpdir: Path | None = None,
                     td += 24 * 60
                 if td is not None and not (t1 - 20 <= td <= t2):
                     td = None
-                parsed.append((p, td, mask_a))
+                parsed.append((p, td, mask_a, conf))
             # SEQUENZA a orari dichiarati ("20.30 CINQUE MINUTI ... 20.35
             # AFFARI TUOI"): eventi in successione nella stessa cella, non
             # alternanza. Trigger: >=2 orari distinti, nessuna alternativa
             # datata, al piu' la PRIMA senza orario.
             princ = [it for it in parsed if it[2] is None]
-            tds = [td for _, td, _ in princ]
+            tds = [it[1] for it in princ]
             sequenza = (len(princ) > 1
                         and all(td is not None for td in tds[1:])
                         and len({td for td in tds if td is not None})
                         == sum(td is not None for td in tds) >= 1
-                        and not any(p["valido_da"] or p["valido_a"] or p["date_list"]
-                                    for p, _, _ in princ))
+                        and not any(it[0]["valido_da"] or it[0]["valido_a"]
+                                    or it[0]["date_list"] for it in princ))
             gruppo = (f"{rete}:{mask}:{t1}"
                       if len(princ) > 1 and not sequenza else None)
-            for seq, (p, td, mask_a) in enumerate(parsed):
+            for seq, (p, td, mask_a, conf) in enumerate(parsed):
                 ts = td if td is not None else t1
                 te = t2
                 if sequenza and mask_a is None:
                     # fine = il primo orario dichiarato DOPO il proprio (le
                     # annotazioni tratteggiate non seguono l'ordine di lettura)
-                    succ = sorted(t for _, t, m in parsed
-                                  if m is None and t is not None and t > ts)
+                    succ = sorted(it[1] for it in parsed
+                                  if it[2] is None and it[1] is not None
+                                  and it[1] > ts)
                     if succ:
                         te = succ[0]
                 mask_slot = mask_a or mask
@@ -794,6 +820,15 @@ def parse_griglia_rai(path: Path, conn, tmpdir: Path | None = None,
                     note["orario_lattice"] = True
                 if p.get("nel_corso"):
                     note["nel_corso"] = p["nel_corso"]
+                # incertezza di LETTURA (nostra), distinta dall'incertezza di
+                # palinsesto (alternanza_irrisolta): finisce in curatela
+                if conf < CONF_AFFIDABILE:
+                    note["ocr_conf"] = round(conf, 2)
+                if p.get("finestra_illeggibile"):
+                    note["finestra_illeggibile"] = True
+                if (conf < CONF_AFFIDABILE or p.get("finestra_illeggibile")
+                        or RE_TITOLO_SOSPETTO.search(p["titolo"])):
+                    note["lettura_incerta"] = True
                 n_slot += 1
                 per_rete[rete] = per_rete.get(rete, 0) + 1
                 conn.execute("""INSERT INTO slot_programmato

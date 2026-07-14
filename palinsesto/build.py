@@ -5,6 +5,7 @@
   python -m palinsesto.build parse-rai <pdf> [...]
   python -m palinsesto.build giorno YYYY-MM-DD [--rete X] [--orizzonte YYYY-MM-DD]
   python -m palinsesto.build cache YYYY-MM-DD YYYY-MM-DD [--orizzonte ...]
+  python -m palinsesto.build curatela
   python -m palinsesto.build report
 """
 import sys
@@ -64,7 +65,8 @@ def main(argv=None):
                   if r["t_start"] is not None else "  -  ")
             flags = "".join([
                 "P" if r["prima_tv"] else "", "R" if r["replica"] else "",
-                "g" if r["generico"] else "", "?" if r["alternanza_irrisolta"] else ""])
+                "g" if r["generico"] else "", "?" if r["alternanza_irrisolta"] else "",
+                "L" if r.get("lettura_incerta") else ""])
             print(f"{r['rete']:6} {hh} {r['fascia']:14} {r['titolo'][:44]:44} "
                   f"[{r['certezza_contenuto'][:4]}/{r['certezza_orario'][:6]}] "
                   f"{r['tipo'] or ''}{' ' + r['genere'] if r['genere'] else ''} {flags}")
@@ -73,6 +75,25 @@ def main(argv=None):
         da, a = date.fromisoformat(args[0]), date.fromisoformat(args[1])
         oriz = date.fromisoformat(args[3]) if len(args) > 3 else None
         print(f"righe cache: {costruisci_cache(conn, da, a, orizzonte=oriz)}")
+
+    elif cmd == "curatela":
+        # slot con lettura incerta (OCR/parsing): da correggere a mano, non
+        # sono incertezze di palinsesto
+        righe = conn.execute("""
+            SELECT s.doc_id, s.rete, s.dow_mask, s.t_start, s.titolo_grezzo,
+                   json_extract_string(s.note, '$.ocr_conf')            AS conf,
+                   json_extract_string(s.note, '$.finestra_illeggibile') AS fin
+            FROM slot_programmato s
+            WHERE json_extract_string(s.note, '$.lettura_incerta') = 'true'
+            ORDER BY s.doc_id, s.rete, s.t_start""").fetchall()
+        for d, rete, dm, ts, tit, conf, fin in righe:
+            hh = f"{ts // 3600:02d}:{ts % 3600 // 60:02d}"
+            motivo = " ".join(filter(None, [
+                f"conf={conf}" if conf else None,
+                "FINESTRA ILLEGGIBILE" if fin == "true" else None]))
+            print(f"  {d.replace('rai_tvprogram_', '')} {rete:5} {dm} {hh} "
+                  f"{tit[:52]:52} {motivo}")
+        print(f"totale da curare: {len(righe)}")
 
     elif cmd == "report":
         for r in conn.execute("""

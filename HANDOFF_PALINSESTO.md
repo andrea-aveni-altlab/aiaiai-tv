@@ -64,11 +64,27 @@ FATTO:
    buco 18:40 feriale prima del 25/5); annotazioni inline non boxate che
    sporcano il titolo (SPEC. A SUA IMMAGINE dentro LA VOLTA BUONA); banda
    02-06 troncata alle 26:00 (simulcast).
-   DUE RITOCCHI AL CORE (motivati, non regressioni): (a) compose.py, la
-   specificità base-vs-base sopprime solo finestre-EVENTO ≤31 gg — senza il
-   limite, "f. al 29/5" (≈tutto il periodo) uccideva i vicini su overlap di
-   15' da lattice; (b) costruisci_cache scrive t_start=-1 per gli slot
-   solo-fascia (t_start è nella PK; certezza_orario='solo_fascia' li descrive).
+   DUE RITOCCHI AL CORE (approvati da Andrea): (a) compose.py, la specificità
+   base-vs-base sopprime solo finestre-EVENTO — costante nominata
+   `FINESTRA_EVENTO_MAX_GIORNI = 31` (documentata nel codice: quando un evento
+   la supererà, alzarla lì); senza il limite, "f. al 29/5" (≈tutto il periodo)
+   uccideva i vicini su overlap di 15' da lattice; (b) costruisci_cache scrive
+   t_start=-1 per gli slot solo-fascia (t_start è nella PK;
+   certezza_orario='solo_fascia' li descrive).
+   INCERTEZZA DI LETTURA ≠ INCERTEZZA DI PALINSESTO (requisito di Andrea):
+   la confidenza Vision è tracciata fino allo slot (bimodale: 1.0 buono,
+   0.3-0.5 esattamente sulle righe storpiate). note JSON: ocr_conf,
+   lettura_incerta, finestra_illeggibile. Una data SPEZZATA ("f. al 24/" col
+   mese illeggibile) ANNULLA la finestra dell'alternativa e flagga: meglio
+   uno slot visibile tutti i giorni con flag di curatela che un buco che
+   sembra un dato. Colonna `lettura_incerta` in palinsesto_composto (distinta
+   da alternanza_irrisolta), flag 'L' nel CLI giorno, comando
+   `python -m palinsesto.build curatela` = lista da correggere (157 slot sui
+   3 doc Rai; estate2026 ne ha ~90: griglia molto più densa).
+   ⚠️ TRAPPOLA DUCKDB (verificata): "ALTER TABLE ADD COLUMN IF NOT EXISTS" su
+   colonna GIÀ esistente RIAZZERA i valori al DEFAULT a ogni esecuzione — mai
+   usarla nelle migrazioni a ogni connect; guardia esplicita via
+   PRAGMA table_info (vedi db.init_schema).
 6. Parser **listini Publitalia** (`publitalia_listino_*`, ~260 pp): griglie
    settimana-tipo per rete alle pp. 2-20 + tabelle "Stime" (AMR per break ×
    target × sottoperiodo, pp. ~115-130) → tabella `previsione` con

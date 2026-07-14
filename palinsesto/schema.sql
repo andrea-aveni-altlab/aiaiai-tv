@@ -84,7 +84,8 @@ CREATE TABLE IF NOT EXISTS palinsesto_composto (
     orizzonte_label   VARCHAR NOT NULL,      -- 'pieno' | 'YYYY-MM-DD'
     giorno            DATE NOT NULL,
     rete              VARCHAR NOT NULL,
-    t_start           INTEGER, t_end INTEGER,
+    t_start           INTEGER,               -- -1 = solo_fascia (e' nella PK)
+    t_end             INTEGER,
     fascia            VARCHAR NOT NULL,
     blocco_id         VARCHAR,
     titolo            VARCHAR NOT NULL,
@@ -95,6 +96,8 @@ CREATE TABLE IF NOT EXISTS palinsesto_composto (
     prima_tv          BOOLEAN, replica BOOLEAN, tipo VARCHAR,
     genere            VARCHAR,
     doc_id            VARCHAR, pubblicato_il DATE,
+    lettura_incerta   BOOLEAN DEFAULT FALSE, -- incertezza di LETTURA (OCR/parsing),
+                                             -- distinta da quella di palinsesto
     PRIMARY KEY (orizzonte_label, giorno, rete, fascia, titolo, t_start)
 );
 
