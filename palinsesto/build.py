@@ -1,6 +1,7 @@
 """CLI del DB palinsesto.
   python -m palinsesto.build init
   python -m palinsesto.build parse-pt <dir_settimanali>
+  python -m palinsesto.build parse-cairo <pdf_o_dir> [...]
   python -m palinsesto.build giorno YYYY-MM-DD [--rete X] [--orizzonte YYYY-MM-DD]
   python -m palinsesto.build cache YYYY-MM-DD YYYY-MM-DD [--orizzonte ...]
   python -m palinsesto.build report
@@ -31,6 +32,17 @@ def main(argv=None):
             print(f"  {f.name}: {r['periodo'][0]}..{r['periodo'][1]} "
                   f"pubblicato={r['pubblicato']} slot={r['slot']}")
         print(f"totale slot: {tot}")
+
+    elif cmd == "parse-cairo":
+        from .parsers.griglia_cairo import parse_griglia
+        files = []
+        for a in args:
+            p = Path(a)
+            files += sorted(p.glob("cairo_la7_*.pdf")) if p.is_dir() else [p]
+        for f in files:
+            r = parse_griglia(f, conn)
+            print(f"  {f.name}: {r['periodo'][0]}..{r['periodo'][1]} "
+                  f"pubblicato={r['pubblicato']} celle={r['celle']} slot={r['slot']}")
 
     elif cmd == "giorno":
         g = date.fromisoformat(args.pop(0))
