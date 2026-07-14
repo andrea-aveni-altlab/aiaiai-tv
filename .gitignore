@@ -7,3 +7,4 @@ data/tv.duckdb
 .DS_Store
 dist/
 .env
+data/palinsesto.duckdb
