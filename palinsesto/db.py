@@ -16,6 +16,19 @@ FASCE_DEFAULT = [
     ("prime",         20 * 3600 + 1800, 23 * 3600 + 900),
     ("seconda_serata", 23 * 3600 + 900, 26 * 3600),
 ]
+# Publitalia: l'access commerciale arriva fino alle 21:25 (la Ruota 20:35 e'
+# "Ruota della fortuna ACCESS" nelle sue stesse Stime); i settimanali PT
+# (overlay per fascia, senza orario) devono sostituire SOLO il 21:30.
+FASCE_PER_CONCESSIONARIA = {
+    "publitalia": [
+        ("notte",          2 * 3600,  6 * 3600),
+        ("mattina",        6 * 3600, 12 * 3600),
+        ("day",           12 * 3600, 18 * 3600),
+        ("access",        18 * 3600, 21 * 3600 + 1500),
+        ("prime",         21 * 3600 + 1500, 23 * 3600 + 900),
+        ("seconda_serata", 23 * 3600 + 900, 26 * 3600),
+    ],
+}
 TARGET_SEED = [
     ("individui", "Individui 4+", "popolazione 4+"),
     ("15_64", "15-64", "adulti 15-64"),
@@ -46,10 +59,11 @@ def init_schema(conn: duckdb.DuckDBPyConnection) -> None:
     if "lettura_incerta" not in cols:
         conn.execute("ALTER TABLE palinsesto_composto "
                      "ADD COLUMN lettura_incerta BOOLEAN DEFAULT FALSE")
+    # fascia_def e' configurazione-nel-codice: refresh completo a ogni init
+    conn.execute("DELETE FROM fascia_def")
     for cz in ("rai", "cairo", "publitalia"):
-        for f, a, b in FASCE_DEFAULT:
-            conn.execute(
-                "INSERT INTO fascia_def VALUES (?,?,?,?) ON CONFLICT DO NOTHING", [cz, f, a, b])
+        for f, a, b in FASCE_PER_CONCESSIONARIA.get(cz, FASCE_DEFAULT):
+            conn.execute("INSERT INTO fascia_def VALUES (?,?,?,?)", [cz, f, a, b])
     for t in TARGET_SEED:
         conn.execute("INSERT INTO target VALUES (?,?,?) ON CONFLICT DO NOTHING", list(t))
     for m in METRICA_SEED:

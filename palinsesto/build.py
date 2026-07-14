@@ -53,6 +53,14 @@ def main(argv=None):
             print(f"  {Path(a).name}: {r['periodo'][0]}..{r['periodo'][1]} "
                   f"pubblicato={r['pubblicato']} slot={r['slot']} {r['per_rete']}")
 
+    elif cmd == "parse-listino":
+        from .parsers.listino_publitalia import parse_listino
+        for a in args:
+            r = parse_listino(Path(a), conn)
+            print(f"  {Path(a).name}: {r['periodo'][0]}..{r['periodo'][1]} "
+                  f"pubblicato={r['pubblicato']} v={r['versione']} "
+                  f"slot={r['slot']} {r['per_rete']} previsioni={r['previsioni']}")
+
     elif cmd == "giorno":
         g = date.fromisoformat(args.pop(0))
         rete = oriz = None

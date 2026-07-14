@@ -25,12 +25,14 @@ def registra(conn, sorgente: str, versione: str, pubblicato_il: date,
                      [r["target"], r.get("target_label", r["target"]), None])
         conn.execute("INSERT INTO metrica VALUES (?,?) ON CONFLICT DO NOTHING",
                      [r["metrica"], r.get("unita")])
+        # tipo_giorno/rete/posizione sono nella PK (NOT NULL implicito):
+        # sentinelle esplicite al posto di NULL, cosi' l'API non inciampa
         conn.execute("""INSERT OR REPLACE INTO previsione VALUES
             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", [
             sorgente, versione, doc_id, pubblicato_il,
             r.get("grana", "giorno"), r.get("periodo_label"),
-            r["periodo_da"], r["periodo_a"], r.get("tipo_giorno"),
-            r.get("rete"), r.get("posizione"), r.get("blocco_id"),
+            r["periodo_da"], r["periodo_a"], r.get("tipo_giorno") or "tutti",
+            r.get("rete") or "", r.get("posizione") or "", r.get("blocco_id"),
             r["target"], r["metrica"], float(r["valore"])])
         n += 1
     return n

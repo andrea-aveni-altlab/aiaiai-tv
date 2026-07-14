@@ -85,10 +85,32 @@ FATTO:
    colonna GIÀ esistente RIAZZERA i valori al DEFAULT a ogni esecuzione — mai
    usarla nelle migrazioni a ogni connect; guardia esplicita via
    PRAGMA table_info (vedi db.init_schema).
-6. Parser **listini Publitalia** (`publitalia_listino_*`, ~260 pp): griglie
-   settimana-tipo per rete alle pp. 2-20 + tabelle "Stime" (AMR per break ×
-   target × sottoperiodo, pp. ~115-130) → tabella `previsione` con
-   sorgente='publitalia_listino'. Data pubblicazione stampata nel TOC (p.1).
+6. **Parser listini Publitalia: COMPLETO E VERIFICATO**
+   (`parsers/listino_publitalia.py`). 3 doc (gen_feb v82601, mar_apr v25601,
+   mag_giu v40701; 4/1→27/6 contigui; pubblicato_il stampato nel TOC p.1;
+   versione = codice a 5 cifre stampato su ogni pagina). GRIGLIE pp.2-20:
+   testo vettoriale con GLIFI RADDOPPIATI a coppie (e quadruplicati) →
+   `_dimezza` ricorsivo per token; testo celle dai CHARS (il prime frammenta
+   extract_words in singole lettere); righe ancorate alle etichette orario
+   (niente lattice); i bordi includono i RECT PIENI (cornice e celle
+   ombreggiate: su RETE4 nessun segmento è full-width); rete dalle firme
+   (TG5→CAN5, STUDIO APERTO→ITA1, TG4→RETE4) con FIRST-WINS (le repliche
+   sulle tematiche contengono le stesse firme). Alternanze '/' non datate
+   restano irrisolte NEL LISTINO e si risolvono con l'overlay dei settimanali
+   PT — verificato sul 15/4 CAN5: daytime dal listino, FORBIDDEN FRUIT
+   [puntuale/ereditato] dal PT, LA RUOTA (access) preservata. STIME → tabella
+   `previsione` (347/364/487 righe, target 15_64, amr_migliaia, sottoperiodi
+   come periodo_label, ' weekend' → tipo_giorno, colonna sinistra di ogni
+   coppia = [primissima]): perimetro = pagina con firma generalista O prima
+   del suo prodotto; le tematiche tradite dalla ripetizione interna delle
+   etichette; dedup first-wins finale (registrato == memorizzato, verificato).
+   Spot-check PDF p.114: TG5 20.00 = 2481/2409/2203/2139 ✓.
+   RITOCCHI CORRELATI: `previsioni.registra` mette sentinelle sui campi PK
+   (tipo_giorno→'tutti', rete/posizione→''), l'API del modello non inciampa
+   sui NULL; `fascia_def` è ora configurazione-nel-codice (refresh a ogni
+   init) con fasce PUBLITALIA dedicate: access fino alle 21:25 ("Ruota della
+   fortuna ACCESS" nelle sue stesse Stime) — senza, l'overlay PT per fascia
+   sopprimeva anche la Ruota delle 20:35.
 7. Loader **emesso** (batch + vista corrente + conversione giorno TV) e **matcher**
    programmato↔emesso (pipeline sotto). Seed identità (clustering + 2 file).
 8. Deck (semi-assistiti) e "Aggiorn. palinsesti" (variazioni): per ultimi.
