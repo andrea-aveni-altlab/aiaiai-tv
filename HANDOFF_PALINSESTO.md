@@ -232,11 +232,25 @@ principio di identita_curata.csv): una riga per slot da correggere, campi
 vuoti = non toccare, '-' = azzera, `azione` = ''(correggi) | elimina | nuovo.
 Andrea rivede/edita e poi `python -m palinsesto.build applica-curatela`
 (idempotente; da RILANCIARE dopo ogni re-parse, che sovrascrive gli slot).
-Il file oggi contiene i 77 flaggati di inverno+primavera 2026 con proposte
-automatiche marcate "proposta" nella nota (da rivedere, non applicate) +
-3 righe nuove (REAZIONE A CATENA dal 25/5, MORGANE 28/5, INTRATT. 30/5).
-Gli slot corretti perdono `lettura_incerta` e guadagnano `curato: true`.
-estate2026 (~80 flag) NON è nel file: fuori dall'esperimento corrente.
+STATO (14/7): le proposte approvate da Andrea sono APPLICATE al DB
+(61 corretti + 1 eliminato + 3 nuovi); le righe senza correzione restano
+flaggate (l'applicatore NON tocca il flag delle righe vuote). PRIORITÀ di
+curatela decisa da Andrea: peso d'ascolto, non completezza — fasce
+access/prime/seconda_serata prima; il daytime sporco e la notte restano
+flaggati e lì rimangono. estate2026 fuori dall'esperimento corrente.
+
+CONTROLLO DI PLAUSIBILITÀ FINESTRE (`qa.py`, richiesto da Andrea — stessa
+filosofia delle ancore post-ingest): l'artefatto tipico è un'annotazione
+datata incollata nel titolo che diventa finestra di validità (TV7 [3/4],
+Storie Italiane [6/1]). Regola A: dow_mask ≥4 giorni + finestra ≤2gg;
+A': qualunque maschera + finestra di 1 giorno senza gruppo; B: 'solo' con
+<4 date su maschera ≥4 (escl. letto come solo, caso CINQUE MINUTI).
+Esenzioni: puntuali, sub_box, curato, gruppo_alt (limite documentato: gli
+artefatti DENTRO un gruppo arrivano in curatela via confidenza/titolo).
+Flag-only (note.finestra_implausibile + lettura_incerta): la semantica
+resta alla curatela. Agganciato a parse-rai/parse-cairo; CLI `plausibilita`.
+Correlato: RE_FINO accetta anche 'al 4/9' senza 'f.' (il \b non scatta
+dentro 'dal') — da solo ha dimezzato i falsi-finestra di estate2026.
 
 ## CLI
 

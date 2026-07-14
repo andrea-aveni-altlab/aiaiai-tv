@@ -6,6 +6,7 @@
   python -m palinsesto.build giorno YYYY-MM-DD [--rete X] [--orizzonte YYYY-MM-DD]
   python -m palinsesto.build cache YYYY-MM-DD YYYY-MM-DD [--orizzonte ...]
   python -m palinsesto.build curatela          # lista slot da correggere
+  python -m palinsesto.build plausibilita [doc] # flagga finestre implausibili
   python -m palinsesto.build applica-curatela  # applica curatela_slot.csv
   python -m palinsesto.build report
 """
@@ -38,21 +39,27 @@ def main(argv=None):
 
     elif cmd == "parse-cairo":
         from .parsers.griglia_cairo import parse_griglia
+        from .qa import segna_finestre_implausibili
         files = []
         for a in args:
             p = Path(a)
             files += sorted(p.glob("cairo_la7_*.pdf")) if p.is_dir() else [p]
         for f in files:
             r = parse_griglia(f, conn)
+            nq = segna_finestre_implausibili(conn, r["doc_id"])
             print(f"  {f.name}: {r['periodo'][0]}..{r['periodo'][1]} "
-                  f"pubblicato={r['pubblicato']} celle={r['celle']} slot={r['slot']}")
+                  f"pubblicato={r['pubblicato']} celle={r['celle']} slot={r['slot']}"
+                  f" finestre_implausibili={nq}")
 
     elif cmd == "parse-rai":
         from .parsers.griglia_rai import parse_griglia_rai
+        from .qa import segna_finestre_implausibili
         for a in args:
             r = parse_griglia_rai(Path(a), conn)
+            nq = segna_finestre_implausibili(conn, r["doc_id"])
             print(f"  {Path(a).name}: {r['periodo'][0]}..{r['periodo'][1]} "
-                  f"pubblicato={r['pubblicato']} slot={r['slot']} {r['per_rete']}")
+                  f"pubblicato={r['pubblicato']} slot={r['slot']} {r['per_rete']}"
+                  f" finestre_implausibili={nq}")
 
     elif cmd == "parse-listino":
         from .parsers.listino_publitalia import parse_listino
@@ -84,6 +91,11 @@ def main(argv=None):
         da, a = date.fromisoformat(args[0]), date.fromisoformat(args[1])
         oriz = date.fromisoformat(args[3]) if len(args) > 3 else None
         print(f"righe cache: {costruisci_cache(conn, da, a, orizzonte=oriz)}")
+
+    elif cmd == "plausibilita":
+        from .qa import segna_finestre_implausibili
+        n = segna_finestre_implausibili(conn, args[0] if args else None)
+        print(f"finestre implausibili flaggate: {n}")
 
     elif cmd == "applica-curatela":
         # applica palinsesto/curatela_slot.csv (SOLO umano, non rigenerato):
@@ -124,9 +136,16 @@ def main(argv=None):
                 conn.execute("DELETE FROM slot_programmato WHERE slot_id = ?", [sid])
                 n_del += 1
                 continue
+            # riga senza correzioni = non ancora curata: NON toccare il flag
+            # (resta in lista finche' qualcuno non la corregge davvero)
+            if not any((r.get(c) or "").strip() for c in
+                       ("titolo", "valido_da", "valido_a", "solo", "escluso",
+                        "replica")):
+                continue
             note = _json.loads(row[0] or "{}")
             note.pop("lettura_incerta", None)
             note.pop("finestra_illeggibile", None)
+            note.pop("finestra_implausibile", None)
             note["curato"] = True
             if r.get("nota"):
                 note["curatela_nota"] = r["nota"]

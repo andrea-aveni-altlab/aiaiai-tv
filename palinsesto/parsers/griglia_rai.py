@@ -49,7 +49,9 @@ GENERICI = {"FILM", "FICTION", "SERIALE", "TF", "DOC", "MINISERIE", "TVMP",
 RE_DATA = re.compile(r"\b(\d{1,2})/(\d{1,2})\b")
 RE_RANGE = re.compile(r"\b(\d{1,2})(?:/(\d{1,2}))?\s*-\s*(\d{1,2})/(\d{1,2})\b")
 RE_ESCL = re.compile(r"\besc[l1iI]\.?\s*((?:\d{1,2}/\d{1,2}[.,;]?\s*)+)", re.I)
-RE_FINO = re.compile(r"\b(?:fino\s+al|f\.\s*al|f\.)\s*(\d{1,2})/(\d{1,2})", re.I)
+# 'al 4/9' senza la 'f.' (persa dall'OCR) e' comunque un fino-al: il \b non
+# scatta dentro 'dal', e 'al' senza data dopo non matcha
+RE_FINO = re.compile(r"\b(?:fino\s+al|f\.\s*al|f\.|al)\s*(\d{1,2})/(\d{1,2})", re.I)
 RE_DAL = re.compile(r"\b(?:dal|d\.)\s*(\d{1,2})/(\d{1,2})", re.I)
 RE_ORA = re.compile(r"^(\d{1,2})[.:](\d{2})\b")
 RE_DUR = re.compile(r"\(\s*\d{1,3}['’]?\s*\)")
