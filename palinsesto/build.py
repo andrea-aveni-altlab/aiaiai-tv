@@ -5,7 +5,8 @@
   python -m palinsesto.build parse-rai <pdf> [...]
   python -m palinsesto.build giorno YYYY-MM-DD [--rete X] [--orizzonte YYYY-MM-DD]
   python -m palinsesto.build cache YYYY-MM-DD YYYY-MM-DD [--orizzonte ...]
-  python -m palinsesto.build curatela
+  python -m palinsesto.build curatela          # lista slot da correggere
+  python -m palinsesto.build applica-curatela  # applica curatela_slot.csv
   python -m palinsesto.build report
 """
 import sys
@@ -83,6 +84,84 @@ def main(argv=None):
         da, a = date.fromisoformat(args[0]), date.fromisoformat(args[1])
         oriz = date.fromisoformat(args[3]) if len(args) > 3 else None
         print(f"righe cache: {costruisci_cache(conn, da, a, orizzonte=oriz)}")
+
+    elif cmd == "applica-curatela":
+        # applica palinsesto/curatela_slot.csv (SOLO umano, non rigenerato):
+        # correzioni idempotenti, da rilanciare dopo ogni re-parse.
+        # Campi vuoti = non toccare; '-' = azzera. azione: ''=correggi |
+        # elimina | nuovo (usa doc_id/rete/dow_mask/t_min per l'INSERT).
+        import csv as _csv
+        import json as _json
+        from .db import fascia_di as _fascia
+        f = Path(__file__).parent / "curatela_slot.csv"
+        n_upd = n_del = n_new = n_miss = 0
+        for r in _csv.DictReader(f.open(), delimiter=";"):
+            sid = r["slot_id"].strip()
+            az = (r.get("azione") or "").strip().lower()
+            if az == "nuovo":
+                t1 = int(r["t_start_min"]) * 60
+                conn.execute("""INSERT OR REPLACE INTO slot_programmato
+                    (slot_id, doc_id, rete, kind, dow_mask, valido_da, valido_a,
+                     t_start, t_end, fascia, titolo_grezzo, generico, gruppo_alt,
+                     prima_tv, replica, tipo, note)
+                    VALUES (?,?,?,'base',?,?,?,?,?,?,?,FALSE,NULL,NULL,?,NULL,?)""", [
+                    sid, r["doc_id"], r["rete"], r["dow_mask"],
+                    r["valido_da"] or None, r["valido_a"] or None,
+                    t1, int(r["t_end_min"]) * 60,
+                    _fascia(conn, "rai", t1), r["titolo"],
+                    r.get("replica", "").strip().lower() == "true",
+                    _json.dumps({"curato": True})])
+                n_new += 1
+                continue
+            row = conn.execute(
+                "SELECT note FROM slot_programmato WHERE slot_id = ?", [sid]).fetchone()
+            if row is None:
+                print(f"  MANCANTE (re-parse ha cambiato gli id?): {sid}")
+                n_miss += 1
+                continue
+            if az == "elimina":
+                conn.execute("DELETE FROM slot_eccezione WHERE slot_id = ?", [sid])
+                conn.execute("DELETE FROM slot_programmato WHERE slot_id = ?", [sid])
+                n_del += 1
+                continue
+            note = _json.loads(row[0] or "{}")
+            note.pop("lettura_incerta", None)
+            note.pop("finestra_illeggibile", None)
+            note["curato"] = True
+            if r.get("nota"):
+                note["curatela_nota"] = r["nota"]
+            set_sql, par = ["note = ?"], [_json.dumps(note)]
+            if r["titolo"].strip():
+                set_sql.append("titolo_grezzo = ?")
+                par.append(r["titolo"].strip())
+            for campo in ("valido_da", "valido_a"):
+                v = (r.get(campo) or "").strip()
+                if v == "-":
+                    set_sql.append(f"{campo} = NULL")
+                elif v:
+                    set_sql.append(f"{campo} = ?")
+                    par.append(v)
+            if (r.get("replica") or "").strip():
+                set_sql.append("replica = ?")
+                par.append(r["replica"].strip().lower() == "true")
+            conn.execute(f"UPDATE slot_programmato SET {', '.join(set_sql)} "
+                         "WHERE slot_id = ?", par + [sid])
+            for tipo in ("solo", "escluso"):
+                v = (r.get(tipo) or "").strip()
+                if not v:
+                    continue
+                conn.execute("DELETE FROM slot_eccezione WHERE slot_id = ? AND tipo = ?",
+                             [sid, tipo])
+                if v != "-":
+                    doc = conn.execute("SELECT doc_id FROM slot_programmato "
+                                       "WHERE slot_id = ?", [sid]).fetchone()[0]
+                    conn.execute("""INSERT OR REPLACE INTO slot_eccezione
+                        (ecc_id, doc_id, slot_id, tipo, date_list)
+                        VALUES (?,?,?,?,?)""", [
+                        f"{sid}:cur:{tipo}", doc, sid, tipo,
+                        _json.dumps([d.strip() for d in v.split(",")])])
+            n_upd += 1
+        print(f"curatela: corretti={n_upd} eliminati={n_del} nuovi={n_new} mancanti={n_miss}")
 
     elif cmd == "curatela":
         # slot con lettura incerta (OCR/parsing): da correggere a mano, non

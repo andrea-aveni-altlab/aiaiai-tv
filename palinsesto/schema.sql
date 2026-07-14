@@ -73,7 +73,13 @@ CREATE TABLE IF NOT EXISTS slot_eccezione (
     dow_mask      VARCHAR,
     date_list     JSON
 );
-CREATE TABLE IF NOT EXISTS fascia_def (      -- confini orari per concessionaria (calibrabili)
+-- La FASCIA non è una proprietà del tempo ma una CONVENZIONE COMMERCIALE:
+-- ogni concessionaria la definisce come le serve (l'access Publitalia arriva
+-- alle 21:25: la Ruota delle 20:35 è un prodotto access). Per questo la
+-- definizione vive QUI, per concessionaria. Ogni confronto tra fonti
+-- ("access" di Publitalia vs "access" di un centro media o del modello)
+-- deve passare da queste definizioni, MAI dall'uguaglianza delle etichette.
+CREATE TABLE IF NOT EXISTS fascia_def (
     concessionaria VARCHAR, fascia VARCHAR,
     t_da INTEGER NOT NULL, t_a INTEGER NOT NULL,
     PRIMARY KEY (concessionaria, fascia)

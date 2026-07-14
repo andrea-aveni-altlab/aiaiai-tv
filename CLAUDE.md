@@ -23,6 +23,16 @@
   Sera / La Ruota / TG5 contro range noti dal mondo reale, esito in
   `ingest_log.note`, WARNING se fuori. Non rimuoverle: il bug HHMM visse mesi
   perché tutto era solo internamente coerente.
+- **Trappola DuckDB nelle migrazioni** (verificata, morde su QUALUNQUE DB del
+  progetto, incluso tv.duckdb): `ALTER TABLE ADD COLUMN IF NOT EXISTS` su una
+  colonna GIÀ esistente non è un no-op — RIAZZERA i valori al DEFAULT a ogni
+  esecuzione. Mai metterla in un init/startup che gira a ogni connessione:
+  guardia esplicita prima (`PRAGMA table_info`), poi ALTER solo se manca.
+- **Le fasce orarie sono convenzioni commerciali, non proprietà del tempo**:
+  ogni concessionaria definisce access/prime come le serve (per Publitalia
+  l'access arriva alle 21:25: la Ruota delle 20:35 è un prodotto access).
+  Mai confrontare "access" di due fonti senza verificarne le definizioni in
+  `fascia_def` — sarebbe un confronto tra cose diverse.
 
 ## Fonti dati
 - S3 `altlabanalysisdata`, prefix `AuditelTA/AltlabFilteredMDA/`, regione

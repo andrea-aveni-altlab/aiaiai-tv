@@ -1,0 +1,81 @@
+slot_id;azione;doc_id;rete;dow_mask;t_start_min;t_end_min;letto;titolo;valido_da;valido_a;solo;escluso;replica;nota
+rai_tvprogram_inverno2026:RAI1:0111110:360:0;;rai_tvprogram_inverno2026;RAI1;0111110;360;420;UNO MATTINA NEWS (in collaborazione con il TG1) CCISS +6.30 TG1(3-**;UNO MATTINA NEWS (in collaborazione con il TG1);;;;;;"proposta; nel corso: CCISS + 6.30 TG1 (3')"
+rai_tvprogram_inverno2026:RAI1:0000001:360:0;;rai_tvprogram_inverno2026;RAI1;0000001;360;420;"""..............0615 RANW 24 6.55IMPERDIBILIR";RAI NEWS 24;;;;;;"proposta; + 6.55 IMPERDIBILI R."
+rai_tvprogram_inverno2026:RAI1:1000000:435:0;;rai_tvprogram_inverno2026;RAI1;1000000;435;480;705 UNO MATTINA IN FAMIGLIA ..necoso;UNO MATTINA IN FAMIGLIA;;;;;;"proposta; 7.05, nel corso 8.00/9.00 TG1"
+rai_tvprogram_inverno2026:RAI1:0111110:510:0;;rai_tvprogram_inverno2026;RAI1;0111110;535;600;RAI PARLAMENTO TG +9.00 TG1 LS (3];RAI PARLAMENTO TG + 9.00 TG1 LIS;;;;;;"proposta; annotazione nel corso di UNOMATTINA"
+rai_tvprogram_inverno2026:RAI1:0111110:600:0;;rai_tvprogram_inverno2026;RAI1;0111110;590;735;950 STORIE ITALIANE SANTA MESSA;STORIE ITALIANE;-;-;;;;"proposta; finestra 6/1 SPURIA (S.MESSA il 6/1 era annotazione): senza fix Storie Italiane manca nei feriali"
+rai_tvprogram_inverno2026:RAI1:0000001:720:0;;rai_tvprogram_inverno2026;RAI1;0000001;720;750;L.V. DISCOVERY 10-111 / B.C. 1230;;;;;;;leggere PDF: L.V. DISCOVERY 10-11/1? / B.C. 12.30
+rai_tvprogram_inverno2026:RAI1:0111100:1230:0;;rai_tvprogram_inverno2026;RAI1;0111100;1230;1290;CINQUE MINUTI(s') : e501. .23-2712;CINQUE MINUTI;-;-;-;2026-02-23,2026-02-24,2026-02-25,2026-02-26;;"proposta; 'escl. 23-27/2' (Sanremo) letto male come solo"
+rai_tvprogram_inverno2026:RAI1:0100000:1230:2;;rai_tvprogram_inverno2026;RAI1;0100000;1230;1290;PRIMAFE STIVAL 2312;PRIMAFESTIVAL;;;;;;"proposta; finestra 23/2 gia' corretta"
+rai_tvprogram_inverno2026:RAI1:0000010:1230:1;;rai_tvprogram_inverno2026;RAI1;0000010;1230;1440;h.20.00 CERIM. APERTURA -G. OLIMPICI [ INVERNALI TALI E QUALI INTRATT. SP. EREDITA' MIRROR DALLA STRADA AL PALCO;;;;;;;leggere PDF: piu' titoli VEN access incollati (Cerim. apertura Olimpici, Tali e Quali sp., Eredita' Mirror, Dalla strada al palco)
+rai_tvprogram_inverno2026:RAI1:1000000:1290:0;;rai_tvprogram_inverno2026;RAI1;1000000;1290;1425;RIMA DIN M-11 CUORI 3 8-222 IMMA TATARANNI 5;;;;;;;leggere PDF e spezzare: PRIMA DI DOMENICA IN? + CUORI 3 8-22/2 + IMMA TATARANNI 5 dall'8/3
+rai_tvprogram_inverno2026:RAI1:0100000:1290:1;;rai_tvprogram_inverno2026;RAI1;0100000;1290;1515;CUORI 3 9-2312 MAGIA Rim. 5i1 PASSAGGIO A NORD OVEST;;;;;;;leggere PDF e spezzare: CUORI 3 9-23/2? + MAGIA rim. 5/1 + PASSAGGIO A NORD OVEST
+rai_tvprogram_inverno2026:RAI1:0010000:1290:0;;rai_tvprogram_inverno2026;RAI1;0010000;1290;1305;76° FESTIVAL DI SANREMO 24-2812;76° FESTIVAL DI SANREMO;2026-02-24;2026-02-24;;;;"proposta; '24-2812' = 24-28/2, il MAR e' il 24/2"
+rai_tvprogram_inverno2026:RAI1:0001000:1290:0;;rai_tvprogram_inverno2026;RAI1;0001000;1290;1305;76° FESTIVAL DI SANREMO 24-2812;76° FESTIVAL DI SANREMO;2026-02-25;2026-02-25;;;;"proposta; il MER e' il 25/2"
+rai_tvprogram_inverno2026:RAI1:0000100:1290:0;;rai_tvprogram_inverno2026;RAI1;0000100;1290;1305;76° FESTIVAL DI SANREMO 24-2812;76° FESTIVAL DI SANREMO;2026-02-26;2026-02-26;;;;"proposta; il GIO e' il 26/2"
+rai_tvprogram_inverno2026:RAI1:0000100:1305:0;;rai_tvprogram_inverno2026;RAI1;0000100;1305;1440;DON MATTEO 15 -193;DON MATTEO 15;-;2026-03-19;;;;"proposta; '-193' = fino al 19/3, finestra 8/1 spuria"
+rai_tvprogram_inverno2026:RAI1:0011000:1440:0;;rai_tvprogram_inverno2026;RAI1;0011000;1440;1455;T01S DOPOFESTVAL 24-272;DOPOFESTIVAL;2026-02-24;2026-02-27;;;;"proposta; 'T01S' = TG1 Sera incollato"
+rai_tvprogram_inverno2026:RAI1:0000100:1440:0;;rai_tvprogram_inverno2026;RAI1;0000100;1440;1455;T01S DOPOFESTVAL 24-272;DOPOFESTIVAL;2026-02-24;2026-02-27;;;;"proposta; come sopra"
+rai_tvprogram_inverno2026:RAI1:0000010:1440:0;;rai_tvprogram_inverno2026;RAI1;0000010;1440;1500;TG1 SERĄ (31 TV7;TV7;;;;;;"proposta; preceduto da TG1 SERA (3')"
+rai_tvprogram_inverno2026:RAI2:0011110:135:0;;rai_tvprogram_inverno2026;RAI2;0011110;135;225;200 FILM TV MOVIE/ SERIALE;FILM / TV MOVIE / SERIALE;;;;;;"proposta; banda notte 2.00"
+rai_tvprogram_inverno2026:RAI2:0100000:135:1;;rai_tvprogram_inverno2026;RAI2;0100000;360;360;—530 SERTALE Repiica;SERIALE;;;;;true;"proposta; replica fino 5.30"
+rai_tvprogram_inverno2026:RAI2:0000001:135:1;;rai_tvprogram_inverno2026;RAI2;0000001;360;360;—530 SERTALE Repiica;SERIALE;;;;;true;"proposta; replica fino 5.30"
+rai_tvprogram_inverno2026:RAI2:0000001:420:0;;rai_tvprogram_inverno2026;RAI2;0000001;420;510;TV MOVIE Comedy /Light Crime 8PARALOANTHE NO;TV MOVIE COMEDY / LIGHT CRIME;;;;;;"proposta; coda illeggibile"
+rai_tvprogram_inverno2026:RAI2:0010000:450:1;;rai_tvprogram_inverno2026;RAI2;0010000;450;510;SERIALE 511;SERIALE;;;;;;"proposta; '511' = 5/1? verificare"
+rai_tvprogram_inverno2026:RAI2:0001000:450:1;;rai_tvprogram_inverno2026;RAI2;0001000;450;510;SERIALE 511;SERIALE;;;;;;"proposta; come sopra"
+rai_tvprogram_inverno2026:RAI2:0000001:510:3;;rai_tvprogram_inverno2026;RAI2;0000001;510;780;10.1;;;;;;;leggere PDF: letto solo '10.1' (SAB mattina 8:30-13)
+rai_tvprogram_inverno2026:RAI2:0010000:525:0;;rai_tvprogram_inverno2026;RAI2;0010000;525;600;8.a0 RADIO2 SOCIAL CLUB;RADIO2 SOCIAL CLUB;;;;;;"proposta; 8.40, dal 7/1"
+rai_tvprogram_inverno2026:RAI2:0001000:525:0;;rai_tvprogram_inverno2026;RAI2;0001000;525;600;8.a0 RADIO2 SOCIAL CLUB;RADIO2 SOCIAL CLUB;;;;;;"proposta; come sopra"
+rai_tvprogram_inverno2026:RAI2:0000110:525:0;;rai_tvprogram_inverno2026;RAI2;0000110;525;600;955IMPERDBiL;IMPERDIBILI;;;;;;"proposta; 9.55"
+rai_tvprogram_inverno2026:RAI2:1000000:450:2;;rai_tvprogram_inverno2026;RAI2;1000000;570;780;"13.00 RAISPORILIVE WEEKEND -2213; 8-222";RAISPORT LIVE WEEKEND;-;-;;;;"proposta titolo; date '-2213; 8-222' illeggibili, leggere PDF"
+rai_tvprogram_inverno2026:RAI2:0011100:675:0;;rai_tvprogram_inverno2026;RAI2;0011100;675;780;IFA TS TRI;I FATTI VOSTRI;;;;;;"proposta; 'IFA TS TRI' = I FATTI VOSTRI"
+rai_tvprogram_inverno2026:RAI2:1000000:810:0;;rai_tvprogram_inverno2026;RAI2;1000000;810;825;TG2 COSTUMEE SOCIETA TONEGO ILBELLO;TG2 COSTUME E SOCIETA';;;;;;"proposta; segue titolo illeggibile (Eat Parade?)"
+rai_tvprogram_inverno2026:RAI2:0011100:810:0;;rai_tvprogram_inverno2026;RAI2;0011100;810;840;TG2 COSTUMEE SOCIETA TONEGO ILBELLO;TG2 COSTUME E SOCIETA';;;;;;"proposta; come sopra"
+rai_tvprogram_inverno2026:RAI2:1000000:825:1;;rai_tvprogram_inverno2026;RAI2;1000000;840;1065;FILM / TVM /SERIALE GREEN LOVERS O 15 FILM TUM SUPACOPRA;;;;;;;leggere PDF: DOM pomeriggio FILM/TVM/SERIALE + GREEN LOVERS 11/1?
+rai_tvprogram_inverno2026:RAI2:0000001:855:1;;rai_tvprogram_inverno2026;RAI2;0000001;930;1080;STORIE AL BIVIO . 193551 70P0;STORIE AL BIVIO;-;-;;;;"proposta titolo; date illeggibili"
+rai_tvprogram_inverno2026:RAI2:0111100:1110:0;;rai_tvprogram_inverno2026;RAI2;0111100;1110;1155;18.35 TG SPORT SERA (15/23' dal 2312) TORCIA S Ino i 892 ° meteo;TG SPORT SERA;;;;;;"proposta; 18.35, 15'/23' dal 23/2; coda TORCIA illeggibile"
+rai_tvprogram_inverno2026:RAI2:1000000:1260:0;;rai_tvprogram_inverno2026;RAI2;1000000;1260;1305;GIOCHI OLIMPICI INVERNALI 8-2212 GIOCHI PARALIMPICI INVERNALI CERIM. CHIUSURA;GIOCHI OLIMPICI INVERNALI;2026-02-08;2026-02-22;;;;"proposta; incollati Paralimpici + Cerim. chiusura 15/3: righe da aggiungere a mano se servono"
+rai_tvprogram_inverno2026:RAI2:0100000:1290:1;;rai_tvprogram_inverno2026;RAI2;0100000;1290;1425;BOSS IN INCOGNITO ,2312;BOSS IN INCOGNITO;;;;;;"proposta titolo; solo-list gia' plausibile (salta le olimpiadi)"
+rai_tvprogram_inverno2026:RAI2:0011100:1290:0;;rai_tvprogram_inverno2026;RAI2;0011100;1290;1320;GIOCHI OLIMPICI INVERNALI MILANO-CORTINA 2026 9 al;GIOCHI OLIMPICI INVERNALI MILANO-CORTINA 2026;2026-02-09;2026-02-20;;;;"proposta; '9 al' = dal 9 al 20/2"
+rai_tvprogram_inverno2026:RAI2:0000010:1290:0;;rai_tvprogram_inverno2026;RAI2;0000010;1290;1425;FILM ,2712 MARE FUORI 6;;;;;;;"leggere PDF: FILM -27/2? / MARE FUORI 6; solo-list 2/1..6/2 sospetta"
+rai_tvprogram_inverno2026:RAI2:0010000:1320:1;;rai_tvprogram_inverno2026;RAI2;0010000;1320;1425;IL COLLEGIO -312 STASERA A LETTO TARDI;;;;;;;leggere PDF e spezzare: IL COLLEGIO -3/2? + STASERA A LETTO TARDI
+rai_tvprogram_inverno2026:RAI2:0010000:1425:2;;rai_tvprogram_inverno2026;RAI2;0010000;1425;1560;GLIOCCHI DE IUSICISTA -3/;GLI OCCHI DEL MUSICISTA;;;;;;"proposta; 'fino al 3/?' illeggibile"
+rai_tvprogram_inverno2026:RAI2:0000001:1425:0;;rai_tvprogram_inverno2026;RAI2;0000001;1425;1470;TG2 STORIE (401 meteo R;TG2 STORIE;;;;;;"proposta; (40') + meteo R"
+rai_tvprogram_inverno2026:RAI3:0011110:360:0;;rai_tvprogram_inverno2026;RAI3;0011110;360;435;SCOUC RAI NEWS;RAI NEWS 24;-;-;;;;"proposta; finestra 2/4 spuria (fuori periodo)"
+rai_tvprogram_inverno2026:RAI3:0000001:630:0;;rai_tvprogram_inverno2026;RAI3;0000001;630;660;105 TGRAVC AN VAL 1;;;;;;;leggere PDF: SAB 10:30, TGR?
+rai_tvprogram_inverno2026:RAI3:1000000:735:0;;rai_tvprogram_inverno2026;RAI3;1000000;735;750;TC3 FLimea fs;TG3;;;;;;"proposta; DOM 12:15"
+rai_tvprogram_inverno2026:RAI3:1000000:750:0;;rai_tvprogram_inverno2026;RAI3;1000000;750;795;1225 TGR ALTAQUOTA 30°;TGR ALTA QUOTA;;;;;;"proposta; 12.25"
+rai_tvprogram_inverno2026:RAI3:0111110:900:0;;rai_tvprogram_inverno2026;RAI3;0111110;900;915;TOR PAFFARI 1150 1S1 RA00 50 187;TGR PIAZZA AFFARI;;;;;;"proposta; 'TOR PAFFARI'; coda +TG3 LIS? illeggibile"
+rai_tvprogram_inverno2026:RAI3:0001000:1275:1;;rai_tvprogram_inverno2026;RAI3;0001000;1275;1500;[FILM CHIL'HA VISTO;CHI L'HA VISTO?;-;-;;;;"proposta; finestra 7/1 spuria (era 'FILM il 7/1' incollato: riga nuova se serve)"
+rai_tvprogram_inverno2026:RAI3:0000010:1275:3;;rai_tvprogram_inverno2026;RAI3;0000010;1275;1500;[FILM ,2712];;;;;;;leggere PDF: VEN 21:15 FILM -27/1?
+rai_tvprogram_inverno2026:RAI3:0000001:1290:0;;rai_tvprogram_inverno2026;RAI3;0000001;1290;1425;CITA VEALE FILM -2812 LA PELLE DEL MONDO;;;;;;;leggere PDF: SAB prime ?VITALE + FILM -28/2 + LA PELLE DEL MONDO 14/2
+rai_tvprogram_primavera2026:RAI1:0111110:510:0;;rai_tvprogram_primavera2026;RAI1;0111110;535;600;RÃI PARLAMENTO TG B1 +9.00 TG1 US (3] nel corsol;RAI PARLAMENTO TG + 9.00 TG1 LIS;;;;;;"proposta; annotazione nel corso"
+rai_tvprogram_primavera2026:RAI1:0111110:1125:0;;rai_tvprogram_primavera2026;RAI1;0111110;1120;1200;L'EREDITÁ al 24/ REAZIONE CATENA;L'EREDITA';-;2026-05-24;;;;"proposta; 'f. al 24/5' illeggibile; REAZIONE A CATENA dal 25/5 = riga nuova in fondo"
+rai_tvprogram_primavera2026:RAI1:0111110:1230:0;;rai_tvprogram_primavera2026;RAI1;0111110;1230;1235;CINQUE MINUTI 115;CINQUE MINUTI;;;;2026-03-31,2026-04-03,2026-04-06,2026-05-01;;"proposta; ripristinato l'1/5 perso ('115' ambiguo)"
+rai_tvprogram_primavera2026:RAI1:0010000:1290:1;;rai_tvprogram_primavera2026;RAI1;0010000;1290;1425;HCTON 1S;FICTION;2026-05-19;2026-05-19;;;true;"proposta; 'HCTON 1S' = FICTION (R) 19/5, verificato sul PDF"
+rai_tvprogram_primavera2026:RAI1:0000100:1290:1;;rai_tvprogram_primavera2026;RAI1;0000100;1290;1515;LA BUONA STELLA 7-215 MORGANE;LA BUONA STELLA;2026-05-07;2026-05-21;2026-05-07,2026-05-14,2026-05-21;;;"proposta; '7-215' = 7-21/5; MORGANE 28/5 = riga nuova in fondo"
+rai_tvprogram_primavera2026:RAI1:0000010:1290:3;elimina;rai_tvprogram_primavera2026;RAI1;0000010;1290;1440;TG1 SERĄ (31;;;;;;;"proposta; e' l'annotazione TG1 SERA (3') dentro la cella VEN, non uno slot"
+rai_tvprogram_primavera2026:RAI1:0000010:1290:4;;rai_tvprogram_primavera2026;RAI1;0000010;1290;1440;[SP. PORTA A PORTA+ -VIA CRUCIS +FILM;SP. PORTA A PORTA + VIA CRUCIS + FILM;;;;;;"proposta; Venerdi' Santo 3/4, finestra gia' corretta"
+rai_tvprogram_primavera2026:RAI1:0000001:1290:2;;rai_tvprogram_primavera2026;RAI1;0000001;1290;1440;FILM 231 INTRATT. 301 TGI SERA 13);FILM;2026-05-23;2026-05-23;;;;"proposta; '231'=23/5; INTRATT. (R) 30/5 = riga nuova in fondo; TG1 SERA era annotazione"
+rai_tvprogram_primavera2026:RAI2:0100000:120:0;;rai_tvprogram_primavera2026;RAI2;0100000;120;180;(SEGUE) RAI NEWS 24 (Bimulcast) 0600- 530 SERIALE RePICa;SERIALE;;;;;true;"proposta; '(segue) RAI NEWS 24' + seriale replica fino 5.30"
+rai_tvprogram_primavera2026:RAI2:0000001:120:0;;rai_tvprogram_primavera2026;RAI2;0000001;120;180;(SEGUE) RAI NEWS 24 (Bimulcast) 0600- 530 SERIALE RePICa;SERIALE;;;;;true;"proposta; come sopra"
+rai_tvprogram_primavera2026:RAI2:0000110:525:0;;rai_tvprogram_primavera2026;RAI2;0000110;595;600;IMPERDIBILI(3;IMPERDIBILI;;;;;;"proposta; 9.55 (3')"
+rai_tvprogram_primavera2026:RAI2:1000000:585:2;;rai_tvprogram_primavera2026;RAI2;1000000;680;780;| CITOFONARE RAI 2;CITOFONARE RAI 2;;;;;;"proposta; solo pulizia del '|'"
+rai_tvprogram_primavera2026:RAI2:1000000:810:0;;rai_tvprogram_primavera2026;RAI2;1000000;810;825;TG2 COSTUME E SOCIETA TOЗ ПEСO ILBELLO;TG2 COSTUME E SOCIETA';;;;;;"proposta; coda cirillica = artefatto"
+rai_tvprogram_primavera2026:RAI2:0011100:810:0;;rai_tvprogram_primavera2026;RAI2;0011100;810;825;TG2 COSTUME E SOCIETA TOЗ ПEСO ILBELLO;TG2 COSTUME E SOCIETA';;;;;;"proposta; come sopra"
+rai_tvprogram_primavera2026:RAI2:1000000:825:2;;rai_tvprogram_primavera2026;RAI2;1000000;825;1065;GREEN LOVERS O 135;GREEN LOVERS;;;;;;"proposta titolo; 'O 135' = dal 13/5? leggere PDF"
+rai_tvprogram_primavera2026:RAI2:0000010:840:0;;rai_tvprogram_primavera2026;RAI2;0000010;840;1020;(14.00-17.15) CICLISMO, GIRO D'ITALIA 2026( , lunedi , , ) + PROC.TAPPA ( );CICLISMO: GIRO D'ITALIA 2026 + PROCESSO ALLA TAPPA;;;;;;"proposta titolo; date/giorni (mix ven-lun) da verificare sul PDF"
+rai_tvprogram_primavera2026:RAI2:0000001:840:0;;rai_tvprogram_primavera2026;RAI2;0000001;840;1080;PLAYLIST f.215;PLAYLIST;;2026-05-02;;;;"proposta; 'f.215' = fino al 2/5 (sabato)"
+rai_tvprogram_primavera2026:RAI2:0000001:840:3;;rai_tvprogram_primavera2026;RAI2;0000001;1020;1080;TOP —;TOP;;;;;;"proposta; finestra fino 2/5 gia' letta"
+rai_tvprogram_primavera2026:RAI2:1000000:1065:0;;rai_tvprogram_primavera2026;RAI2;1000000;1065;1080;1750 TG SPORT DOM;TG SPORT DOM;;;;;;"proposta; 17.50"
+rai_tvprogram_primavera2026:RAI2:0010000:1290:0;;rai_tvprogram_primavera2026;RAI2;0010000;1290;1560;TASERA A LETT ARDI 31/: BELVE 714;;;;;;;leggere PDF e spezzare: STASERA A LETTO TARDI 31/3? + BELVE dal 7/4?
+rai_tvprogram_primavera2026:RAI2:0010000:1290:1;;rai_tvprogram_primavera2026;RAI2;0010000;1290;1560;EUROVISION S.C 1 SEMIF.121 BELVE CRIMEd;;;;;;;leggere PDF e spezzare: EUROVISION 1a SEMIF. 12/5 + BELVE CRIME d.19/5?
+rai_tvprogram_primavera2026:RAI2:0000001:1380:0;;rai_tvprogram_primavera2026;RAI2;0000001;1380;1425;IL SABATO AL SS° t.235 SERIALE 3N5;;;;;;;leggere PDF: 'IL SABATO AL 55°? t.23/5 SERIALE 3N5'
+rai_tvprogram_primavera2026:RAI2:1000000:1365:1;;rai_tvprogram_primavera2026;RAI2;1000000;1470;1500;L'ALTRA DS (35 : al , 29/;;;;;;;leggere PDF: L'ALTRA DS (35') al 29/? — finestra annullata dal parser
+rai_tvprogram_primavera2026:RAI3:1000000:750:0;;rai_tvprogram_primavera2026;RAI3;1000000;750;795;1225 TGR ALTAQUOTA 30;TGR ALTA QUOTA;;;;;;"proposta; 12.25"
+rai_tvprogram_primavera2026:RAI3:0110000:885:0;;rai_tvprogram_primavera2026;RAI3;0110000;890;915;TGR LEONARDO (151;TGR LEONARDO;;;;;;"proposta; (15')"
+rai_tvprogram_primavera2026:RAI3:0001110:885:0;;rai_tvprogram_primavera2026;RAI3;0001110;890;915;TGR LEONARDO (151;TGR LEONARDO;;;;;;"proposta; (15')"
+rai_tvprogram_primavera2026:RAI3:0000010:1545:0;;rai_tvprogram_primavera2026;RAI3;0000010;1545;1560;WA TALANENTO MAGAEIME CT;RAI PARLAMENTO MAGAZINE;;;;;;"proposta; 'WA TALANENTO MAGAEIME' — verificare"
+curatela:primavera:reazione-a-catena;nuovo;rai_tvprogram_primavera2026;RAI1;0111110;1120;1200;;REAZIONE A CATENA;2026-05-25;;;;;"proposta; d. 25/5 (18.40-20.00)"
+curatela:primavera:morgane-28-5;nuovo;rai_tvprogram_primavera2026;RAI1;0000100;1290;1515;;MORGANE;2026-05-28;2026-05-28;;;;"proposta; GIO 28/5"
+curatela:primavera:intratt-30-5;nuovo;rai_tvprogram_primavera2026;RAI1;0000001;1290;1440;;INTRATT.;2026-05-30;2026-05-30;;;true;"proposta; SAB 30/5 (R)"

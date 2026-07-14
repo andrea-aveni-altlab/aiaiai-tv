@@ -119,7 +119,16 @@ Verifiche per fonte (concordate): conteggi righe vs pagine; materializzazione di
 giorni campione confrontata A VISTA col PDF prima di proseguire; per l'emesso la
 tripletta `mappati_a_blocco + generici_riempiti + orfani = 100%` dei minuti.
 
-## Due requisiti aggiuntivi di Andrea (vincolanti)
+## Tre requisiti aggiuntivi di Andrea (vincolanti)
+
+0. **La fascia è una convenzione commerciale, non una proprietà del tempo.**
+   Ogni concessionaria la definisce come le serve: l'access Publitalia arriva
+   alle 21:25 (la Ruota delle 20:35 è "Ruota della fortuna ACCESS" nelle sue
+   stesse Stime), quello Rai/Cairo alle 20:30. Le definizioni vivono in
+   `fascia_def` per concessionaria (commento nel DDL). Nei confronti tra
+   fonti (stime Publitalia vs centro media vs modello) MAI matchare le
+   etichette di fascia senza passare dalle definizioni: sarebbe un confronto
+   tra cose diverse.
 
 1. **`alternanza_irrisolta` è informazione, non difetto**: deve arrivare fino
    all'output di `palinsesto_del_giorno` E alla cache `palinsesto_composto`
@@ -215,6 +224,19 @@ Estensibilità (lente 3):
 - Il feed ascolti (stmtastd) usa HHMMSS e durate in SECONDI (il tracciato ufficiale
   dice HHMM/minuti e MENTE) — irrilevante per il palinsesto ma vitale per l'emesso
   futuro da altre fonti.
+
+## Curatela dei titoli (workflow)
+
+`palinsesto/curatela_slot.csv` (in git, SOLO umano, mai rigenerato — stesso
+principio di identita_curata.csv): una riga per slot da correggere, campi
+vuoti = non toccare, '-' = azzera, `azione` = ''(correggi) | elimina | nuovo.
+Andrea rivede/edita e poi `python -m palinsesto.build applica-curatela`
+(idempotente; da RILANCIARE dopo ogni re-parse, che sovrascrive gli slot).
+Il file oggi contiene i 77 flaggati di inverno+primavera 2026 con proposte
+automatiche marcate "proposta" nella nota (da rivedere, non applicate) +
+3 righe nuove (REAZIONE A CATENA dal 25/5, MORGANE 28/5, INTRATT. 30/5).
+Gli slot corretti perdono `lettura_incerta` e guadagnano `curato: true`.
+estate2026 (~80 flag) NON è nel file: fuori dall'esperimento corrente.
 
 ## CLI
 
