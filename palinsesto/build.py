@@ -2,6 +2,7 @@
   python -m palinsesto.build init
   python -m palinsesto.build parse-pt <dir_settimanali>
   python -m palinsesto.build parse-cairo <pdf_o_dir> [...]
+  python -m palinsesto.build parse-rai <pdf> [...]
   python -m palinsesto.build giorno YYYY-MM-DD [--rete X] [--orizzonte YYYY-MM-DD]
   python -m palinsesto.build cache YYYY-MM-DD YYYY-MM-DD [--orizzonte ...]
   python -m palinsesto.build report
@@ -43,6 +44,13 @@ def main(argv=None):
             r = parse_griglia(f, conn)
             print(f"  {f.name}: {r['periodo'][0]}..{r['periodo'][1]} "
                   f"pubblicato={r['pubblicato']} celle={r['celle']} slot={r['slot']}")
+
+    elif cmd == "parse-rai":
+        from .parsers.griglia_rai import parse_griglia_rai
+        for a in args:
+            r = parse_griglia_rai(Path(a), conn)
+            print(f"  {Path(a).name}: {r['periodo'][0]}..{r['periodo'][1]} "
+                  f"pubblicato={r['pubblicato']} slot={r['slot']} {r['per_rete']}")
 
     elif cmd == "giorno":
         g = date.fromisoformat(args.pop(0))

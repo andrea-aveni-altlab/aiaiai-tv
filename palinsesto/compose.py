@@ -129,7 +129,10 @@ def palinsesto_del_giorno(conn, giorno: date, rete: str | None = None,
                 s["alternanza_irrisolta"] = True
     attivi = [s for s in attivi if s["slot_id"] not in scarta]
 
-    # specificità base-vs-base: finestra di validità più corta sopprime la più lunga
+    # specificità base-vs-base: una finestra-EVENTO (breve, <=31 gg) sopprime
+    # lo slot regolare che copre. Il limite serve: una finestra semi-limitata
+    # ("f. al 29/5" = quasi tutto il periodo) non è un evento e non deve
+    # sopprimere i vicini su overlap di 15-20' dovuti al lattice delle griglie.
     soppressi = set()
     for a in attivi:
         for b in attivi:
@@ -138,7 +141,7 @@ def palinsesto_del_giorno(conn, giorno: date, rete: str | None = None,
             if _si_sovrappone(a, b):
                 da_a = (a["valido_a"] or date(2099,1,1)) - (a["valido_da"] or date(2000,1,1))
                 da_b = (b["valido_a"] or date(2099,1,1)) - (b["valido_da"] or date(2000,1,1))
-                if da_a.days < da_b.days - 2:
+                if da_a.days <= 31 and da_a.days < da_b.days - 2:
                     soppressi.add(b["slot_id"])
     attivi = [s for s in attivi if s["slot_id"] not in soppressi]
     for s in attivi:
@@ -202,9 +205,14 @@ def costruisci_cache(conn, da: date, a: date, orizzonte: date | None = None,
     n, g = 0, da
     while g <= a:
         for r in palinsesto_del_giorno(conn, g, orizzonte=orizzonte):
+            # t_start e' nella PK (NOT NULL implicito): gli slot solo-fascia
+            # (settimanali PT senza orario) usano -1; certezza_orario =
+            # 'solo_fascia' li descrive gia'
             conn.execute("INSERT OR REPLACE INTO palinsesto_composto VALUES "
                          "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
-                label, g, r["rete"], r["t_start"], r["t_end"], r["fascia"],
+                label, g, r["rete"],
+                r["t_start"] if r["t_start"] is not None else -1,
+                r["t_end"], r["fascia"],
                 r["blocco_id"], r["titolo"], r["certezza_contenuto"], r["certezza_orario"],
                 r["generico"], r["alternanza_irrisolta"], r["prima_tv"], r["replica"],
                 r["tipo"], r["genere"], r["doc_id"], r["pubblicato_il"]])

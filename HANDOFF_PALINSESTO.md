@@ -31,16 +31,44 @@ FATTO:
    (15/4 visto dall'1/4 = vuoto; dall'8/4 = presente). pubblicato_il = PDF
    CreationDate, sempre 5-7 gg prima della settimana.
 
-DA FARE (ordine concordato con Andrea):
-4. Parser griglie **Cairo/LA7** (p.3 "Palinsesto editoriale" nei doc `cairo_la7_*`):
-   settimana-tipo lattice 10', estrazione posizionale, decorrenze "il 5.1",
-   alternanze "A / B", ® = replica; anche p.4 "Palinsesto pubblicitario" (dopo).
-5. Parser griglie **Rai** (`rai_tvprogram_*`): settimana-tipo per rete lattice 15'.
-   ⚠️ il layer testo ha GLIFI DUPLICATI (`SSEERRIIAALLEE`): estrazione posizionale
-   con dedup dei char sovrapposti, o via rendering. Decorrenze dense
-   ("f. 8/5", "dal 11/5", "escl. lunedì 11/5,18/5,25/5"), finestre evento
-   (Giro d'Italia 8-29/5 con orari propri e t_end variabile "+ proc. tappa").
-   Data di pubblicazione STAMPATA in calce ("Aggiornato al 12 febbraio 2026").
+4. **Parser griglie Cairo/LA7: COMPLETO E VERIFICATO** (`parsers/griglia_cairo.py`).
+   5 doc gen-giu 2026 (validità continua 4/1→27/6), 46-48 celle e 50-63 slot/doc.
+   Celle dalla geometria (segmenti H/V, fusione colonne dai gap nelle verticali),
+   lattice 10' PIECEWISE tra etichette adiacenti (maggio 2026 ha passo non
+   uniforme in una banda), testo celle dai CHARS (extract_words frammenta i
+   titoli a spaziatura espansa), '+' separa alternative come '/', date con nome
+   mese ("il 4 e 11 e 18 giugno") e catene "e il". Verifica: 0 char persi sui 5
+   doc; giorni campione 6/4, 13/4, 12/4, 6/1 confrontati a vista col PDF: 1:1.
+   (p.4 "Palinsesto pubblicitario" e LA7d p.9: fuori perimetro, dopo.)
+5. **Parser griglie Rai: COMPLETO E VERIFICATO** (`parsers/griglia_rai.py`).
+   ⚠️ le griglie sono IMMAGINI RASTER (~165dpi) dentro il PDF: niente layer
+   testo utile (i "glifi doppi" erano solo celle vettoriali residue). Pipeline:
+   rendering scala 3 → geometria dai PIXEL (run scuri con finestre direzionali
+   ±1px per l'ondeggiamento; MAI MinFilter quadrato: fonde il testo bold e i
+   tratteggi) → barra giorni per COLORE + lettere D..S come pixel bianchi
+   (l'OCR delle singole lettere è instabile run-to-run) → colonne dagli ENDPOINT
+   dei segmenti H tra i centri lettera (NON uniformi: la D è più stretta; coppie
+   di bordi) → lattice 15' da OCR etichette con wrap deterministico + LIS (una
+   etichetta misletta avvelenerebbe la cascata) → OCR whole-page su RGB (le ROI
+   per cella e il grayscale degradano Vision) → riparatore date vincolato
+   ('303'→30/3, '1244-305'→12/4-3/5, guardie: periodo + dow colonna) →
+   sub-box inset = slot autonomi mono-colonna; sequenze a orari dichiarati
+   ("20.30 CINQUE MINUTI … 20.35 AFFARI TUOI") ≠ alternanze; 'nel corso' in
+   nota. OCR via `parsers/ocr_helper.swift` (Vision, compilato al volo).
+   3 doc 2026 (inverno+primavera+estate, 4/1→5/9 contigui), 333-437 slot/doc,
+   162 eccezioni datate. Verifica: 0 righe OCR perse sulle 9 pagine RAI1/2/3;
+   0 finestre incoerenti; campioni 31/3 e 12/4 confrontati a vista col PDF.
+   RESIDUI NOTI (da curatela, non regressioni): titoli sporchi d'OCR qua e là
+   ('L COMMISSARI IONTALBANO', 'HCTON 1S'=FICTION ® 19/5); L'EREDITÀ primavera
+   con finestra [25/5..] spuria (il "f. al 24/5" è illeggibile nel raster →
+   buco 18:40 feriale prima del 25/5); annotazioni inline non boxate che
+   sporcano il titolo (SPEC. A SUA IMMAGINE dentro LA VOLTA BUONA); banda
+   02-06 troncata alle 26:00 (simulcast).
+   DUE RITOCCHI AL CORE (motivati, non regressioni): (a) compose.py, la
+   specificità base-vs-base sopprime solo finestre-EVENTO ≤31 gg — senza il
+   limite, "f. al 29/5" (≈tutto il periodo) uccideva i vicini su overlap di
+   15' da lattice; (b) costruisci_cache scrive t_start=-1 per gli slot
+   solo-fascia (t_start è nella PK; certezza_orario='solo_fascia' li descrive).
 6. Parser **listini Publitalia** (`publitalia_listino_*`, ~260 pp): griglie
    settimana-tipo per rete alle pp. 2-20 + tabelle "Stime" (AMR per break ×
    target × sottoperiodo, pp. ~115-130) → tabella `previsione` con
