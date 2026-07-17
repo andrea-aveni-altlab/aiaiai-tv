@@ -74,7 +74,8 @@ def main(argv=None):
     elif cmd == "rubriche":
         from .matcher_rubrica import ricostruisci_rubriche
         r = ricostruisci_rubriche(conn)
-        print(f"rubrica_listino: {r['rai']} rai + {r['publitalia']} publitalia")
+        print(f"rubrica_listino: {r['rai']} rai + {r['publitalia']} publitalia "
+              f"+ {r['cairo']} cairo")
 
     elif cmd == "match-rubriche":
         from .matcher_rubrica import esegui_match

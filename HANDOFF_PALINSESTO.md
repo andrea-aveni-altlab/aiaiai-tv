@@ -287,9 +287,26 @@ refuter avversari, 25+16 match verificati):
   tra le alternative: punta a slot 'ANTEPRIMA TG4'); '(di cui X - Tgcom)' e
   '-brk H.MM' sono componenti → si riconducono al programma base.
 
+FASE 1b — CAIRO/LA7 (FATTO, 17/7/2026): i PDF cairo_la7_* contengono anche
+'Le stime' (testate × 8 target: individui/adulti/uomini/donne/res_acq/15_34/
+resacq_25_54/adulti_cse30_alta, valori in INDIVIDUI → convertiti in MIGLIAIA
+all'ingest per l'asse comune) e 'Listino Tabellare' (tariffa_30s_eur +
+sconto_massimo_pct per gruppo). Estrazione in griglia_cairo.py
+(_previsioni_cairo), sorgente='cairo_listino', 4.611 righe su 9 doc
+2025-2026. Griglie 2025 parsate (4 doc, copertina strenne a due anni;
+strenne ha griglia A RIGHE: spaziatura px costante → snap all'etichetta,
+riconosciuta in _lattice). Pagine ruotate (matrice di render anomala) →
+fallback _righe_chars. FASCE COMMERCIALI escluse; occhio: d'estate Cairo
+vende TESTATE con nomi di fascia ('Prima Serata', 'Brunch') — quelle sono
+prodotti veri e restano (classificate fascia nel matcher, mai KPI).
+Matcher LA7: testate = nomi programma, match per titolo sugli slot dello
+stesso doc; SUPERSPOT → prodotto_multi; sinonimo '8 e mezzo'→'Otto e Mezzo';
+guardia anti-collisione resa SIMMETRICA e su tutte le famiglie ('l'aria che
+tira' vs 'oggi'). 'TG Mentana' resta in curatela (ambigua tra edizioni TG).
+
 FUORI FASE 1 (documentato, non un buco): 12 reti tematiche Rai (listino senza
-griglia), LA7 (griglia senza listino), finestre Rai senza doc tvprogram
-(21/12/2025-3/1/2026 e autunno 2026), 388+885 rubriche contate nel report.
+griglia), LA7d e LA7 CINEMA (stessa regola delle tematiche), finestre Rai
+senza doc tvprogram (21/12/2025-3/1/2026 e autunno 2026).
 
 ## CLI
 

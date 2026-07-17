@@ -1,23 +1,296 @@
 sorgente,rete_previsione,posizione,tipo_giorno,periodo_da,orario,giorni_mask,programma_listino
+cairo_listino,LA7,Augias,tutti,2025-01-05,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2025-01-05,-,,Notte con La7
+cairo_listino,LA7,Top Series,tutti,2025-03-30,-,,Top Series
+cairo_listino,LA7,Barbero Daily,tutti,2025-06-29,-,,Barbero Daily
+cairo_listino,LA7,TG Mentana,tutti,2025-12-21,-,,TG Mentana
+cairo_listino,LA7,Gramellini sabato TOP,tutti,2026-01-04,-,,Gramellini sabato TOP
+cairo_listino,LA7,Prime Time 2,tutti,2026-01-04,-,,Prime Time 2
+cairo_listino,LA7,Mezzogiorno,tutti,2026-01-04,-,,Mezzogiorno
+cairo_listino,LA7,Box Office,tutti,2026-01-04,-,,Box Office
+cairo_listino,LA7,Augias,tutti,2026-03-01,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2026-03-01,-,,Notte con La7
+cairo_listino,LA7,Zoro,tutti,2026-05-31,-,,Zoro
+cairo_listino,LA7,La7 Cronaca,tutti,2026-03-29,-,,La7 Cronaca
+cairo_listino,LA7,Red Carpet,tutti,2026-03-29,-,,Red Carpet
+cairo_listino,LA7,TG Mentana,tutti,2026-05-03,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2026-05-03,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2026-05-03,-,,Floris Prime Time TOP
+cairo_listino,LA7,Top Series,tutti,2025-01-05,-,,Top Series
+cairo_listino,LA7,Augias,tutti,2025-03-30,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2025-03-30,-,,Notte con La7
+cairo_listino,LA7,Prime Time 2,tutti,2025-06-29,-,,Prime Time 2
+cairo_listino,LA7,Cinema d'Essay,tutti,2025-12-21,-,,Cinema d'Essay
+cairo_listino,LA7,BACK TO LIVE SAVIANO,tutti,2026-03-01,-,,BACK TO LIVE SAVIANO
+cairo_listino,LA7,Panella,tutti,2026-05-31,-,,Panella
+cairo_listino,LA7,Blockbuster,tutti,2026-05-31,-,,Blockbuster
+cairo_listino,LA7,Floris Prime Time,tutti,2026-03-29,-,,Floris Prime Time
+cairo_listino,LA7,Cinema d'Essay,tutti,2026-05-03,-,,Cinema d'Essay
+cairo_listino,LA7,BACK TO LIVE CAZZULLO,tutti,2026-05-03,-,,BACK TO LIVE CAZZULLO
+cairo_listino,LA7,Panella,tutti,2025-01-05,-,,Panella
+cairo_listino,LA7,Anteprima Insinna,tutti,2025-01-05,-,,Anteprima Insinna
+cairo_listino,LA7,Gramellini domenica,tutti,2025-03-30,-,,Gramellini domenica
+cairo_listino,LA7,Zoro,tutti,2025-03-30,-,,Zoro
+cairo_listino,LA7,La Torre di Babele,tutti,2025-06-29,-,,La Torre di Babele
+cairo_listino,LA7,Prime Time 1,tutti,2026-01-04,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO,tutti,2026-01-04,-,,BACK TO LIVE GRAMELLINI SABATO
+cairo_listino,LA7,Panella,tutti,2026-03-01,-,,Panella
+cairo_listino,LA7,Blockbuster,tutti,2026-03-01,-,,Blockbuster
+cairo_listino,LA7,Gramellini sabato Prime Time,tutti,2026-03-29,-,,Gramellini sabato Prime Time
+cairo_listino,LA7,Movie Daily,tutti,2026-03-29,-,,Movie Daily
+cairo_listino,LA7,Omnibus,tutti,2026-05-03,-,,Omnibus
+cairo_listino,LA7,Gramellini,tutti,2025-01-05,-,,Gramellini
+cairo_listino,LA7,Zoro,tutti,2025-01-05,-,,Zoro
+cairo_listino,LA7,Panella,tutti,2025-03-30,-,,Panella
+cairo_listino,LA7,Anteprima Insinna,tutti,2025-03-30,-,,Anteprima Insinna
+cairo_listino,LA7,Evening Series,tutti,2025-03-30,-,,Evening Series
+cairo_listino,LA7,Prime Time 1,tutti,2025-06-29,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE IN ALTRE PAROLE 30'' 30'',tutti,2025-12-21,-,,BACK TO LIVE IN ALTRE PAROLE 30'' 30''
+cairo_listino,LA7,BACK TO LIVE CAZZULLO 30'' 30'',tutti,2026-01-04,-,,BACK TO LIVE CAZZULLO 30'' 30''
+cairo_listino,LA7,Zoro,tutti,2026-03-01,-,,Zoro
+cairo_listino,LA7,Saviano,tutti,2026-03-01,-,,Saviano
+cairo_listino,LA7,Augias,tutti,2026-05-31,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2026-05-31,-,,Notte con La7
+cairo_listino,LA7,Brunch,tutti,2026-03-29,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2026-03-29,-,,Augias Daily
+cairo_listino,LA7,All News,tutti,2026-03-29,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2026-03-29,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO 30'' 30'',tutti,2026-05-03,-,,BACK TO LIVE GRAMELLINI SABATO 30'' 30''
+cairo_listino,LA7,Floris Prime Time,tutti,2025-01-05,-,,Floris Prime Time
+cairo_listino,LA7,Cazzullo,tutti,2025-01-05,-,,Cazzullo
+cairo_listino,LA7,Omnibus,tutti,2025-06-29,-,,Omnibus
+cairo_listino,LA7,L'Aria che Tira,tutti,2025-06-29,-,,L'Aria che Tira
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO 30'' 30'',tutti,2026-01-04,-,,BACK TO LIVE GRAMELLINI SABATO 30'' 30''
+cairo_listino,LA7,MBreuznzcohgiorno,tutti,2026-01-04,-,,MBreuznzcohgiorno
+cairo_listino,LA7,Floris Prime Time,tutti,2026-03-01,-,,Floris Prime Time
+cairo_listino,LA7,Gramellini sabato Prime Time,tutti,2026-05-31,-,,Gramellini sabato Prime Time
+cairo_listino,LA7,BACK TO LIVE SAVIANO,tutti,2026-03-29,-,,BACK TO LIVE SAVIANO
+cairo_listino,LA7,BACK TO LIVE CAZZULLO 30'' 30'',tutti,2026-05-03,-,,BACK TO LIVE CAZZULLO 30'' 30''
+cairo_listino,LA7,Gramellini prime time,tutti,2025-01-05,-,,Gramellini prime time
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI PRIME TIME 30'' 30'',tutti,2025-01-05,-,,BACK TO LIVE GRAMELLINI PRIME TIME 30'' 30''
+cairo_listino,LA7,Prime Time 2,tutti,2025-03-30,-,,Prime Time 2
+cairo_listino,LA7,Notte con La7,tutti,2025-06-29,-,,Notte con La7
+cairo_listino,LA7,Brunch,tutti,2025-12-21,-,,Brunch
+cairo_listino,LA7,All News,tutti,2025-12-21,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2025-12-21,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,S#aRvIFia!no,tutti,2026-03-01,-,,S#aRvIFia!no
+cairo_listino,LA7,Prime Time 1,tutti,2026-05-31,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO,tutti,2026-05-31,-,,BACK TO LIVE GRAMELLINI SABATO
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO 30'' 30'',tutti,2026-03-29,-,,BACK TO LIVE GRAMELLINI SABATO 30'' 30''
+cairo_listino,LA7,All News,tutti,2026-05-03,-,,All News
+cairo_listino,LA7,Brunch,tutti,2026-05-03,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2026-05-03,-,,Augias Daily
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2026-05-03,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE CAZZULLO 30'' 30'',tutti,2025-01-05,-,,BACK TO LIVE CAZZULLO 30'' 30''
+cairo_listino,LA7,Prime Time 1,tutti,2025-03-30,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO,tutti,2025-03-30,-,,BACK TO LIVE GRAMELLINI SABATO
+cairo_listino,LA7,Anteprima Insinna,tutti,2025-06-29,-,,Anteprima Insinna
+cairo_listino,LA7,Evening Series,tutti,2025-06-29,-,,Evening Series
+cairo_listino,LA7,Zoro,tutti,2026-01-04,-,,Zoro
+cairo_listino,LA7,Gramellini sabato TOP,tutti,2026-05-31,-,,Gramellini sabato TOP
+cairo_listino,LA7,Prime Time 2,tutti,2026-05-31,-,,Prime Time 2
+cairo_listino,LA7,BACK TO LIVE SAVIANO 30'' 30'',tutti,2026-03-29,-,,BACK TO LIVE SAVIANO 30'' 30''
+cairo_listino,LA7,Cinema d'Essay,tutti,2026-03-29,-,,Cinema d'Essay
+cairo_listino,LA7,Floris Prime Time,tutti,2026-05-03,-,,Floris Prime Time
+cairo_listino,LA7,Cazzullo,tutti,2026-05-03,-,,Cazzullo
+cairo_listino,LA7,Floris Prime Time,tutti,2025-03-30,-,,Floris Prime Time
+cairo_listino,LA7,Cazzullo,tutti,2025-03-30,-,,Cazzullo
+cairo_listino,LA7,Prime Time 1,tutti,2025-12-21,-,,Prime Time 1
+cairo_listino,LA7,Omnibus,tutti,2026-01-04,-,,Omnibus
+cairo_listino,LA7,La7 Cronaca,tutti,2026-03-01,-,,La7 Cronaca
+cairo_listino,LA7,Red Carpet,tutti,2026-03-01,-,,Red Carpet
+cairo_listino,LA7,Brunch,tutti,2026-05-31,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2026-05-31,-,,Augias Daily
+cairo_listino,LA7,All News,tutti,2026-05-31,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2026-05-31,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE UNA CAZZULLO,tutti,2026-05-31,-,,BACK TO LIVE UNA CAZZULLO
+cairo_listino,LA7,Augias,tutti,2026-03-29,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2026-03-29,-,,Notte con La7
+cairo_listino,LA7,Prime Time 1,tutti,2026-05-03,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO,tutti,2026-05-03,-,,BACK TO LIVE GRAMELLINI SABATO
+cairo_listino,LA7,Prime Time 2,tutti,2025-01-05,-,,Prime Time 2
+cairo_listino,LA7,Movie Daily,tutti,2025-12-21,-,,Movie Daily
+cairo_listino,LA7,Notte con La7,tutti,2026-01-04,-,,Notte con La7
+cairo_listino,LA7,Gramellini sabato TOP,tutti,2026-03-01,-,,Gramellini sabato TOP
+cairo_listino,LA7,Prime Time 2,tutti,2026-03-01,-,,Prime Time 2
+cairo_listino,LA7,Box Office,tutti,2026-03-01,-,,Box Office
+cairo_listino,LA7,BACK TO LIVE CAZZULLO 30'' 30'',tutti,2026-05-31,-,,BACK TO LIVE CAZZULLO 30'' 30''
+cairo_listino,LA7,Omnibus,tutti,2026-03-29,-,,Omnibus
+cairo_listino,LA7,Gramellini sabato Prime Time,tutti,2026-05-03,-,,Gramellini sabato Prime Time
+cairo_listino,LA7,Movie Daily,tutti,2026-05-03,-,,Movie Daily
+cairo_listino,LA7,Prime Time 1,tutti,2025-01-05,-,,Prime Time 1
+cairo_listino,LA7,Mattino,tutti,2025-12-21,-,,Mattino
+cairo_listino,LA7,La7 Cronaca,tutti,2025-12-21,-,,La7 Cronaca
+cairo_listino,LA7,Red Carpet,tutti,2025-12-21,-,,Red Carpet
+cairo_listino,LA7,Panella,tutti,2026-01-04,-,,Panella
+cairo_listino,LA7,Blockbuster,tutti,2026-01-04,-,,Blockbuster
+cairo_listino,LA7,Prime Time 1,tutti,2026-03-01,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO,tutti,2026-03-01,-,,BACK TO LIVE GRAMELLINI SABATO
+cairo_listino,LA7,TG Mentana,tutti,2026-03-29,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2026-03-29,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2026-03-29,-,,Floris Prime Time TOP
+cairo_listino,LA7,La7 Cronaca,tutti,2026-05-03,-,,La7 Cronaca
+cairo_listino,LA7,Red Carpet,tutti,2026-05-03,-,,Red Carpet
+cairo_listino,LA7,Omnibus,tutti,2025-03-30,-,,Omnibus
+cairo_listino,LA7,Floris Prime Time,tutti,2026-01-04,-,,Floris Prime Time
+cairo_listino,LA7,Cazzullo,tutti,2026-01-04,-,,Cazzullo
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO 30'' 30'',tutti,2026-03-01,-,,BACK TO LIVE GRAMELLINI SABATO 30'' 30''
+cairo_listino,LA7,TG Mentana,tutti,2026-05-31,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2026-05-31,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2026-05-31,-,,Floris Prime Time TOP
+cairo_listino,LA7,S#aRvIFia!no,tutti,2026-03-29,-,,S#aRvIFia!no
+cairo_listino,LA7,Zoro,tutti,2026-05-03,-,,Zoro
+cairo_listino,LA7,Barbero,tutti,2025-01-05,-,,Barbero
+cairo_listino,LA7,Insinna,tutti,2025-01-05,-,,Insinna
+cairo_listino,LA7,BACK TO LIVE CAZZULLO,tutti,2025-01-05,-,,BACK TO LIVE CAZZULLO
+cairo_listino,LA7,TG Mentana,tutti,2025-03-30,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2025-03-30,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2025-03-30,-,,Floris Prime Time TOP
+cairo_listino,LA7,Mondiale Ritmica,tutti,2025-06-29,-,,Mondiale Ritmica
+cairo_listino,LA7,Brunch,tutti,2026-01-04,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2026-01-04,-,,Augias Daily
+cairo_listino,LA7,All News,tutti,2026-01-04,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2026-02-01,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE SAVIANO 30'' 30'',tutti,2026-03-01,-,,BACK TO LIVE SAVIANO 30'' 30''
+cairo_listino,LA7,Cinema d'Essay,tutti,2026-03-01,-,,Cinema d'Essay
+cairo_listino,LA7,Omnibus,tutti,2026-05-31,-,,Omnibus
+cairo_listino,LA7,All News,tutti,2025-01-05,-,,All News
+cairo_listino,LA7,Brunch,tutti,2025-01-05,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2025-01-05,-,,Augias Daily
+cairo_listino,LA7,Afternoon Series,tutti,2025-01-05,-,,Afternoon Series
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2025-01-05,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI PRIME TIME,tutti,2025-01-05,-,,BACK TO LIVE GRAMELLINI PRIME TIME
+cairo_listino,LA7,Night Series,tutti,2025-03-30,-,,Night Series
+cairo_listino,LA7,TG Mentana,tutti,2025-06-29,-,,TG Mentana
+cairo_listino,LA7,Cinema d'Essay,tutti,2026-01-04,-,,Cinema d'Essay
+cairo_listino,LA7,UCanzaz ugliloornata particolare,tutti,2026-01-04,-,,UCanzaz ugliloornata particolare
+cairo_listino,LA7,BACK TO LIVE CAZZULLO,tutti,2026-01-04,-,,BACK TO LIVE CAZZULLO
+cairo_listino,LA7,Brunch,tutti,2026-03-01,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2026-03-01,-,,Augias Daily
+cairo_listino,LA7,All News,tutti,2026-03-01,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2026-03-01,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,La7 Cronaca,tutti,2026-05-31,-,,La7 Cronaca
+cairo_listino,LA7,Red Carpet,tutti,2026-05-31,-,,Red Carpet
+cairo_listino,LA7,L#aR ITFo!rre di Babele,tutti,2026-05-31,-,,L#aR ITFo!rre di Babele
+cairo_listino,LA7,Zoro,tutti,2026-03-29,-,,Zoro
+cairo_listino,LA7,Saviano,tutti,2026-03-29,-,,Saviano
+cairo_listino,LA7,Night Series,tutti,2025-01-05,-,,Night Series
+cairo_listino,LA7,Brunch,tutti,2025-03-30,-,,Brunch
+cairo_listino,LA7,Augias Daily,tutti,2025-03-30,-,,Augias Daily
+cairo_listino,LA7,Afternoon Series,tutti,2025-03-30,-,,Afternoon Series
+cairo_listino,LA7,All News,tutti,2025-03-30,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2025-03-30,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,Insinna,tutti,2025-06-29,-,,Insinna
+cairo_listino,LA7,Lunch Time,tutti,2025-06-29,-,,Lunch Time
+cairo_listino,LA7,Prime Time 2,tutti,2025-12-21,-,,Prime Time 2
+cairo_listino,LA7,Mezzogiorno,tutti,2025-12-21,-,,Mezzogiorno
+cairo_listino,LA7,Box Office,tutti,2025-12-21,-,,Box Office
+cairo_listino,LA7,TG Mentana,tutti,2026-01-04,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2026-01-04,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2026-01-04,-,,Floris Prime Time TOP
+cairo_listino,LA7,Gramellini sabato Prime Time,tutti,2026-03-01,-,,Gramellini sabato Prime Time
+cairo_listino,LA7,Movie Daily,tutti,2026-03-01,-,,Movie Daily
+cairo_listino,LA7,Floris Prime Time,tutti,2026-05-31,-,,Floris Prime Time
+cairo_listino,LA7,Cazzullo,tutti,2026-05-31,-,,Cazzullo
+cairo_listino,LA7,Panella,tutti,2026-03-29,-,,Panella
+cairo_listino,LA7,Blockbuster,tutti,2026-03-29,-,,Blockbuster
+cairo_listino,LA7,Gramellini sabato TOP,tutti,2026-05-03,-,,Gramellini sabato TOP
+cairo_listino,LA7,Prime Time 2,tutti,2026-05-03,-,,Prime Time 2
+cairo_listino,LA7,Box Office,tutti,2026-05-03,-,,Box Office
+cairo_listino,LA7,Omnibus,tutti,2025-01-05,-,,Omnibus
+cairo_listino,LA7,Gramellini sabato,tutti,2025-03-30,-,,Gramellini sabato
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO 30'' 30'',tutti,2025-03-30,-,,BACK TO LIVE GRAMELLINI SABATO 30'' 30''
+cairo_listino,LA7,Nerazzini,tutti,2025-06-29,-,,Nerazzini
+cairo_listino,LA7,Panella,tutti,2025-12-21,-,,Panella
+cairo_listino,LA7,Blockbuster,tutti,2025-12-21,-,,Blockbuster
+cairo_listino,LA7,La7 Cronaca,tutti,2026-01-04,-,,La7 Cronaca
+cairo_listino,LA7,Red Carpet,tutti,2026-01-04,-,,Red Carpet
+cairo_listino,LA7,Omnibus,tutti,2026-03-01,-,,Omnibus
+cairo_listino,LA7,Cinema d'Essay,tutti,2026-05-31,-,,Cinema d'Essay
+cairo_listino,LA7,Gramellini sabato TOP,tutti,2026-03-29,-,,Gramellini sabato TOP
+cairo_listino,LA7,Prime Time 2,tutti,2026-03-29,-,,Prime Time 2
+cairo_listino,LA7,Box Office,tutti,2026-03-29,-,,Box Office
+cairo_listino,LA7,Panella,tutti,2026-05-03,-,,Panella
+cairo_listino,LA7,Blockbuster,tutti,2026-05-03,-,,Blockbuster
+cairo_listino,LA7,C#RazIFz!ullo,tutti,2026-05-03,-,,C#RazIFz!ullo
+cairo_listino,LA7,TG Mentana,tutti,2025-01-05,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2025-01-05,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2025-01-05,-,,Floris Prime Time TOP
+cairo_listino,LA7,Barbero,tutti,2025-03-30,-,,Barbero
+cairo_listino,LA7,Insinna,tutti,2025-03-30,-,,Insinna
+cairo_listino,LA7,L'Aria che Tira Oggi,tutti,2025-06-29,-,,L'Aria che Tira Oggi
+cairo_listino,LA7,Brunch,tutti,2025-06-29,-,,Brunch
+cairo_listino,LA7,All News,tutti,2025-06-29,-,,All News
+cairo_listino,LA7,TBGru LnAc7h Mezzogiorno,tutti,2025-06-29,-,,TBGru LnAc7h Mezzogiorno
+cairo_listino,LA7,Augias,tutti,2025-12-21,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2025-12-21,-,,Notte con La7
+cairo_listino,LA7,BACK TO LIVE IN ALTRE PAROLE,tutti,2025-12-21,-,,BACK TO LIVE IN ALTRE PAROLE
+cairo_listino,LA7,Gramellini sabato Prime Time,tutti,2026-01-04,-,,Gramellini sabato Prime Time
+cairo_listino,LA7,Movie Daily,tutti,2026-01-04,-,,Movie Daily
+cairo_listino,LA7,TG Mentana,tutti,2026-03-01,-,,TG Mentana
+cairo_listino,LA7,Zoro TOP,tutti,2026-03-01,-,,Zoro TOP
+cairo_listino,LA7,Floris Prime Time TOP,tutti,2026-03-01,-,,Floris Prime Time TOP
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO 30'' 30'',tutti,2026-05-31,-,,BACK TO LIVE GRAMELLINI SABATO 30'' 30''
+cairo_listino,LA7,Prime Time 1,tutti,2026-03-29,-,,Prime Time 1
+cairo_listino,LA7,BACK TO LIVE GRAMELLINI SABATO,tutti,2026-03-29,-,,BACK TO LIVE GRAMELLINI SABATO
+cairo_listino,LA7,Augias,tutti,2026-05-03,-,,Augias
+cairo_listino,LA7,Notte con La7,tutti,2026-05-03,-,,Notte con La7
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2026-03-29,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2026-03-01,-,,TG LA7 Anteprima
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2026-05-03,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2025-03-30,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2026-03-01,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE,tutti,2026-03-29,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2026-05-31,-,,TG LA7 Anteprima
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE,tutti,2025-12-21,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2025-06-29,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2025-12-21,-,,TG LA7 Anteprima
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE,tutti,2025-01-05,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2025-01-05,-,,TG LA7 Anteprima
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2026-03-29,-,,Piazza Pulita TOP
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2025-12-21,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2025-03-30,-,,Piazza Pulita TOP
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2026-03-29,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2025-01-05,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2026-03-01,-,,Piazza Pulita TOP
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2026-01-04,-,,TG LA7 Anteprima
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2025-03-30,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2025-12-21,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE,tutti,2026-05-03,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE
+cairo_listino,LA7,BACK TO LIVE IN ALTRE PAROLE 30'' 30'',tutti,2026-05-31,-,,BACK TO LIVE IN ALTRE PAROLE 30'' 30''
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2026-03-01,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2026-05-03,-,,TG LA7 Anteprima
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2026-05-31,-,,Piazza Pulita TOP
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2026-05-03,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE,tutti,2026-01-04,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE
+cairo_listino,LA7,BACK TO LIVE IN ALTRE PAROLE,tutti,2026-05-31,-,,BACK TO LIVE IN ALTRE PAROLE
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2026-05-31,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2025-06-29,-,,TG LA7 Anteprima
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2025-01-05,-,,Piazza Pulita TOP
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2025-01-05,-,,TG LA7 Mezzogiorno
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30'',tutti,2026-01-04,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE 30'' 30''
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2026-03-29,-,,TG LA7 Anteprima
+cairo_listino,LA7,BACK TO LIVE SPECIALE LA7 PT,tutti,2026-03-29,-,,BACK TO LIVE SPECIALE LA7 PT
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2026-01-04,-,,Piazza Pulita TOP
+cairo_listino,LA7,TG LA7 Anteprima,tutti,2025-03-30,-,,TG LA7 Anteprima
+cairo_listino,LA7,BACK TO LIVE UNA GIORNATA PARTICOLARE,tutti,2026-03-01,-,,BACK TO LIVE UNA GIORNATA PARTICOLARE
+cairo_listino,LA7,Piazza Pulita TOP,tutti,2026-05-03,-,,Piazza Pulita TOP
+cairo_listino,LA7,TG LA7 Mezzogiorno,tutti,2026-01-04,-,,TG LA7 Mezzogiorno
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2025-01-05,19:20,,Produzione preserale 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2026-06-28,19:20,,Produzione preserale 19:20
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2026-05-03,19:20,,Produzione preserale 19:20
+publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis 19:20,weekend,2025-05-04,19:20,,Avanti un altro Bonolis 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2025-06-29,19:20,,Produzione preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2026-01-04,19:20,,Produzione preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2025-06-29,19:20,,Produzione preserale 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2026-01-04,19:20,,Produzione preserale 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2025-01-05,19:20,,Produzione preserale 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2025-05-04,19:20,,Produzione preserale 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Sarabanda preserale 19:20,weekend,2025-08-31,19:20,,Sarabanda preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2026-05-03,19:20,,Produzione preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2026-06-28,19:20,,Produzione preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2026-05-03,19:20,,Produzione preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis 19:20,weekend,2025-05-04,19:20,,Avanti un altro Bonolis 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: The wall 19:20,weekend,2024-09-01,19:20,,The wall 19:20
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2025-05-04,19:20,,Produzione preserale 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis 19:20,tutti,2025-11-30,19:20,,Avanti un altro Bonolis 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis 19:20,tutti,2025-08-31,19:20,,Avanti un altro Bonolis 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis 19:20,weekend,2025-11-30,19:20,,Avanti un altro Bonolis 19:20
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis 19:20,weekend,2025-03-02,19:20,,Avanti un altro Bonolis 19:20
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2026-01-04,19:20,,Produzione preserale 19:20
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2025-06-29,19:20,,Produzione preserale 19:20
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,tutti,2026-05-03,19:20,,Produzione preserale 19:20
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale 19:20,weekend,2026-06-28,19:20,,Produzione preserale 19:20
 publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-01-04,-,,TG5 Sera-Meteo
 publitalia_listino,CAN5,Chi vuol essere milionario FPT [primissima],tutti,2026-01-04,-,,Chi vuol essere milionario
 publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,weekend,2026-01-04,-,,Produzione preserale
@@ -78,6 +351,65 @@ publitalia_listino,CAN5,Speciale ruota della fortuna access,weekend,2025-08-31,-
 publitalia_listino,CAN5,Produzione C5 saluti,tutti,2025-11-30,-,,Produzione C5
 publitalia_listino,CAN5,News 5 FPT,tutti,2025-11-30,-,,News 5
 publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2025-11-30,-,,Soap C5
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2026-01-04,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2026-05-03,-,,Primo pomeriggio
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2024-09-01,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2024-09-01,-,,Sabato 1
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2024-12-01,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Canale 5 show,tutti,2024-12-01,-,,Canale 5 show
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2024-12-01,-,,News R4 daytime
+publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2024-12-01,-,,Tg4 meridiana
+publitalia_listino,CAN5,Speciale Striscia,weekend,2025-01-05,-,,Speciale Striscia
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-01-05,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2025-01-05,-,,TG4 Meridiana
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-03-02,-,,Canale 5 news
+publitalia_listino,CAN5,Speciale Striscia,tutti,2025-03-30,-,,Speciale Striscia
+publitalia_listino,CAN5,Speciale Striscia,weekend,2025-03-30,-,,Speciale Striscia
+publitalia_listino,CAN5,Grande fratello nomination,tutti,2025-03-30,-,,Grande fratello nomination
+publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-03-30,-,,Speciale Gransera
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-03-30,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2025-03-30,-,,Comics Top
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-05-04,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,Sera 5 Produzione preserale,weekend,2025-06-29,-,,Produzione preserale
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-06-29,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Premiere [primissima],weekend,2025-06-29,-,,Premiere
+publitalia_listino,CAN5,Canale 5 show saluti,tutti,2025-06-29,-,,Canale 5 show
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-06-29,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-08-31,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,Canale 5 show saluti,tutti,2025-11-30,-,,Canale 5 show
+publitalia_listino,CAN5,Produzione C5 FPT,tutti,2025-11-30,-,,Produzione C5
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-11-30,-,,Studio Sport
+publitalia_listino,CAN5,Soap C5 FPT [primissima],tutti,2026-01-04,-,,Soap C5
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-01-04,-,,Soap C5
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-05-03,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Soap C5 FPT,tutti,2026-05-03,-,,Soap C5
+publitalia_listino,CAN5,Amici finale FPT,tutti,2026-05-03,-,,Amici finale
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2026-06-28,-,,Ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2026-06-28,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful Domenica,tutti,2026-06-28,-,,Beautiful Domenica
+publitalia_listino,CAN5,Speciale Ruota della fortuna access,tutti,2026-03-01,-,,Speciale Ruota della fortuna access
+publitalia_listino,CAN5,Ruota della fortuna access,weekend,2026-03-01,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2026-03-01,-,,Speciale Gransera
+publitalia_listino,CAN5,Speciale Gransera,tutti,2026-03-01,-,,Speciale Gransera
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2026-03-01,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2026-03-01,-,,Sport Club
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2024-09-01,-,,Pomeriggio con I1
+publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2024-09-01,-,,Forum pomeriggio
+publitalia_listino,CAN5,Premiere [primissima],weekend,2024-12-01,-,,Premiere
+publitalia_listino,CAN5,Premiere,weekend,2024-12-01,-,,Premiere
+publitalia_listino,CAN5,Finale Io canto,tutti,2025-01-05,-,,Finale Io canto
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-01-05,-,,Meteo 5
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-03-02,-,,Sport Club
+publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2025-03-02,-,,Speciale Amici
+publitalia_listino,CAN5,Estatissima [primissima],tutti,2025-05-04,-,,Estatissima
+publitalia_listino,CAN5,Estatissima,weekend,2025-06-29,-,,Estatissima
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-06-29,-,,Studio Sport
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-06-29,-,,Sport Club
+publitalia_listino,CAN5,NEWS E SPORT: News R4 Daytime,tutti,2025-06-29,-,,News R4 Daytime
+publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-06-29,-,,Forum pomeriggio
+publitalia_listino,CAN5,Produzione C5 FPT [primissima],tutti,2025-11-30,-,,Produzione C5
+publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-11-30,-,,Speciale Gransera
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-11-30,-,,Soap C5 pomeriggio
 publitalia_listino,CAN5,Soap C5,tutti,2026-06-28,-,,Soap C5
 publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2026-06-28,-,,Speciale Gransera
 publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2026-06-28,-,,Canale 5 news
@@ -118,308 +450,6 @@ publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-08-31,-,,TG5 Sera-Meteo
 publitalia_listino,CAN5,Produzione musicale FPT,tutti,2025-08-31,-,,Produzione musicale
 publitalia_listino,CAN5,Produzione musicale saluti,tutti,2025-08-31,-,,Produzione musicale
 publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2025-11-30,-,,Tg4 meridiana
-publitalia_listino,CAN5,Soap C5 FPT [primissima],tutti,2026-01-04,-,,Soap C5
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-01-04,-,,Soap C5
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-05-03,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Soap C5 FPT,tutti,2026-05-03,-,,Soap C5
-publitalia_listino,CAN5,Amici finale FPT,tutti,2026-05-03,-,,Amici finale
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2026-06-28,-,,Ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2026-06-28,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful Domenica,tutti,2026-06-28,-,,Beautiful Domenica
-publitalia_listino,CAN5,Speciale Ruota della fortuna access,tutti,2026-03-01,-,,Speciale Ruota della fortuna access
-publitalia_listino,CAN5,Ruota della fortuna access,weekend,2026-03-01,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2026-03-01,-,,Speciale Gransera
-publitalia_listino,CAN5,Speciale Gransera,tutti,2026-03-01,-,,Speciale Gransera
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2026-03-01,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2026-03-01,-,,Sport Club
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2024-09-01,-,,Pomeriggio con I1
-publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2024-09-01,-,,Forum pomeriggio
-publitalia_listino,CAN5,Premiere [primissima],weekend,2024-12-01,-,,Premiere
-publitalia_listino,CAN5,Premiere,weekend,2024-12-01,-,,Premiere
-publitalia_listino,CAN5,Finale Io canto,tutti,2025-01-05,-,,Finale Io canto
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-01-05,-,,Meteo 5
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-03-02,-,,Sport Club
-publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2025-03-02,-,,Speciale Amici
-publitalia_listino,CAN5,Estatissima [primissima],tutti,2025-05-04,-,,Estatissima
-publitalia_listino,CAN5,Estatissima,weekend,2025-06-29,-,,Estatissima
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-06-29,-,,Studio Sport
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-06-29,-,,Sport Club
-publitalia_listino,CAN5,NEWS E SPORT: News R4 Daytime,tutti,2025-06-29,-,,News R4 Daytime
-publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-06-29,-,,Forum pomeriggio
-publitalia_listino,CAN5,Produzione C5 FPT [primissima],tutti,2025-11-30,-,,Produzione C5
-publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-11-30,-,,Speciale Gransera
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-11-30,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,Ruota della fortuna access,tutti,2026-01-04,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Speciale Ruota della fortuna access promozione,tutti,2026-01-04,-,,Speciale Ruota della fortuna access
-publitalia_listino,CAN5,Canale 5 show FPT [primissima],tutti,2026-05-03,-,,Canale 5 show
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2026-05-03,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,Speciale Ruota della fortuna access,tutti,2026-06-28,-,,Speciale Ruota della fortuna access
-publitalia_listino,CAN5,Ruota della fortuna access,tutti,2026-06-28,-,,Ruota della fortuna access
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-03-01,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Speciale Estatissima,tutti,2024-09-01,-,,Speciale Estatissima
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2024-09-01,-,,Sport Club
-publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2024-09-01,-,,Comics Top
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2024-12-01,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2024-12-01,-,,Meteo 5
-publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2024-12-01,-,,Aspettando Amici
-publitalia_listino,CAN5,Speciale Striscia,tutti,2025-01-05,-,,Speciale Striscia
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-01-05,-,,Sport Club
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2025-03-02,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-03-02,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-03-02,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful Domenica,tutti,2025-03-02,-,,Beautiful Domenica
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-03-30,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Grande fratello,tutti,2025-03-30,-,,Grande fratello
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2025-03-30,-,,News R4 daytime
-publitalia_listino,CAN5,Sera 5 Produzione preserale,tutti,2025-05-04,-,,Produzione preserale
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-05-04,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2025-05-04,-,,Produzione preserale
-publitalia_listino,CAN5,ENTERTAINMENT: Comics,tutti,2025-05-04,-,,Comics
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2025-06-29,-,,Produzione preserale
-publitalia_listino,CAN5,Produzione musicale,tutti,2025-08-31,-,,Produzione musicale
-publitalia_listino,CAN5,Speciale Gransera,tutti,2025-08-31,-,,Speciale Gransera
-publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-08-31,-,,Cinema 5
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2026-01-04,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2026-05-03,-,,Primo pomeriggio
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2024-09-01,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2024-09-01,-,,Sabato 1
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2024-12-01,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Canale 5 show,tutti,2024-12-01,-,,Canale 5 show
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2024-12-01,-,,News R4 daytime
-publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2024-12-01,-,,Tg4 meridiana
-publitalia_listino,CAN5,Speciale Striscia,weekend,2025-01-05,-,,Speciale Striscia
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-01-05,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2025-01-05,-,,TG4 Meridiana
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-03-02,-,,Canale 5 news
-publitalia_listino,CAN5,Speciale Striscia,tutti,2025-03-30,-,,Speciale Striscia
-publitalia_listino,CAN5,Speciale Striscia,weekend,2025-03-30,-,,Speciale Striscia
-publitalia_listino,CAN5,Grande fratello nomination,tutti,2025-03-30,-,,Grande fratello nomination
-publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-03-30,-,,Speciale Gransera
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-03-30,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2025-03-30,-,,Comics Top
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-05-04,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,Sera 5 Produzione preserale,weekend,2025-06-29,-,,Produzione preserale
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-06-29,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Premiere [primissima],weekend,2025-06-29,-,,Premiere
-publitalia_listino,CAN5,Canale 5 show saluti,tutti,2025-06-29,-,,Canale 5 show
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-06-29,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-08-31,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,Canale 5 show saluti,tutti,2025-11-30,-,,Canale 5 show
-publitalia_listino,CAN5,Produzione C5 FPT,tutti,2025-11-30,-,,Produzione C5
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-11-30,-,,Studio Sport
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-01-04,-,,Studio Sport
-publitalia_listino,CAN5,NEWS E SPORT: TG4 meridiana,tutti,2026-01-04,-,,TG4 meridiana
-publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2026-05-03,-,,Domenica 5
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2026-03-01,-,,Canale 5 news
-publitalia_listino,CAN5,Estatissima [primissima],weekend,2024-09-01,-,,Estatissima
-publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2024-09-01,-,,Tg4 meridiana
-publitalia_listino,CAN5,Speciale Striscia promozione,tutti,2025-01-05,-,,Speciale Striscia
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-01-05,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2025-01-05,-,,Pomeriggio reality
-publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2025-01-05,-,,Speciale Amici
-publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2025-01-05,-,,Comics Top
-publitalia_listino,CAN5,Amici ultime sfide,tutti,2025-03-02,-,,Amici ultime sfide
-publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-03-02,-,,Forum pomeriggio
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-03-30,-,,Canale 5 news
-publitalia_listino,CAN5,Estatissima [primissima],weekend,2025-05-04,-,,Estatissima
-publitalia_listino,CAN5,Serie C5 FPT [primissima],tutti,2025-05-04,-,,Serie C5
-publitalia_listino,CAN5,Canale 5 show,tutti,2025-06-29,-,,Canale 5 show
-publitalia_listino,CAN5,Serie C5 FPT,tutti,2025-06-29,-,,Serie C5
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-08-31,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-08-31,-,,Meteo 5
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful Domenica,tutti,2025-08-31,-,,Beautiful Domenica
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],tutti,2026-01-04,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Chi vuol essere milionario,tutti,2026-01-04,-,,Chi vuol essere milionario
-publitalia_listino,CAN5,Soap C5 FPT,tutti,2026-01-04,-,,Soap C5
-publitalia_listino,CAN5,Cinema 5 FPT,tutti,2026-01-04,-,,Cinema 5
-publitalia_listino,CAN5,News 5 FPT,tutti,2026-01-04,-,,News 5
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2026-01-04,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-05-03,-,,Soap C5
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2026-06-28,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-06-28,-,,Soap C5
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2026-03-01,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Amici ultime sfide,tutti,2026-03-01,-,,Amici ultime sfide
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2026-03-01,-,,Meteo 5
-publitalia_listino,CAN5,Estatissima,weekend,2024-09-01,-,,Estatissima
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2024-09-01,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: The wall,weekend,2024-09-01,-,,The wall
-publitalia_listino,CAN5,Canale 5 show FPT [primissima],tutti,2024-12-01,-,,Canale 5 show
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2024-12-01,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2024-12-01,-,,Primo pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2024-12-01,-,,Speciale Amici
-publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2024-12-01,-,,Comics Top
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-01-05,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2025-01-05,-,,Primo pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: Comics,tutti,2025-03-02,-,,Comics
-publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-03-30,-,,Cinema 5
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-03-30,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Comics,tutti,2025-03-30,-,,Comics
-publitalia_listino,CAN5,ENTERTAINMENT: Late noon,tutti,2025-03-30,-,,Late noon
-publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2025-05-04,-,,Primo pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-06-29,-,,Sabato 1
-publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-08-31,-,,Speciale Gransera
-publitalia_listino,CAN5,News 5 FPT,tutti,2025-08-31,-,,News 5
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2025-08-31,-,,News R4 daytime
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-11-30,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Canale 5 show FPT [primissima],tutti,2025-11-30,-,,Canale 5 show
-publitalia_listino,CAN5,Produzione C5,tutti,2025-11-30,-,,Produzione C5
-publitalia_listino,CAN5,Speciale Gransera,tutti,2025-11-30,-,,Speciale Gransera
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2025-11-30,-,,Beautiful domenica
-publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2025-11-30,-,,Aspettando Amici
-publitalia_listino,CAN5,Ruota della fortuna access promozione [primissima],tutti,2026-01-04,-,,Ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2026-01-04,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,Speciale Ruota della fortuna,weekend,2026-05-03,-,,Speciale Ruota della fortuna
-publitalia_listino,CAN5,Canale 5 show saluti,tutti,2026-05-03,-,,Canale 5 show
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio C5,tutti,2026-05-03,-,,Pomeriggio C5
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],tutti,2026-06-28,-,,Ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: Pressing,tutti,2026-06-28,-,,Pressing
-publitalia_listino,CAN5,Speciale Ruota della fortuna access,weekend,2026-03-01,-,,Speciale Ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-03-01,-,,Studio Sport
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2024-09-01,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2024-09-01,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2024-12-01,-,,Sabato 1
-publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-01-05,-,,Sabato 1
-publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-03-02,-,,Speciale Gransera
-publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-03-30,-,,Preserale 1
-publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-03-30,-,,Forum pomeriggio
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2025-05-04,-,,Pomeriggio con I1
-publitalia_listino,CAN5,Estatissima,tutti,2025-06-29,-,,Estatissima
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-06-29,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2025-08-31,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Produzione musicale,tutti,2025-11-30,-,,Produzione musicale
-publitalia_listino,CAN5,Aspettando Capodanno C5,tutti,2025-11-30,-,,Aspettando Capodanno C5
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2025-11-30,-,,News R4 daytime
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con Canale 5,tutti,2025-11-30,-,,Pomeriggio con Canale 5
-publitalia_listino,CAN5,Speciale Ruota della fortuna access,tutti,2026-01-04,-,,Speciale Ruota della fortuna access
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2026-01-04,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Ruota della fortuna access,weekend,2026-01-04,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Soap C5,tutti,2026-01-04,-,,Soap C5
-publitalia_listino,CAN5,Ruota della fortuna access promozione,tutti,2026-01-04,-,,Ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2026-01-04,-,,Meteo 5
-publitalia_listino,CAN5,Soap C5,tutti,2026-05-03,-,,Soap C5
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2026-05-03,-,,Beautiful domenica
-publitalia_listino,CAN5,Ruota della fortuna access,weekend,2026-06-28,-,,Ruota della fortuna access
-publitalia_listino,CAN5,Speciale Gransera,tutti,2026-06-28,-,,Speciale Gransera
-publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-06-28,-,,Forum meridiana
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2026-06-28,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2024-09-01,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2024-09-01,-,,Preserale 1
-publitalia_listino,CAN5,Speciale Striscia,tutti,2024-12-01,-,,Speciale Striscia
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2024-12-01,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2024-12-01,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Planet 1,tutti,2024-12-01,-,,Planet 1
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-01-05,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Premiere promozione [primissima],weekend,2025-01-05,-,,Premiere
-publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-01-05,-,,Preserale 1
-publitalia_listino,CAN5,Premiere [primissima],weekend,2025-03-02,-,,Premiere
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2025-03-02,-,,Pomeriggio reality
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2025-03-30,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-03-30,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-03-30,-,,Meteo 5
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2025-03-30,-,,Soap C5
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2025-03-30,-,,Pomeriggio reality
-publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-03-30,-,,Sabato 1
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-05-04,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-05-04,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2025-05-04,-,,TG4 Meridiana
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis,weekend,2025-05-04,-,,Avanti un altro Bonolis
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,weekend,2025-05-04,-,,Produzione preserale
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2025-05-04,-,,Beautiful domenica
-publitalia_listino,CAN5,Estatissima [primissima],tutti,2025-06-29,-,,Estatissima
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-06-29,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: Pressing,tutti,2025-06-29,-,,Pressing
-publitalia_listino,CAN5,Ruota della fortuna access [primissima],tutti,2025-08-31,-,,Ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-08-31,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2025-11-30,-,,Forum meridiana
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2026-01-04,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2026-01-04,-,,Sport Club
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio C5,tutti,2026-01-04,-,,Pomeriggio C5
-publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2026-01-04,-,,Aspettando Amici
-publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2026-05-03,-,,TG4 Meridiana
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2026-05-03,-,,News R4 daytime
-publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2026-06-28,-,,TG4 Meridiana
-publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2026-03-01,-,,Aspettando Amici
-publitalia_listino,CAN5,Estatissima,tutti,2024-09-01,-,,Estatissima
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2024-09-01,-,,Soap C5
-publitalia_listino,CAN5,Canale 5 show FPT,tutti,2024-12-01,-,,Canale 5 show
-publitalia_listino,CAN5,Produzione musicale FPT,tutti,2024-12-01,-,,Produzione musicale
-publitalia_listino,CAN5,Cinema 5 FPT,tutti,2024-12-01,-,,Cinema 5
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2024-12-01,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2024-12-01,-,,Soap C5
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2024-12-01,-,,Pomeriggio con I1
-publitalia_listino,CAN5,Finale Zelig,tutti,2025-01-05,-,,Finale Zelig
-publitalia_listino,CAN5,Speciale Gransera,tutti,2025-01-05,-,,Speciale Gransera
-publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-03-02,-,,Preserale 1
-publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-03-02,-,,Sabato 1
-publitalia_listino,CAN5,Show dei record,tutti,2025-05-04,-,,Show dei record
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-05-04,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-05-04,-,,Forum pomeriggio
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-08-31,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-08-31,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Sarabanda preserale,weekend,2025-08-31,-,,Sarabanda preserale
-publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-11-30,-,,Cinema 5
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-11-30,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-11-30,-,,Sport Club
-publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2025-11-30,-,,Domenica 5
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2026-01-04,-,,News R4 daytime
-publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2026-01-04,-,,Beautiful domenica
-publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2026-01-04,-,,Speciale Amici
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2026-06-28,-,,Canale 5 news
-publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2026-06-28,-,,Meteo 5
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-06-28,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2026-06-28,-,,Produzione preserale
-publitalia_listino,CAN5,Soap C5 FPT,tutti,2026-03-01,-,,Soap C5
-publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2026-03-01,-,,News R4 daytime
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-03-01,-,,Soap C5
-publitalia_listino,CAN5,Estatissima [primissima],tutti,2024-09-01,-,,Estatissima
-publitalia_listino,CAN5,Finale Canale 5 show,tutti,2024-09-01,-,,Finale Canale 5 show
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2024-09-01,-,,Pomeriggio reality
-publitalia_listino,CAN5,Finale Canale 5 show,tutti,2024-12-01,-,,Finale Canale 5 show
-publitalia_listino,CAN5,Speciale Gransera,tutti,2024-12-01,-,,Speciale Gransera
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2024-12-01,-,,Canale 5 news
-publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-01-05,-,,Cinema 5
-publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-01-05,-,,Soap C5 pomeriggio
-publitalia_listino,CAN5,Speciale Striscia,tutti,2025-03-02,-,,Speciale Striscia
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-03-02,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,Premiere [primissima],weekend,2025-03-30,-,,Premiere
-publitalia_listino,CAN5,Grande fratello FPT,tutti,2025-03-30,-,,Grande fratello
-publitalia_listino,CAN5,Speciale Striscia,weekend,2025-05-04,-,,Speciale Striscia
-publitalia_listino,CAN5,Speciale Estatissima,tutti,2025-05-04,-,,Speciale Estatissima
-publitalia_listino,CAN5,Sera 5 Produzione preserale,tutti,2025-06-29,-,,Produzione preserale
-publitalia_listino,CAN5,Premiere,weekend,2025-06-29,-,,Premiere
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,weekend,2025-06-29,-,,Produzione preserale
-publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2025-06-29,-,,Domenica 5
-publitalia_listino,CAN5,Serie C5 FPT,tutti,2025-08-31,-,,Serie C5
-publitalia_listino,CAN5,Canale 5 show FPT,tutti,2025-11-30,-,,Canale 5 show
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-11-30,-,,Canale 5 news
-publitalia_listino,CAN5,Chi vuol essere milionario saluti,tutti,2026-01-04,-,,Chi vuol essere milionario
-publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-01-04,-,,Forum meridiana
-publitalia_listino,CAN5,Amici ultime sfide,tutti,2026-05-03,-,,Amici ultime sfide
-publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-05-03,-,,Studio Sport
-publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-05-03,-,,Forum meridiana
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-06-28,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Soap C5 FPT [primissima],tutti,2026-06-28,-,,Soap C5
-publitalia_listino,CAN5,Soap C5 FPT [primissima],tutti,2026-03-01,-,,Soap C5
-publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2026-03-01,-,,(di cui Canale 5 news - Tgcom)
-publitalia_listino,CAN5,NEWS E SPORT: TG4 meridiana,tutti,2026-03-01,-,,TG4 meridiana
-publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-03-01,-,,Forum meridiana
-publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2026-03-01,-,,Domenica 5
-publitalia_listino,CAN5,ENTERTAINMENT: Mezzogiorno 1,tutti,2024-09-01,-,,Mezzogiorno 1
-publitalia_listino,CAN5,Speciale Striscia,weekend,2024-12-01,-,,Speciale Striscia
-publitalia_listino,CAN5,Produzione musicale,tutti,2024-12-01,-,,Produzione musicale
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-01-05,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2025-01-05,-,,Produzione preserale
-publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2025-01-05,-,,Aspettando Amici
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2025-01-05,-,,Pomeriggio con I1
-publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2025-03-02,-,,Comics Top
-publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-05-04,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-06-29,-,,Canale 5 news
-publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2025-06-29,-,,Pomeriggio con I1
-publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-06-29,-,,Preserale 1
-publitalia_listino,CAN5,Speciale ruota della fortuna access,tutti,2025-08-31,-,,Speciale ruota della fortuna access
-publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2025-08-31,-,,Tg4 meridiana
-publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2025-11-30,-,,TG5 Sera-Meteo
-publitalia_listino,CAN5,Produzione musicale FPT [primissima],tutti,2025-11-30,-,,Produzione musicale
 publitalia_listino,CAN5,Chi vuol essere milionario FPT,tutti,2026-01-04,-,,Chi vuol essere milionario
 publitalia_listino,CAN5,Speciale Gransera,tutti,2026-01-04,-,,Speciale Gransera
 publitalia_listino,CAN5,Canale 5 show,tutti,2026-05-03,-,,Canale 5 show
@@ -480,6 +510,87 @@ publitalia_listino,CAN5,Produzione musicale FPT,tutti,2025-11-30,-,,Produzione m
 publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-11-30,-,,Canale 5 news
 publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2025-11-30,-,,Primo pomeriggio
 publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2025-11-30,-,,Speciale Amici
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-01-04,-,,Studio Sport
+publitalia_listino,CAN5,NEWS E SPORT: TG4 meridiana,tutti,2026-01-04,-,,TG4 meridiana
+publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2026-05-03,-,,Domenica 5
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2026-03-01,-,,Canale 5 news
+publitalia_listino,CAN5,Estatissima [primissima],weekend,2024-09-01,-,,Estatissima
+publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2024-09-01,-,,Tg4 meridiana
+publitalia_listino,CAN5,Speciale Striscia promozione,tutti,2025-01-05,-,,Speciale Striscia
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-01-05,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2025-01-05,-,,Pomeriggio reality
+publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2025-01-05,-,,Speciale Amici
+publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2025-01-05,-,,Comics Top
+publitalia_listino,CAN5,Amici ultime sfide,tutti,2025-03-02,-,,Amici ultime sfide
+publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-03-02,-,,Forum pomeriggio
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-03-30,-,,Canale 5 news
+publitalia_listino,CAN5,Estatissima [primissima],weekend,2025-05-04,-,,Estatissima
+publitalia_listino,CAN5,Serie C5 FPT [primissima],tutti,2025-05-04,-,,Serie C5
+publitalia_listino,CAN5,Canale 5 show,tutti,2025-06-29,-,,Canale 5 show
+publitalia_listino,CAN5,Serie C5 FPT,tutti,2025-06-29,-,,Serie C5
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-08-31,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-08-31,-,,Meteo 5
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful Domenica,tutti,2025-08-31,-,,Beautiful Domenica
+publitalia_listino,CAN5,Ruota della fortuna access,tutti,2026-01-04,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Speciale Ruota della fortuna access promozione,tutti,2026-01-04,-,,Speciale Ruota della fortuna access
+publitalia_listino,CAN5,Canale 5 show FPT [primissima],tutti,2026-05-03,-,,Canale 5 show
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2026-05-03,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,Speciale Ruota della fortuna access,tutti,2026-06-28,-,,Speciale Ruota della fortuna access
+publitalia_listino,CAN5,Ruota della fortuna access,tutti,2026-06-28,-,,Ruota della fortuna access
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-03-01,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Speciale Estatissima,tutti,2024-09-01,-,,Speciale Estatissima
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2024-09-01,-,,Sport Club
+publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2024-09-01,-,,Comics Top
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2024-12-01,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2024-12-01,-,,Meteo 5
+publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2024-12-01,-,,Aspettando Amici
+publitalia_listino,CAN5,Speciale Striscia,tutti,2025-01-05,-,,Speciale Striscia
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-01-05,-,,Sport Club
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2025-03-02,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2025-03-02,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-03-02,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful Domenica,tutti,2025-03-02,-,,Beautiful Domenica
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-03-30,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Grande fratello,tutti,2025-03-30,-,,Grande fratello
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2025-03-30,-,,News R4 daytime
+publitalia_listino,CAN5,Sera 5 Produzione preserale,tutti,2025-05-04,-,,Produzione preserale
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-05-04,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2025-05-04,-,,Produzione preserale
+publitalia_listino,CAN5,ENTERTAINMENT: Comics,tutti,2025-05-04,-,,Comics
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2025-06-29,-,,Produzione preserale
+publitalia_listino,CAN5,Produzione musicale,tutti,2025-08-31,-,,Produzione musicale
+publitalia_listino,CAN5,Speciale Gransera,tutti,2025-08-31,-,,Speciale Gransera
+publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-08-31,-,,Cinema 5
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2026-01-04,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2026-01-04,-,,Sport Club
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio C5,tutti,2026-01-04,-,,Pomeriggio C5
+publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2026-01-04,-,,Aspettando Amici
+publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2026-05-03,-,,TG4 Meridiana
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2026-05-03,-,,News R4 daytime
+publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2026-06-28,-,,TG4 Meridiana
+publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2026-03-01,-,,Aspettando Amici
+publitalia_listino,CAN5,Estatissima,tutti,2024-09-01,-,,Estatissima
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2024-09-01,-,,Soap C5
+publitalia_listino,CAN5,Canale 5 show FPT,tutti,2024-12-01,-,,Canale 5 show
+publitalia_listino,CAN5,Produzione musicale FPT,tutti,2024-12-01,-,,Produzione musicale
+publitalia_listino,CAN5,Cinema 5 FPT,tutti,2024-12-01,-,,Cinema 5
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2024-12-01,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2024-12-01,-,,Soap C5
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2024-12-01,-,,Pomeriggio con I1
+publitalia_listino,CAN5,Finale Zelig,tutti,2025-01-05,-,,Finale Zelig
+publitalia_listino,CAN5,Speciale Gransera,tutti,2025-01-05,-,,Speciale Gransera
+publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-03-02,-,,Preserale 1
+publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-03-02,-,,Sabato 1
+publitalia_listino,CAN5,Show dei record,tutti,2025-05-04,-,,Show dei record
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-05-04,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-05-04,-,,Forum pomeriggio
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-08-31,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-08-31,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Sarabanda preserale,weekend,2025-08-31,-,,Sarabanda preserale
+publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-11-30,-,,Cinema 5
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-11-30,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: Sport Club,tutti,2025-11-30,-,,Sport Club
+publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2025-11-30,-,,Domenica 5
 publitalia_listino,CAN5,Speciale Ruota della fortuna access,weekend,2026-01-04,-,,Speciale Ruota della fortuna access
 publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2026-01-04,-,,Speciale Gransera
 publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2026-01-04,-,,Canale 5 news
@@ -517,25 +628,207 @@ publitalia_listino,CAN5,Speciale Access C5,weekend,2025-11-30,-,,Speciale Access
 publitalia_listino,CAN5,Produzione musicale saluti,tutti,2025-11-30,-,,Produzione musicale
 publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-11-30,-,,(di cui Canale 5 news - Tgcom)
 publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-11-30,-,,Meteo 5
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-03-30,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-01-04,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis,tutti,2025-03-30,-,,Avanti un altro Bonolis
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-05-03,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,Ruota della fortuna access promozione [primissima],tutti,2026-01-04,-,,Ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2026-01-04,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,Speciale Ruota della fortuna,weekend,2026-05-03,-,,Speciale Ruota della fortuna
+publitalia_listino,CAN5,Canale 5 show saluti,tutti,2026-05-03,-,,Canale 5 show
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio C5,tutti,2026-05-03,-,,Pomeriggio C5
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],tutti,2026-06-28,-,,Ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: Pressing,tutti,2026-06-28,-,,Pressing
+publitalia_listino,CAN5,Speciale Ruota della fortuna access,weekend,2026-03-01,-,,Speciale Ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-03-01,-,,Studio Sport
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2024-09-01,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2024-09-01,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2024-12-01,-,,Sabato 1
+publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-01-05,-,,Sabato 1
+publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-03-02,-,,Speciale Gransera
+publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-03-30,-,,Preserale 1
+publitalia_listino,CAN5,ENTERTAINMENT: Forum pomeriggio,tutti,2025-03-30,-,,Forum pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2025-05-04,-,,Pomeriggio con I1
+publitalia_listino,CAN5,Estatissima,tutti,2025-06-29,-,,Estatissima
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-06-29,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2025-08-31,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Produzione musicale,tutti,2025-11-30,-,,Produzione musicale
+publitalia_listino,CAN5,Aspettando Capodanno C5,tutti,2025-11-30,-,,Aspettando Capodanno C5
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2025-11-30,-,,News R4 daytime
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con Canale 5,tutti,2025-11-30,-,,Pomeriggio con Canale 5
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2026-01-04,-,,News R4 daytime
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2026-01-04,-,,Beautiful domenica
+publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2026-01-04,-,,Speciale Amici
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)** [primissima],tutti,2026-06-28,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2026-06-28,-,,Meteo 5
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-06-28,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2026-06-28,-,,Produzione preserale
+publitalia_listino,CAN5,Soap C5 FPT,tutti,2026-03-01,-,,Soap C5
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2026-03-01,-,,News R4 daytime
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-03-01,-,,Soap C5
+publitalia_listino,CAN5,Estatissima [primissima],tutti,2024-09-01,-,,Estatissima
+publitalia_listino,CAN5,Finale Canale 5 show,tutti,2024-09-01,-,,Finale Canale 5 show
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2024-09-01,-,,Pomeriggio reality
+publitalia_listino,CAN5,Finale Canale 5 show,tutti,2024-12-01,-,,Finale Canale 5 show
+publitalia_listino,CAN5,Speciale Gransera,tutti,2024-12-01,-,,Speciale Gransera
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2024-12-01,-,,Canale 5 news
+publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-01-05,-,,Cinema 5
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2025-01-05,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,Speciale Striscia,tutti,2025-03-02,-,,Speciale Striscia
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-03-02,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,Premiere [primissima],weekend,2025-03-30,-,,Premiere
+publitalia_listino,CAN5,Grande fratello FPT,tutti,2025-03-30,-,,Grande fratello
+publitalia_listino,CAN5,Speciale Striscia,weekend,2025-05-04,-,,Speciale Striscia
+publitalia_listino,CAN5,Speciale Estatissima,tutti,2025-05-04,-,,Speciale Estatissima
+publitalia_listino,CAN5,Sera 5 Produzione preserale,tutti,2025-06-29,-,,Produzione preserale
+publitalia_listino,CAN5,Premiere,weekend,2025-06-29,-,,Premiere
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,weekend,2025-06-29,-,,Produzione preserale
+publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2025-06-29,-,,Domenica 5
+publitalia_listino,CAN5,Serie C5 FPT,tutti,2025-08-31,-,,Serie C5
+publitalia_listino,CAN5,Canale 5 show FPT,tutti,2025-11-30,-,,Canale 5 show
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-11-30,-,,Canale 5 news
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],tutti,2026-01-04,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Chi vuol essere milionario,tutti,2026-01-04,-,,Chi vuol essere milionario
+publitalia_listino,CAN5,Soap C5 FPT,tutti,2026-01-04,-,,Soap C5
+publitalia_listino,CAN5,Cinema 5 FPT,tutti,2026-01-04,-,,Cinema 5
+publitalia_listino,CAN5,News 5 FPT,tutti,2026-01-04,-,,News 5
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2026-01-04,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-05-03,-,,Soap C5
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2026-06-28,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2026-06-28,-,,Soap C5
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2026-03-01,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Amici ultime sfide,tutti,2026-03-01,-,,Amici ultime sfide
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2026-03-01,-,,Meteo 5
+publitalia_listino,CAN5,Estatissima,weekend,2024-09-01,-,,Estatissima
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2024-09-01,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: The wall,weekend,2024-09-01,-,,The wall
+publitalia_listino,CAN5,Canale 5 show FPT [primissima],tutti,2024-12-01,-,,Canale 5 show
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2024-12-01,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2024-12-01,-,,Primo pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: Speciale Amici,tutti,2024-12-01,-,,Speciale Amici
+publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2024-12-01,-,,Comics Top
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-01-05,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2025-01-05,-,,Primo pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: Comics,tutti,2025-03-02,-,,Comics
+publitalia_listino,CAN5,Cinema 5 FPT,tutti,2025-03-30,-,,Cinema 5
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-03-30,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Comics,tutti,2025-03-30,-,,Comics
+publitalia_listino,CAN5,ENTERTAINMENT: Late noon,tutti,2025-03-30,-,,Late noon
+publitalia_listino,CAN5,ENTERTAINMENT: Primo pomeriggio,tutti,2025-05-04,-,,Primo pomeriggio
+publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-06-29,-,,Sabato 1
+publitalia_listino,CAN5,Speciale Gransera [primissima],tutti,2025-08-31,-,,Speciale Gransera
+publitalia_listino,CAN5,News 5 FPT,tutti,2025-08-31,-,,News 5
+publitalia_listino,CAN5,NEWS E SPORT: News R4 daytime,tutti,2025-08-31,-,,News R4 daytime
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-11-30,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Canale 5 show FPT [primissima],tutti,2025-11-30,-,,Canale 5 show
+publitalia_listino,CAN5,Produzione C5,tutti,2025-11-30,-,,Produzione C5
+publitalia_listino,CAN5,Speciale Gransera,tutti,2025-11-30,-,,Speciale Gransera
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2025-11-30,-,,Beautiful domenica
+publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2025-11-30,-,,Aspettando Amici
+publitalia_listino,CAN5,Speciale Ruota della fortuna access,tutti,2026-01-04,-,,Speciale Ruota della fortuna access
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],weekend,2026-01-04,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Ruota della fortuna access,weekend,2026-01-04,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Soap C5,tutti,2026-01-04,-,,Soap C5
+publitalia_listino,CAN5,Ruota della fortuna access promozione,tutti,2026-01-04,-,,Ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2026-01-04,-,,Meteo 5
+publitalia_listino,CAN5,Soap C5,tutti,2026-05-03,-,,Soap C5
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2026-05-03,-,,Beautiful domenica
+publitalia_listino,CAN5,Ruota della fortuna access,weekend,2026-06-28,-,,Ruota della fortuna access
+publitalia_listino,CAN5,Speciale Gransera,tutti,2026-06-28,-,,Speciale Gransera
+publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-06-28,-,,Forum meridiana
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5 pomeriggio,tutti,2026-06-28,-,,Soap C5 pomeriggio
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2024-09-01,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2024-09-01,-,,Preserale 1
+publitalia_listino,CAN5,Speciale Striscia,tutti,2024-12-01,-,,Speciale Striscia
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2024-12-01,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2024-12-01,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Planet 1,tutti,2024-12-01,-,,Planet 1
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-01-05,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Premiere promozione [primissima],weekend,2025-01-05,-,,Premiere
+publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-01-05,-,,Preserale 1
+publitalia_listino,CAN5,Premiere [primissima],weekend,2025-03-02,-,,Premiere
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2025-03-02,-,,Pomeriggio reality
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2025-03-30,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-03-30,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,NEWS E SPORT: Meteo 5,tutti,2025-03-30,-,,Meteo 5
+publitalia_listino,CAN5,ENTERTAINMENT: Soap C5,tutti,2025-03-30,-,,Soap C5
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio reality,tutti,2025-03-30,-,,Pomeriggio reality
+publitalia_listino,CAN5,ENTERTAINMENT: Sabato 1,tutti,2025-03-30,-,,Sabato 1
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-05-04,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2025-05-04,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,NEWS E SPORT: TG4 Meridiana,tutti,2025-05-04,-,,TG4 Meridiana
+publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis,weekend,2025-05-04,-,,Avanti un altro Bonolis
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,weekend,2025-05-04,-,,Produzione preserale
+publitalia_listino,CAN5,ENTERTAINMENT: Beautiful domenica,tutti,2025-05-04,-,,Beautiful domenica
+publitalia_listino,CAN5,Estatissima [primissima],tutti,2025-06-29,-,,Estatissima
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom),tutti,2025-06-29,-,,Canale 5 news
+publitalia_listino,CAN5,NEWS E SPORT: Pressing,tutti,2025-06-29,-,,Pressing
+publitalia_listino,CAN5,Ruota della fortuna access [primissima],tutti,2025-08-31,-,,Ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2025-08-31,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2025-11-30,-,,Forum meridiana
+publitalia_listino,CAN5,Chi vuol essere milionario saluti,tutti,2026-01-04,-,,Chi vuol essere milionario
+publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-01-04,-,,Forum meridiana
+publitalia_listino,CAN5,Amici ultime sfide,tutti,2026-05-03,-,,Amici ultime sfide
+publitalia_listino,CAN5,NEWS E SPORT: Studio Sport,tutti,2026-05-03,-,,Studio Sport
+publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-05-03,-,,Forum meridiana
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2026-06-28,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Soap C5 FPT [primissima],tutti,2026-06-28,-,,Soap C5
+publitalia_listino,CAN5,Soap C5 FPT [primissima],tutti,2026-03-01,-,,Soap C5
+publitalia_listino,CAN5,NEWS E SPORT: (di cui Canale 5 news - Tgcom) [primissima],tutti,2026-03-01,-,,(di cui Canale 5 news - Tgcom)
+publitalia_listino,CAN5,NEWS E SPORT: TG4 meridiana,tutti,2026-03-01,-,,TG4 meridiana
+publitalia_listino,CAN5,ENTERTAINMENT: Forum meridiana,tutti,2026-03-01,-,,Forum meridiana
+publitalia_listino,CAN5,ENTERTAINMENT: Domenica 5,tutti,2026-03-01,-,,Domenica 5
+publitalia_listino,CAN5,ENTERTAINMENT: Mezzogiorno 1,tutti,2024-09-01,-,,Mezzogiorno 1
+publitalia_listino,CAN5,Speciale Striscia,weekend,2024-12-01,-,,Speciale Striscia
+publitalia_listino,CAN5,Produzione musicale,tutti,2024-12-01,-,,Produzione musicale
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-01-05,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Produzione preserale,tutti,2025-01-05,-,,Produzione preserale
+publitalia_listino,CAN5,ENTERTAINMENT: Aspettando Amici,tutti,2025-01-05,-,,Aspettando Amici
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2025-01-05,-,,Pomeriggio con I1
+publitalia_listino,CAN5,ENTERTAINMENT: Comics Top,tutti,2025-03-02,-,,Comics Top
+publitalia_listino,CAN5,TG5 Sera-Meteo,tutti,2025-05-04,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Canale 5 news (TZ NW)**,tutti,2025-06-29,-,,Canale 5 news
+publitalia_listino,CAN5,ENTERTAINMENT: Pomeriggio con I1,tutti,2025-06-29,-,,Pomeriggio con I1
+publitalia_listino,CAN5,ENTERTAINMENT: Preserale 1,tutti,2025-06-29,-,,Preserale 1
+publitalia_listino,CAN5,Speciale ruota della fortuna access,tutti,2025-08-31,-,,Speciale ruota della fortuna access
+publitalia_listino,CAN5,NEWS E SPORT: Tg4 meridiana,tutti,2025-08-31,-,,Tg4 meridiana
+publitalia_listino,CAN5,TG5 Sera-Meteo,weekend,2025-11-30,-,,TG5 Sera-Meteo
+publitalia_listino,CAN5,Produzione musicale FPT [primissima],tutti,2025-11-30,-,,Produzione musicale
 publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-06-28,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,Sera 5 Avanti un altro Bonolis,weekend,2025-08-31,-,,Avanti un altro Bonolis
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-05-04,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-03-01,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,Sera 5 Avanti un altro Bonolis,weekend,2025-03-30,-,,Avanti un altro Bonolis
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-06-29,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2024-12-01,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis,weekend,2025-08-31,-,,Avanti un altro Bonolis
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-11-30,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-03-02,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-01-05,-,,Studio Aperto Meteo
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis,weekend,2025-03-30,-,,Avanti un altro Bonolis
-publitalia_listino,CAN5,ENTERTAINMENT: Avanti un altro Bonolis,tutti,2025-03-02,-,,Avanti un altro Bonolis
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2025-03-30,-,,Uomini e Donne Finale
 publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-08-31,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,Finale La Talpa,tutti,2024-12-01,-,,Finale La Talpa
+publitalia_listino,CAN5,TEMPTATION ISLAND ALL (1 SPOT CANALE + SPOT LA5) [primissima],tutti,2026-06-28,-,,TEMPTATION ISLAND ALL (1 SPOT CANALE + SPOT LA5)
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-06-29,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-03-01,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-03-02,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,The couple nomination,tutti,2025-05-04,-,,The couple nomination
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2025-11-30,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,Finale Io canto,tutti,2024-09-01,-,,Finale Io canto
+publitalia_listino,CAN5,Finale C'è posta per te,tutti,2025-01-05,-,,Finale C'è posta per te
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-05-04,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,Finale La Talpa,tutti,2024-09-01,-,,Finale La Talpa
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2024-12-01,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2024-12-01,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,Finale Grande fratello,tutti,2024-12-01,-,,Finale Grande fratello
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-03-30,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2025-01-05,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-01-05,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2025-11-30,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,Finale Grande fratello,tutti,2025-01-05,-,,Finale Grande fratello
+publitalia_listino,CAN5,C'è posta per te ultime storie,tutti,2025-03-02,-,,C'è posta per te ultime storie
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2024-09-01,-,,Uomini e Donne Finale
 publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2024-09-01,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,Finale Grande fratello,tutti,2024-09-01,-,,Finale Grande fratello
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2026-01-04,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,Grande fratello nomination,tutti,2025-03-02,-,,Grande fratello nomination
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2026-05-03,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-05-03,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2025-08-31,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,Grande fratello nomination,tutti,2025-08-31,-,,Grande fratello nomination
+publitalia_listino,CAN5,NEWS E SPORT: Studio Aperto Meteo,tutti,2026-01-04,-,,Studio Aperto Meteo
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2026-03-01,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2025-03-02,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,Grande fratello nomination,tutti,2025-11-30,-,,Grande fratello nomination
+publitalia_listino,CAN5,The couple nomination,tutti,2025-03-30,-,,The couple nomination
+publitalia_listino,CAN5,ENTERTAINMENT: Uomini e Donne Finale,tutti,2025-05-04,-,,Uomini e Donne Finale
+publitalia_listino,CAN5,Finale Temptation island,tutti,2024-09-01,-,,Finale Temptation island
 publitalia_listino,ITA1,Italia 1 show promozione FPT,tutti,2026-05-03,-,,Italia 1 show
 publitalia_listino,ITA1,INLOGO: Amici finale,tutti,2026-05-03,-,,Amici finale
 publitalia_listino,ITA1,Premiere,tutti,2024-09-01,-,,Premiere
@@ -559,17 +852,16 @@ publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-05-04,-,,P
 publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-06-29,-,,Italia 1 Show
 publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-06-29,-,,Prime Time Family
 publitalia_listino,ITA1,Speciale Prime time,tutti,2025-11-30,-,,Speciale Prime time
-publitalia_listino,ITA1,Speciale Prime Time,tutti,2026-01-04,-,,Speciale Prime Time
-publitalia_listino,ITA1,INLOGO: Italia 1 show,tutti,2026-03-01,-,,Italia 1 show
-publitalia_listino,ITA1,Finale Le Iene Show,tutti,2024-09-01,-,,Finale Le Iene Show
-publitalia_listino,ITA1,Speciale Cinema 1 Natale,tutti,2024-12-01,-,,Speciale Cinema 1 Natale
-publitalia_listino,ITA1,Cinema 1 Natale FPT [primissima],tutti,2024-12-01,-,,Cinema 1 Natale
-publitalia_listino,ITA1,Premiere,tutti,2025-01-05,-,,Premiere
-publitalia_listino,ITA1,INLOGO: Amici finale,tutti,2025-05-04,-,,Amici finale
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-06-29,-,,Prime Time 2
-publitalia_listino,ITA1,INLOGO: Serie C5 FPT,tutti,2025-06-29,-,,Serie C5
-publitalia_listino,ITA1,INLOGO: Le Iene Speciale FPT,tutti,2025-06-29,-,,Le Iene Speciale
-publitalia_listino,ITA1,Prime Time 2,tutti,2025-08-31,-,,Prime Time 2
+publitalia_listino,ITA1,Prime Time Family promozione FPT,tutti,2026-01-04,-,,Prime Time Family
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute chi vuol essere milionario,tutti,2026-01-04,-,,chi vuol essere milionario
+publitalia_listino,ITA1,Prime time family FPT,tutti,2026-05-03,-,,Prime time family
+publitalia_listino,ITA1,INLOGO: Italia 1 Show promozione,tutti,2026-05-03,-,,Italia 1 Show
+publitalia_listino,ITA1,Speciale Prime time,tutti,2024-12-01,-,,Speciale Prime time
+publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-03-02,-,,Aspettando Le Iene Show
+publitalia_listino,ITA1,Premiere,tutti,2025-03-30,-,,Premiere
+publitalia_listino,ITA1,Prime Time 2,tutti,2025-06-29,-,,Prime Time 2
+publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2025-08-31,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime time family FPT [primissima],tutti,2025-11-30,-,,Prime time family
 publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2026-01-04,-,,Prime Time 2
 publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Ruota della fortuna access promozione,tutti,2026-01-04,-,,Ruota della fortuna access
 publitalia_listino,ITA1,INLOGO: Soap C5,tutti,2026-01-04,-,,Soap C5
@@ -586,112 +878,17 @@ publitalia_listino,ITA1,Premiere,weekend,2025-06-29,-,,Premiere
 publitalia_listino,ITA1,Sarabanda,tutti,2025-06-29,-,,Sarabanda
 publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2025-08-31,-,,Produzione musicale
 publitalia_listino,ITA1,INLOGO: Produzione C5,tutti,2025-11-30,-,,Produzione C5
-publitalia_listino,ITA1,Prime Time Family promozione FPT [primissima],tutti,2026-01-04,-,,Prime Time Family
-publitalia_listino,ITA1,Italia 1 show FPT,tutti,2026-03-01,-,,Italia 1 show
-publitalia_listino,ITA1,INLOGO: Soap C5,tutti,2026-03-01,-,,Soap C5
-publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-01-05,-,,Italia 1 Show
-publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2025-01-05,-,,Italia 1 Show
-publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-05-04,-,,Italia 1 Show
-publitalia_listino,ITA1,Italia 1 Show,tutti,2025-05-04,-,,Italia 1 Show
-publitalia_listino,ITA1,Prime Time Family FPT,tutti,2025-05-04,-,,Prime Time Family
-publitalia_listino,ITA1,Spec.Prime Time,tutti,2025-08-31,-,,Spec.Prime Time
-publitalia_listino,ITA1,INLOGO: Chicago,tutti,2025-08-31,-,,Chicago
-publitalia_listino,ITA1,Prime time family FPT,tutti,2025-11-30,-,,Prime time family
-publitalia_listino,ITA1,Prime Time Family promozione FPT,tutti,2026-01-04,-,,Prime Time Family
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute chi vuol essere milionario,tutti,2026-01-04,-,,chi vuol essere milionario
-publitalia_listino,ITA1,Prime time family FPT,tutti,2026-05-03,-,,Prime time family
-publitalia_listino,ITA1,INLOGO: Italia 1 Show promozione,tutti,2026-05-03,-,,Italia 1 Show
-publitalia_listino,ITA1,Speciale Prime time,tutti,2024-12-01,-,,Speciale Prime time
-publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-03-02,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Premiere,tutti,2025-03-30,-,,Premiere
-publitalia_listino,ITA1,Prime Time 2,tutti,2025-06-29,-,,Prime Time 2
-publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2025-08-31,-,,Italia 1 Show
-publitalia_listino,ITA1,Prime time family FPT [primissima],tutti,2025-11-30,-,,Prime time family
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2024-09-01,-,,Prime Time 2
-publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-01-05,-,,Italia 1 Show
-publitalia_listino,ITA1,Prime Time 2 promozione,tutti,2025-01-05,-,,Prime Time 2
-publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-03-02,-,,Prime Time Family
-publitalia_listino,ITA1,Sarabanda FPT,tutti,2025-06-29,-,,Sarabanda
-publitalia_listino,ITA1,Prime Time Family FPT,tutti,2025-06-29,-,,Prime Time Family
-publitalia_listino,ITA1,INLOGO: Produzione musicale I1 FPT,tutti,2025-06-29,-,,Produzione musicale I1
-publitalia_listino,ITA1,Prime Time Family FPT,tutti,2026-01-04,-,,Prime Time Family
-publitalia_listino,ITA1,Italia 1 show FPT,tutti,2026-05-03,-,,Italia 1 show
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Italia 1 show,tutti,2026-03-01,-,,Italia 1 show
-publitalia_listino,ITA1,Spec.Prime Time,tutti,2024-09-01,-,,Spec.Prime Time
-publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2024-09-01,-,,Italia 1 Show
-publitalia_listino,ITA1,Prime time family FPT [primissima],tutti,2024-12-01,-,,Prime time family
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2024-12-01,-,,Prime Time 2
-publitalia_listino,ITA1,Premiere promozione,tutti,2025-01-05,-,,Premiere
-publitalia_listino,ITA1,Prime Time 2 promozione [primissima],tutti,2025-01-05,-,,Prime Time 2
-publitalia_listino,ITA1,Premiere,weekend,2025-03-02,-,,Premiere
-publitalia_listino,ITA1,Premiere,weekend,2025-03-30,-,,Premiere
-publitalia_listino,ITA1,Speciale Prime Time,tutti,2025-03-30,-,,Speciale Prime Time
-publitalia_listino,ITA1,Premiere,tutti,2025-05-04,-,,Premiere
-publitalia_listino,ITA1,Speciale Prime Time,tutti,2025-05-04,-,,Speciale Prime Time
-publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-06-29,-,,Italia 1 Show
-publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-06-29,-,,Le Iene Speciale
-publitalia_listino,ITA1,Cinema 1 Natale FPT,tutti,2025-11-30,-,,Cinema 1 Natale
-publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2026-01-04,-,,Prime Time Family
-publitalia_listino,ITA1,Prime Time 2 promozione,tutti,2026-01-04,-,,Prime Time 2
-publitalia_listino,ITA1,Prime time 2,tutti,2026-05-03,-,,Prime time 2
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Italia 1 show,tutti,2026-05-03,-,,Italia 1 show
-publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2024-09-01,-,,Italia 1 Show
-publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2024-12-01,-,,Produzione musicale
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-01-05,-,,Prime Time 2
-publitalia_listino,ITA1,Prime Time Family promozione FPT [primissima],tutti,2025-01-05,-,,Prime Time Family
-publitalia_listino,ITA1,Premiere,weekend,2025-05-04,-,,Premiere
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-05-04,-,,Prime Time 2
-publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2025-05-04,-,,Produzione musicale
-publitalia_listino,ITA1,Chicago FPT [primissima],tutti,2025-08-31,-,,Chicago
-publitalia_listino,ITA1,Prime Time 2 promozione [primissima],tutti,2026-01-04,-,,Prime Time 2
-publitalia_listino,ITA1,Speciale prime time,tutti,2026-05-03,-,,Speciale prime time
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2026-03-01,-,,Prime Time 2
-publitalia_listino,ITA1,Prime Time 2,tutti,2026-03-01,-,,Prime Time 2
-publitalia_listino,ITA1,Italia 1 Show,tutti,2024-09-01,-,,Italia 1 Show
-publitalia_listino,ITA1,Cinema 1 Natale FPT,tutti,2024-12-01,-,,Cinema 1 Natale
-publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-01-05,-,,Prime Time Family
-publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-03-30,-,,Italia 1 Show
-publitalia_listino,ITA1,Italia 1 Show,tutti,2025-06-29,-,,Italia 1 Show
-publitalia_listino,ITA1,Speciale Prime Time,tutti,2025-06-29,-,,Speciale Prime Time
-publitalia_listino,ITA1,INLOGO: Canale 5 show FPT,tutti,2025-06-29,-,,Canale 5 show
-publitalia_listino,ITA1,INLOGO: Italia 1 Show FPT,tutti,2025-06-29,-,,Italia 1 Show
-publitalia_listino,ITA1,Speciale Cinema 1 Natale,tutti,2025-11-30,-,,Speciale Cinema 1 Natale
-publitalia_listino,ITA1,Prime Time 2,tutti,2026-01-04,-,,Prime Time 2
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Canale 5 show,tutti,2026-05-03,-,,Canale 5 show
-publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2026-05-03,-,,Italia 1 Show
-publitalia_listino,ITA1,Prime Time Family FPT,tutti,2024-09-01,-,,Prime Time Family
-publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2024-09-01,-,,Produzione musicale
-publitalia_listino,ITA1,Prime Time Family promozione FPT,tutti,2025-01-05,-,,Prime Time Family
-publitalia_listino,ITA1,Prime Time Family FPT,tutti,2025-03-30,-,,Prime Time Family
-publitalia_listino,ITA1,INLOGO: Canale 5 show,tutti,2025-05-04,-,,Canale 5 show
-publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-06-29,-,,Aspettando Le Iene Speciale
-publitalia_listino,ITA1,Produzione musicale I1 FPT [primissima],tutti,2025-06-29,-,,Produzione musicale I1
-publitalia_listino,ITA1,INLOGO: Sarabanda FPT,tutti,2025-06-29,-,,Sarabanda
-publitalia_listino,ITA1,Produzione musicale I1 FPT [primissima],tutti,2025-08-31,-,,Produzione musicale I1
-publitalia_listino,ITA1,Cinema 1 Natale FPT [primissima],tutti,2025-11-30,-,,Cinema 1 Natale
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-11-30,-,,Prime Time 2
-publitalia_listino,ITA1,INLOGO: Canale 5 show,tutti,2026-05-03,-,,Canale 5 show
-publitalia_listino,ITA1,Premiere,tutti,2024-12-01,-,,Premiere
-publitalia_listino,ITA1,Prime Time 2,tutti,2025-01-05,-,,Prime Time 2
-publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-03-30,-,,Italia 1 Show
-publitalia_listino,ITA1,Prime Time 2,tutti,2025-05-04,-,,Prime Time 2
-publitalia_listino,ITA1,Le Iene Speciale Saluti,tutti,2025-06-29,-,,Le Iene Speciale
-publitalia_listino,ITA1,Produzione musicale,tutti,2025-06-29,-,,Produzione musicale
-publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-08-31,-,,Italia 1 Show
-publitalia_listino,ITA1,Italia 1 Show,tutti,2025-08-31,-,,Italia 1 Show
-publitalia_listino,ITA1,Speciale Prime Time,tutti,2026-03-01,-,,Speciale Prime Time
-publitalia_listino,ITA1,Premiere,weekend,2024-09-01,-,,Premiere
-publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2024-09-01,-,,Italia 1 Show
-publitalia_listino,ITA1,INLOGO: Serie 4 Top FPT,tutti,2024-09-01,-,,Serie 4 Top
-publitalia_listino,ITA1,Premiere,weekend,2024-12-01,-,,Premiere
-publitalia_listino,ITA1,Premiere,weekend,2025-01-05,-,,Premiere
-publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2025-05-04,-,,Italia 1 Show
-publitalia_listino,ITA1,Produzione musicale I1 FPT,tutti,2025-08-31,-,,Produzione musicale I1
-publitalia_listino,ITA1,Produzione musicale I1,tutti,2025-08-31,-,,Produzione musicale I1
-publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-08-31,-,,Prime Time 2
-publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-08-31,-,,Italia 1 Show
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Italia 1 Show,tutti,2025-08-31,-,,Italia 1 Show
-publitalia_listino,ITA1,INLOGO: Canale 5 show,tutti,2025-11-30,-,,Canale 5 show
+publitalia_listino,ITA1,Speciale Prime Time,tutti,2026-01-04,-,,Speciale Prime Time
+publitalia_listino,ITA1,INLOGO: Italia 1 show,tutti,2026-03-01,-,,Italia 1 show
+publitalia_listino,ITA1,Finale Le Iene Show,tutti,2024-09-01,-,,Finale Le Iene Show
+publitalia_listino,ITA1,Speciale Cinema 1 Natale,tutti,2024-12-01,-,,Speciale Cinema 1 Natale
+publitalia_listino,ITA1,Cinema 1 Natale FPT [primissima],tutti,2024-12-01,-,,Cinema 1 Natale
+publitalia_listino,ITA1,Premiere,tutti,2025-01-05,-,,Premiere
+publitalia_listino,ITA1,INLOGO: Amici finale,tutti,2025-05-04,-,,Amici finale
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-06-29,-,,Prime Time 2
+publitalia_listino,ITA1,INLOGO: Serie C5 FPT,tutti,2025-06-29,-,,Serie C5
+publitalia_listino,ITA1,INLOGO: Le Iene Speciale FPT,tutti,2025-06-29,-,,Le Iene Speciale
+publitalia_listino,ITA1,Prime Time 2,tutti,2025-08-31,-,,Prime Time 2
 publitalia_listino,ITA1,Prime time family FPT [primissima],tutti,2026-05-03,-,,Prime time family
 publitalia_listino,ITA1,INLOGO: Produzione musicale I1,tutti,2024-09-01,-,,Produzione musicale I1
 publitalia_listino,ITA1,Finale Le Iene show,tutti,2024-12-01,-,,Finale Le Iene show
@@ -712,6 +909,38 @@ publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-05-04,-,,Itali
 publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-06-29,-,,Le Iene Speciale
 publitalia_listino,ITA1,INLOGO: Doc 4 FPT,tutti,2025-06-29,-,,Doc 4
 publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-08-31,-,,Prime Time Family
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2024-09-01,-,,Prime Time 2
+publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-01-05,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime Time 2 promozione,tutti,2025-01-05,-,,Prime Time 2
+publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-03-02,-,,Prime Time Family
+publitalia_listino,ITA1,Sarabanda FPT,tutti,2025-06-29,-,,Sarabanda
+publitalia_listino,ITA1,Prime Time Family FPT,tutti,2025-06-29,-,,Prime Time Family
+publitalia_listino,ITA1,INLOGO: Produzione musicale I1 FPT,tutti,2025-06-29,-,,Produzione musicale I1
+publitalia_listino,ITA1,Prime Time Family promozione FPT [primissima],tutti,2026-01-04,-,,Prime Time Family
+publitalia_listino,ITA1,Italia 1 show FPT,tutti,2026-03-01,-,,Italia 1 show
+publitalia_listino,ITA1,INLOGO: Soap C5,tutti,2026-03-01,-,,Soap C5
+publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-01-05,-,,Italia 1 Show
+publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2025-01-05,-,,Italia 1 Show
+publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-05-04,-,,Italia 1 Show
+publitalia_listino,ITA1,Italia 1 Show,tutti,2025-05-04,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime Time Family FPT,tutti,2025-05-04,-,,Prime Time Family
+publitalia_listino,ITA1,Spec.Prime Time,tutti,2025-08-31,-,,Spec.Prime Time
+publitalia_listino,ITA1,INLOGO: Chicago,tutti,2025-08-31,-,,Chicago
+publitalia_listino,ITA1,Prime time family FPT,tutti,2025-11-30,-,,Prime time family
+publitalia_listino,ITA1,Prime Time 2,tutti,2026-01-04,-,,Prime Time 2
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Canale 5 show,tutti,2026-05-03,-,,Canale 5 show
+publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2026-05-03,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime Time Family FPT,tutti,2024-09-01,-,,Prime Time Family
+publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2024-09-01,-,,Produzione musicale
+publitalia_listino,ITA1,Prime Time Family promozione FPT,tutti,2025-01-05,-,,Prime Time Family
+publitalia_listino,ITA1,Prime Time Family FPT,tutti,2025-03-30,-,,Prime Time Family
+publitalia_listino,ITA1,INLOGO: Canale 5 show,tutti,2025-05-04,-,,Canale 5 show
+publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-06-29,-,,Aspettando Le Iene Speciale
+publitalia_listino,ITA1,Produzione musicale I1 FPT [primissima],tutti,2025-06-29,-,,Produzione musicale I1
+publitalia_listino,ITA1,INLOGO: Sarabanda FPT,tutti,2025-06-29,-,,Sarabanda
+publitalia_listino,ITA1,Produzione musicale I1 FPT [primissima],tutti,2025-08-31,-,,Produzione musicale I1
+publitalia_listino,ITA1,Cinema 1 Natale FPT [primissima],tutti,2025-11-30,-,,Cinema 1 Natale
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-11-30,-,,Prime Time 2
 publitalia_listino,ITA1,Speciale prime time promozione,tutti,2026-05-03,-,,Speciale prime time
 publitalia_listino,ITA1,Italia 1 show FPT [primissima],tutti,2026-03-01,-,,Italia 1 show
 publitalia_listino,ITA1,Italia 1 show,tutti,2026-03-01,-,,Italia 1 show
@@ -727,41 +956,106 @@ publitalia_listino,ITA1,Produzione musicale I1 FPT,tutti,2025-06-29,-,,Produzion
 publitalia_listino,ITA1,INLOGO: L'Isola dei famosi FPT,tutti,2025-06-29,-,,L'Isola dei famosi
 publitalia_listino,ITA1,Prime Time 2,tutti,2025-11-30,-,,Prime Time 2
 publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2025-11-30,-,,Produzione musicale
-publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-03-30,-,,Aspettando Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-05-04,-,,Le Iene Speciale
+publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2026-01-04,-,,Prime Time Family
+publitalia_listino,ITA1,Prime Time 2 promozione,tutti,2026-01-04,-,,Prime Time 2
+publitalia_listino,ITA1,Prime time 2,tutti,2026-05-03,-,,Prime time 2
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Italia 1 show,tutti,2026-05-03,-,,Italia 1 show
+publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2024-09-01,-,,Italia 1 Show
+publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2024-12-01,-,,Produzione musicale
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-01-05,-,,Prime Time 2
+publitalia_listino,ITA1,Prime Time Family promozione FPT [primissima],tutti,2025-01-05,-,,Prime Time Family
+publitalia_listino,ITA1,Premiere,weekend,2025-05-04,-,,Premiere
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-05-04,-,,Prime Time 2
+publitalia_listino,ITA1,INLOGO: Produzione musicale,tutti,2025-05-04,-,,Produzione musicale
+publitalia_listino,ITA1,Chicago FPT [primissima],tutti,2025-08-31,-,,Chicago
+publitalia_listino,ITA1,INLOGO: Canale 5 show,tutti,2026-05-03,-,,Canale 5 show
+publitalia_listino,ITA1,Premiere,tutti,2024-12-01,-,,Premiere
+publitalia_listino,ITA1,Prime Time 2,tutti,2025-01-05,-,,Prime Time 2
+publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-03-30,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime Time 2,tutti,2025-05-04,-,,Prime Time 2
+publitalia_listino,ITA1,Le Iene Speciale Saluti,tutti,2025-06-29,-,,Le Iene Speciale
+publitalia_listino,ITA1,Produzione musicale,tutti,2025-06-29,-,,Produzione musicale
+publitalia_listino,ITA1,Italia 1 Show FPT [primissima],tutti,2025-08-31,-,,Italia 1 Show
+publitalia_listino,ITA1,Italia 1 Show,tutti,2025-08-31,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime Time Family FPT,tutti,2026-01-04,-,,Prime Time Family
+publitalia_listino,ITA1,Italia 1 show FPT,tutti,2026-05-03,-,,Italia 1 show
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Italia 1 show,tutti,2026-03-01,-,,Italia 1 show
+publitalia_listino,ITA1,Spec.Prime Time,tutti,2024-09-01,-,,Spec.Prime Time
+publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2024-09-01,-,,Italia 1 Show
+publitalia_listino,ITA1,Prime time family FPT [primissima],tutti,2024-12-01,-,,Prime time family
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2024-12-01,-,,Prime Time 2
+publitalia_listino,ITA1,Premiere promozione,tutti,2025-01-05,-,,Premiere
+publitalia_listino,ITA1,Prime Time 2 promozione [primissima],tutti,2025-01-05,-,,Prime Time 2
+publitalia_listino,ITA1,Premiere,weekend,2025-03-02,-,,Premiere
+publitalia_listino,ITA1,Premiere,weekend,2025-03-30,-,,Premiere
+publitalia_listino,ITA1,Speciale Prime Time,tutti,2025-03-30,-,,Speciale Prime Time
+publitalia_listino,ITA1,Premiere,tutti,2025-05-04,-,,Premiere
+publitalia_listino,ITA1,Speciale Prime Time,tutti,2025-05-04,-,,Speciale Prime Time
+publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-06-29,-,,Italia 1 Show
+publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-06-29,-,,Le Iene Speciale
+publitalia_listino,ITA1,Cinema 1 Natale FPT,tutti,2025-11-30,-,,Cinema 1 Natale
+publitalia_listino,ITA1,Prime Time 2 promozione [primissima],tutti,2026-01-04,-,,Prime Time 2
+publitalia_listino,ITA1,Speciale prime time,tutti,2026-05-03,-,,Speciale prime time
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2026-03-01,-,,Prime Time 2
+publitalia_listino,ITA1,Prime Time 2,tutti,2026-03-01,-,,Prime Time 2
+publitalia_listino,ITA1,Italia 1 Show,tutti,2024-09-01,-,,Italia 1 Show
+publitalia_listino,ITA1,Cinema 1 Natale FPT,tutti,2024-12-01,-,,Cinema 1 Natale
+publitalia_listino,ITA1,Prime Time Family FPT [primissima],tutti,2025-01-05,-,,Prime Time Family
+publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-03-30,-,,Italia 1 Show
+publitalia_listino,ITA1,Italia 1 Show,tutti,2025-06-29,-,,Italia 1 Show
+publitalia_listino,ITA1,Speciale Prime Time,tutti,2025-06-29,-,,Speciale Prime Time
+publitalia_listino,ITA1,INLOGO: Canale 5 show FPT,tutti,2025-06-29,-,,Canale 5 show
+publitalia_listino,ITA1,INLOGO: Italia 1 Show FPT,tutti,2025-06-29,-,,Italia 1 Show
+publitalia_listino,ITA1,Speciale Cinema 1 Natale,tutti,2025-11-30,-,,Speciale Cinema 1 Natale
+publitalia_listino,ITA1,Speciale Prime Time,tutti,2026-03-01,-,,Speciale Prime Time
+publitalia_listino,ITA1,Premiere,weekend,2024-09-01,-,,Premiere
+publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2024-09-01,-,,Italia 1 Show
+publitalia_listino,ITA1,INLOGO: Serie 4 Top FPT,tutti,2024-09-01,-,,Serie 4 Top
+publitalia_listino,ITA1,Premiere,weekend,2024-12-01,-,,Premiere
+publitalia_listino,ITA1,Premiere,weekend,2025-01-05,-,,Premiere
+publitalia_listino,ITA1,INLOGO: Italia 1 Show,tutti,2025-05-04,-,,Italia 1 Show
+publitalia_listino,ITA1,Produzione musicale I1 FPT,tutti,2025-08-31,-,,Produzione musicale I1
+publitalia_listino,ITA1,Produzione musicale I1,tutti,2025-08-31,-,,Produzione musicale I1
+publitalia_listino,ITA1,Prime Time 2 [primissima],tutti,2025-08-31,-,,Prime Time 2
+publitalia_listino,ITA1,Italia 1 Show FPT,tutti,2025-08-31,-,,Italia 1 Show
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Italia 1 Show,tutti,2025-08-31,-,,Italia 1 Show
+publitalia_listino,ITA1,INLOGO: Canale 5 show,tutti,2025-11-30,-,,Canale 5 show
 publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-01-05,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Le Iene speciale FPT,tutti,2026-03-01,-,,Le Iene speciale
-publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-11-30,-,,Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale saluti,tutti,2025-08-31,-,,Le Iene Speciale
-publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-05-04,-,,Aspettando Le Iene Speciale
-publitalia_listino,ITA1,Aspettando Le Iene speciale FPT,tutti,2026-03-01,-,,Aspettando Le Iene speciale
-publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-08-31,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-05-04,-,,Le Iene Speciale
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Le Iene Speciale,tutti,2025-08-31,-,,Le Iene Speciale
-publitalia_listino,ITA1,INLOGO: Le Iene Speciale,tutti,2025-08-31,-,,Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale,tutti,2025-08-31,-,,Le Iene Speciale
-publitalia_listino,ITA1,Le Iene speciale FPT [primissima],tutti,2026-03-01,-,,Le Iene speciale
-publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-11-30,-,,Aspettando Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-11-30,-,,Le Iene Speciale
-publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2026-01-04,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Finale Le Iene Show,tutti,2025-01-05,-,,Finale Le Iene Show
-publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2026-05-03,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-08-31,-,,Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale Saluti,tutti,2025-05-04,-,,Le Iene Speciale
-publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-05-04,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Le Iene speciale saluti,tutti,2026-03-01,-,,Le Iene speciale
-publitalia_listino,ITA1,INLOGO: Le Iene Speciale,tutti,2025-05-04,-,,Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale,tutti,2025-05-04,-,,Le Iene Speciale
-publitalia_listino,ITA1,Le Iene Speciale saluti,tutti,2025-11-30,-,,Le Iene Speciale
-publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Le Iene speciale,tutti,2026-03-01,-,,Le Iene speciale
-publitalia_listino,ITA1,Aspettando Le Iene show FPT,tutti,2026-03-01,-,,Aspettando Le Iene show
-publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-08-31,-,,Aspettando Le Iene Speciale
-publitalia_listino,ITA1,INLOGO: Le Iene speciale,tutti,2026-03-01,-,,Le Iene speciale
-publitalia_listino,ITA1,Le Iene speciale,tutti,2026-03-01,-,,Le Iene speciale
 publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-11-30,-,,Aspettando Le Iene Show
-publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-08-31,-,,Le Iene Speciale
-publitalia_listino,ITA1,INLOGO: Le Iene Speciale,tutti,2025-11-30,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-11-30,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene Speciale,tutti,2025-08-31,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene Speciale saluti,tutti,2025-08-31,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene speciale,tutti,2026-03-01,-,,Le Iene speciale
+publitalia_listino,ITA1,Le Iene speciale saluti,tutti,2026-03-01,-,,Le Iene speciale
+publitalia_listino,ITA1,Finale Le Iene Show,tutti,2025-01-05,-,,Finale Le Iene Show
+publitalia_listino,ITA1,INLOGO: Tu si que vales Il meglio di,tutti,2024-09-01,-,,Tu si que vales Il meglio di
+publitalia_listino,ITA1,Le Iene Speciale,tutti,2025-05-04,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene Speciale Saluti,tutti,2025-05-04,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2026-01-04,-,,Aspettando Le Iene Show
+publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-08-31,-,,Aspettando Le Iene Speciale
+publitalia_listino,ITA1,INLOGO: Le Iene Speciale,tutti,2025-08-31,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene speciale FPT,tutti,2026-03-01,-,,Aspettando Le Iene speciale
 publitalia_listino,ITA1,Le Iene Speciale,tutti,2025-11-30,-,,Le Iene Speciale
+publitalia_listino,ITA1,INLOGO: Le Iene speciale,tutti,2026-03-01,-,,Le Iene speciale
+publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2026-05-03,-,,Aspettando Le Iene Show
+publitalia_listino,ITA1,Le Iene Speciale saluti,tutti,2025-11-30,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-08-31,-,,Le Iene Speciale
+publitalia_listino,ITA1,Le Iene speciale FPT [primissima],tutti,2026-03-01,-,,Le Iene speciale
+publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-11-30,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-05-04,-,,Aspettando Le Iene Speciale
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Le Iene Speciale,tutti,2025-08-31,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-08-31,-,,Aspettando Le Iene Show
+publitalia_listino,ITA1,INLOGO: Le Iene Speciale,tutti,2025-05-04,-,,Le Iene Speciale
+publitalia_listino,ITA1,GOLDEN MINUTE: Golden minute Le Iene speciale,tutti,2026-03-01,-,,Le Iene speciale
+publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-08-31,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-03-30,-,,Aspettando Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene show FPT,tutti,2026-03-01,-,,Aspettando Le Iene show
+publitalia_listino,ITA1,Le Iene speciale FPT,tutti,2026-03-01,-,,Le Iene speciale
+publitalia_listino,ITA1,Le Iene Speciale FPT [primissima],tutti,2025-05-04,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene Speciale FPT,tutti,2025-11-30,-,,Aspettando Le Iene Speciale
+publitalia_listino,ITA1,INLOGO: Le Iene Speciale,tutti,2025-11-30,-,,Le Iene Speciale
+publitalia_listino,ITA1,Aspettando Le Iene Show FPT,tutti,2025-05-04,-,,Aspettando Le Iene Show
+publitalia_listino,ITA1,Le Iene Speciale FPT,tutti,2025-05-04,-,,Le Iene Speciale
 publitalia_listino,RETE4,Rete 4 News,tutti,2026-05-03,-,,Rete 4 News
 publitalia_listino,RETE4,Premiere,tutti,2026-06-28,-,,Premiere
 publitalia_listino,RETE4,Rete 4 News FPT,tutti,2026-06-28,-,,Rete 4 News
@@ -776,62 +1070,22 @@ publitalia_listino,RETE4,Cinema 4 FPT,tutti,2025-11-30,-,,Cinema 4
 publitalia_listino,RETE4,Premiere,tutti,2025-03-30,-,,Premiere
 publitalia_listino,RETE4,Cinema 4 FPT,tutti,2025-06-29,-,,Cinema 4
 publitalia_listino,RETE4,Seratissima 2,weekend,2025-08-31,-,,Seratissima 2
-publitalia_listino,RETE4,Seratissima 2,tutti,2026-06-28,-,,Seratissima 2
-publitalia_listino,RETE4,Doc 4 FPT,tutti,2024-09-01,-,,Doc 4
-publitalia_listino,RETE4,Premiere promozione,tutti,2025-01-05,-,,Premiere
-publitalia_listino,RETE4,Premiere,tutti,2025-03-02,-,,Premiere
-publitalia_listino,RETE4,Seratissima 2,tutti,2025-05-04,-,,Seratissima 2
+publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Italia 1 Show promozione,tutti,2026-06-28,-,,Italia 1 Show
+publitalia_listino,RETE4,Cinema 4 FPT,tutti,2024-12-01,-,,Cinema 4
+publitalia_listino,RETE4,Cinema 4 FPT,tutti,2025-05-04,-,,Cinema 4
+publitalia_listino,RETE4,News 4 FPT,tutti,2025-11-30,-,,News 4
+publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Produzione C5,tutti,2025-11-30,-,,Produzione C5
 publitalia_listino,RETE4,Seratissima 2 promozione,tutti,2026-01-04,-,,Seratissima 2
 publitalia_listino,RETE4,Seratissima 2,tutti,2024-12-01,-,,Seratissima 2
 publitalia_listino,RETE4,Seratissima 2,weekend,2025-06-29,-,,Seratissima 2
 publitalia_listino,RETE4,Premiere,tutti,2025-08-31,-,,Premiere
 publitalia_listino,RETE4,Seratissima 2,tutti,2025-08-31,-,,Seratissima 2
 publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Iene Speciale,tutti,2025-11-30,-,,Iene Speciale
-publitalia_listino,RETE4,Rete 4 News,tutti,2026-01-04,-,,Rete 4 News
-publitalia_listino,RETE4,Cinema 4 FPT,tutti,2026-06-28,-,,Cinema 4
-publitalia_listino,RETE4,Seratissima 2,weekend,2024-09-01,-,,Seratissima 2
-publitalia_listino,RETE4,Rete 4 News FPT,tutti,2025-01-05,-,,Rete 4 News
-publitalia_listino,RETE4,Seratissima 2,tutti,2025-01-05,-,,Seratissima 2
-publitalia_listino,RETE4,Seratissima 2,weekend,2025-01-05,-,,Seratissima 2
-publitalia_listino,RETE4,Seratissima 2 promozione,tutti,2025-01-05,-,,Seratissima 2
-publitalia_listino,RETE4,Premiere,tutti,2025-06-29,-,,Premiere
-publitalia_listino,RETE4,Seratissima 2,weekend,2025-11-30,-,,Seratissima 2
-publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Italia 1 Show promozione,tutti,2026-06-28,-,,Italia 1 Show
-publitalia_listino,RETE4,Cinema 4 FPT,tutti,2024-12-01,-,,Cinema 4
-publitalia_listino,RETE4,Cinema 4 FPT,tutti,2025-05-04,-,,Cinema 4
-publitalia_listino,RETE4,News 4 FPT,tutti,2025-11-30,-,,News 4
-publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Produzione C5,tutti,2025-11-30,-,,Produzione C5
-publitalia_listino,RETE4,News 4 FPT,tutti,2026-06-28,-,,News 4
-publitalia_listino,RETE4,INLOGO: Italia 1 Show,tutti,2026-06-28,-,,Italia 1 Show
-publitalia_listino,RETE4,Premiere,tutti,2026-05-03,-,,Premiere
-publitalia_listino,RETE4,INLOGO: Produzione musicale I1,tutti,2026-06-28,-,,Produzione musicale I1
-publitalia_listino,RETE4,INLOGO: Soap R4,tutti,2026-06-28,-,,Soap R4
-publitalia_listino,RETE4,News 4 FPT,tutti,2024-12-01,-,,News 4
-publitalia_listino,RETE4,Seratissima 2,weekend,2025-03-02,-,,Seratissima 2
-publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Italia 1 Show,tutti,2026-06-28,-,,Italia 1 Show
-publitalia_listino,RETE4,Cinema 4 FPT,tutti,2024-09-01,-,,Cinema 4
-publitalia_listino,RETE4,Premiere,tutti,2025-05-04,-,,Premiere
-publitalia_listino,RETE4,News 4 FPT,tutti,2025-05-04,-,,News 4
-publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Canale 5 show,tutti,2025-11-30,-,,Canale 5 show
-publitalia_listino,RETE4,Doc 4 FPT,tutti,2025-06-29,-,,Doc 4
-publitalia_listino,RETE4,Premiere promozione,tutti,2026-01-04,-,,Premiere
-publitalia_listino,RETE4,Seratissima 2,tutti,2026-05-03,-,,Seratissima 2
-publitalia_listino,RETE4,Premiere,tutti,2025-01-05,-,,Premiere
-publitalia_listino,RETE4,Seratissima 2,weekend,2025-03-30,-,,Seratissima 2
-publitalia_listino,RETE4,Cinema 4 FPT,weekend,2025-05-04,-,,Cinema 4
-publitalia_listino,RETE4,Seratissima 2,tutti,2025-11-30,-,,Seratissima 2
-publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Iene Show,tutti,2025-11-30,-,,Iene Show
-publitalia_listino,RETE4,Seratissima 2,tutti,2026-01-04,-,,Seratissima 2
-publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Produzione musicale I1,tutti,2026-06-28,-,,Produzione musicale I1
-publitalia_listino,RETE4,News 4 FPT,tutti,2024-09-01,-,,News 4
-publitalia_listino,RETE4,Rete 4 News FPT,tutti,2026-01-04,-,,Rete 4 News
-publitalia_listino,RETE4,Rete 4 News FPT,tutti,2026-05-03,-,,Rete 4 News
-publitalia_listino,RETE4,Rete 4 News,tutti,2026-06-28,-,,Rete 4 News
-publitalia_listino,RETE4,Premiere,tutti,2026-03-01,-,,Premiere
-publitalia_listino,RETE4,Serie 4 Top FPT,tutti,2024-09-01,-,,Serie 4 Top
-publitalia_listino,RETE4,Seratissima 2,tutti,2024-09-01,-,,Seratissima 2
-publitalia_listino,RETE4,Seratissima 2,tutti,2025-06-29,-,,Seratissima 2
-publitalia_listino,RETE4,Seratissima 2 estate,tutti,2025-06-29,-,,Seratissima 2 estate
+publitalia_listino,RETE4,Seratissima 2,tutti,2026-06-28,-,,Seratissima 2
+publitalia_listino,RETE4,Doc 4 FPT,tutti,2024-09-01,-,,Doc 4
+publitalia_listino,RETE4,Premiere promozione,tutti,2025-01-05,-,,Premiere
+publitalia_listino,RETE4,Premiere,tutti,2025-03-02,-,,Premiere
+publitalia_listino,RETE4,Seratissima 2,tutti,2025-05-04,-,,Seratissima 2
 publitalia_listino,RETE4,Premiere,tutti,2026-01-04,-,,Premiere
 publitalia_listino,RETE4,Soap R4,tutti,2026-06-28,-,,Soap R4
 publitalia_listino,RETE4,INLOGO: Chicago,tutti,2026-06-28,-,,Chicago
@@ -843,9 +1097,67 @@ publitalia_listino,RETE4,Seratissima 2,tutti,2026-03-01,-,,Seratissima 2
 publitalia_listino,RETE4,Premiere,tutti,2024-09-01,-,,Premiere
 publitalia_listino,RETE4,Premiere,tutti,2024-12-01,-,,Premiere
 publitalia_listino,RETE4,Seratissima estate FPT,tutti,2025-06-29,-,,Seratissima estate
+publitalia_listino,RETE4,News 4 FPT,tutti,2026-06-28,-,,News 4
+publitalia_listino,RETE4,INLOGO: Italia 1 Show,tutti,2026-06-28,-,,Italia 1 Show
+publitalia_listino,RETE4,Rete 4 News,tutti,2026-01-04,-,,Rete 4 News
+publitalia_listino,RETE4,Cinema 4 FPT,tutti,2026-06-28,-,,Cinema 4
+publitalia_listino,RETE4,Seratissima 2,weekend,2024-09-01,-,,Seratissima 2
+publitalia_listino,RETE4,Rete 4 News FPT,tutti,2025-01-05,-,,Rete 4 News
+publitalia_listino,RETE4,Seratissima 2,tutti,2025-01-05,-,,Seratissima 2
+publitalia_listino,RETE4,Seratissima 2,weekend,2025-01-05,-,,Seratissima 2
+publitalia_listino,RETE4,Seratissima 2 promozione,tutti,2025-01-05,-,,Seratissima 2
+publitalia_listino,RETE4,Premiere,tutti,2025-06-29,-,,Premiere
+publitalia_listino,RETE4,Seratissima 2,weekend,2025-11-30,-,,Seratissima 2
+publitalia_listino,RETE4,Premiere promozione,tutti,2026-01-04,-,,Premiere
+publitalia_listino,RETE4,Seratissima 2,tutti,2026-05-03,-,,Seratissima 2
+publitalia_listino,RETE4,Premiere,tutti,2025-01-05,-,,Premiere
+publitalia_listino,RETE4,Seratissima 2,weekend,2025-03-30,-,,Seratissima 2
+publitalia_listino,RETE4,Cinema 4 FPT,weekend,2025-05-04,-,,Cinema 4
+publitalia_listino,RETE4,Seratissima 2,tutti,2025-11-30,-,,Seratissima 2
+publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Iene Show,tutti,2025-11-30,-,,Iene Show
 publitalia_listino,RETE4,Soap R4 FPT,tutti,2026-06-28,-,,Soap R4
 publitalia_listino,RETE4,News 4 FPT,tutti,2025-08-31,-,,News 4
 publitalia_listino,RETE4,Premiere,tutti,2025-11-30,-,,Premiere
+publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Italia 1 Show,tutti,2026-06-28,-,,Italia 1 Show
+publitalia_listino,RETE4,Cinema 4 FPT,tutti,2024-09-01,-,,Cinema 4
+publitalia_listino,RETE4,Premiere,tutti,2025-05-04,-,,Premiere
+publitalia_listino,RETE4,News 4 FPT,tutti,2025-05-04,-,,News 4
+publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Canale 5 show,tutti,2025-11-30,-,,Canale 5 show
+publitalia_listino,RETE4,Seratissima 2,tutti,2026-01-04,-,,Seratissima 2
+publitalia_listino,RETE4,GOLDEN MINUTE: Golden minute Produzione musicale I1,tutti,2026-06-28,-,,Produzione musicale I1
+publitalia_listino,RETE4,News 4 FPT,tutti,2024-09-01,-,,News 4
+publitalia_listino,RETE4,Premiere,tutti,2026-05-03,-,,Premiere
+publitalia_listino,RETE4,INLOGO: Produzione musicale I1,tutti,2026-06-28,-,,Produzione musicale I1
+publitalia_listino,RETE4,INLOGO: Soap R4,tutti,2026-06-28,-,,Soap R4
+publitalia_listino,RETE4,News 4 FPT,tutti,2024-12-01,-,,News 4
+publitalia_listino,RETE4,Seratissima 2,weekend,2025-03-02,-,,Seratissima 2
+publitalia_listino,RETE4,Doc 4 FPT,tutti,2025-06-29,-,,Doc 4
+publitalia_listino,RETE4,Rete 4 News FPT,tutti,2026-01-04,-,,Rete 4 News
+publitalia_listino,RETE4,Rete 4 News FPT,tutti,2026-05-03,-,,Rete 4 News
+publitalia_listino,RETE4,Rete 4 News,tutti,2026-06-28,-,,Rete 4 News
+publitalia_listino,RETE4,Premiere,tutti,2026-03-01,-,,Premiere
+publitalia_listino,RETE4,Serie 4 Top FPT,tutti,2024-09-01,-,,Serie 4 Top
+publitalia_listino,RETE4,Seratissima 2,tutti,2024-09-01,-,,Seratissima 2
+publitalia_listino,RETE4,Seratissima 2,tutti,2025-06-29,-,,Seratissima 2
+publitalia_listino,RETE4,Seratissima 2 estate,tutti,2025-06-29,-,,Seratissima 2 estate
+publitalia_listino,RETE4,Finale Quarto Grado,tutti,2024-09-01,-,,Finale Quarto Grado
+publitalia_listino,RETE4,Finale Fuori dal coro,tutti,2024-12-01,-,,Finale Fuori dal coro
+publitalia_listino,RETE4,Finale Quarta Repubblica,tutti,2024-12-01,-,,Finale Quarta Repubblica
+publitalia_listino,RETE4,Finale Fuori dal Coro,tutti,2025-01-05,-,,Finale Fuori dal Coro
+publitalia_listino,RETE4,Finale Quarta Repubblica,tutti,2025-01-05,-,,Finale Quarta Repubblica
+publitalia_listino,RETE4,Finale è sempre cartabianca,tutti,2024-09-01,-,,Finale è sempre cartabianca
+publitalia_listino,RETE4,Finale Fuori dal Coro,tutti,2024-09-01,-,,Finale Fuori dal Coro
+publitalia_listino,RETE4,Finale E' sempre cartabianca,tutti,2024-12-01,-,,Finale E' sempre cartabianca
+publitalia_listino,RETE4,Finale Zona Bianca,tutti,2024-12-01,-,,Finale Zona Bianca
+publitalia_listino,RETE4,Finale E' sempre cartabianca,tutti,2025-01-05,-,,Finale E' sempre cartabianca
+publitalia_listino,RETE4,Finale Zona Bianca,tutti,2025-01-05,-,,Finale Zona Bianca
+publitalia_listino,RETE4,Finale Zona bianca,tutti,2024-09-01,-,,Finale Zona bianca
+publitalia_listino,RETE4,Finale Quarta Repubblica,tutti,2024-09-01,-,,Finale Quarta Repubblica
+publitalia_listino,RETE4,Finale Dritto e rovescio,tutti,2024-12-01,-,,Finale Dritto e rovescio
+publitalia_listino,RETE4,Finale Quarto grado,tutti,2024-12-01,-,,Finale Quarto grado
+publitalia_listino,RETE4,Finale Dritto e Rovescio,tutti,2025-01-05,-,,Finale Dritto e Rovescio
+publitalia_listino,RETE4,Finale Quarto Grado,tutti,2025-01-05,-,,Finale Quarto Grado
+publitalia_listino,RETE4,Finale Dritto e Rovescio,tutti,2024-09-01,-,,Finale Dritto e Rovescio
 rai_listino,RAI1,R1 Tg1 Mattina,tutti,2026-03-29,07:55,0111111,TG1
 rai_listino,RAI1,R1 A.M. Domenica,tutti,2026-05-31,08:55,1000000,Uno mattina estate/Check Up
 rai_listino,RAI1,R1 P.M. Sabato Start,tutti,2026-05-31,14:00,0000001,Linea Blu - Porti d'Italia
@@ -862,10 +1174,8 @@ rai_listino,RAI1,R1 Fiction Top Start,tutti,2026-03-29,21:30,0100000,Avvocato Gu
 rai_listino,RAI1,R1 David Start,tutti,2026-05-03,21:30,0000001,David di Donatello 2026
 rai_listino,RAI1,R1 Fiction Start,tutti,2026-07-21,21:30,0110000,Seriale
 rai_listino,RAI1,R1 Show Time,tutti,2026-03-29,21:40,0000011,Dalla strada al palco (R1)/intrattenimento pt r1
-rai_listino,RAI1,R1 Summer Hits Rim,tutti,2026-08-02,21:40,0000010,Summer Hits - Best of
 rai_listino,RAI1,R1 Prime Time,tutti,2025-12-21,21:55,1111010,FILM PT R1/TV MOVIE/Telethon/Ogni promessa e' debito
 rai_listino,RAI1,R1 Prime Time,tutti,2026-02-01,21:55,1011011,FILM PT R1/Speciale L'Eredita'/Battiato - Il lungo viaggio
-rai_listino,RAI1,R1 Summer Hits B Rim,tutti,2026-08-02,23:20,0000010,Summer Hits - Best of
 rai_listino,RAI1,R1 Second Pt Sabato,tutti,2025-12-21,24:00,1000000,Programma seconda serata R1
 rai_listino,RAI1,R1 Second Prime Time,tutti,2026-02-01,24:00,0110001,SPECIALE TG1/TV7/XXI Secolo
 rai_listino,RAI1,R1 Second Pt Sabato,tutti,2026-05-31,24:00,0000001,Programma seconda serata R1
@@ -889,6 +1199,7 @@ rai_listino,RAI2,R2 Mare Fuori Start,tutti,2026-03-29,21:20,0001000,Fct Mare Fuo
 rai_listino,RAI2,R2 Film,tutti,2026-06-09,21:20,1011101,TVM Nel segno del giallo/Film pt
 rai_listino,RAI2,R2 Belve Crime Start,tutti,2026-05-19,21:25,0010000,Belve crime
 rai_listino,RAI2,R2 Mare Fuori,tutti,2026-03-13,22:30,0000010,Fct Mare Fuori
+rai_listino,RAI2,R2 Collegio,tutti,2026-02-01,22:45,0010000,Il Collegio
 rai_listino,RAI2,R2 Prime Time B,tutti,2026-05-31,23:00,1111111,Fiction®/Ore 14 Sera/Solo per amore/Stasera a letto tardi/Documentario/Seriale/Formidabile Discoring
 rai_listino,RAI2,R2 Early Night,tutti,2025-12-21,25:00,1111111,PROGR. SECONDA SERA/PRG NON DEFINITO
 rai_listino,RAI2,R2 Early Night,tutti,2026-02-01,25:00,1111111,PROGR. SECONDA SERA

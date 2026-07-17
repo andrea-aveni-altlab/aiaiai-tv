@@ -46,6 +46,17 @@ def _parse_cover(text: str) -> tuple[date, date, date | None]:
     """-> (periodo_da, periodo_a, pubblicato_stampata). Formati visti:
     'Validità: 4 GENNAIO - 28 FEBBRAIO 2026' | 'Validità: 1 - 28 MARZO 2026'."""
     t = text.upper().replace("–", "-")
+    # strenne: anno esplicito su entrambi i capi ('21 DICEMBRE 2025 - 3 GENNAIO 2026')
+    m2y = re.search(r"VALIDIT[AÀ]:\s*(\d{1,2})\s+([A-ZÀ-Ù]+)\s+(\d{4})\s*-\s*"
+                    r"(\d{1,2})\s+([A-ZÀ-Ù]+)\s+(\d{4})", t)
+    if m2y:
+        d1, m1, a1, d2, m2_, a2 = m2y.groups()
+        inizio = date(int(a1), MESI[m1], int(d1))
+        fine = date(int(a2), MESI[m2_], int(d2))
+        mp = re.search(rf"AGGIORNAMENTO\s+(\d{{1,2}})\s+({_MESE_RX.upper()})\s+(\d{{4}})", t)
+        pubblicato = (date(int(mp.group(3)), MESI[mp.group(2)], int(mp.group(1)))
+                      if mp else None)
+        return inizio, fine, pubblicato
     m = re.search(r"VALIDIT[AÀ]:\s*(\d{1,2})\s*([A-ZÀ-Ù]+)?\s*-\s*(\d{1,2})\s+([A-ZÀ-Ù]+)\s+(\d{4})", t)
     if not m:
         raise ValueError(f"copertina senza Validità riconoscibile: {text[:120]!r}")
@@ -138,6 +149,19 @@ def _lattice(pg, x_left):
         pts.append((min(c["top"] for c in rows[top]), mins))
     if len(pts) < 20:
         raise ValueError(f"solo {len(pts)} etichette orario: non è la griglia attesa")
+    # due geometrie viste: (a) lattice proporzionale al tempo (doc 2026);
+    # (b) griglia A RIGHE (strenne 2025): spaziatura pixel COSTANTE tra le
+    # etichette qualunque sia la durata (06:00->06:30 come 06:40->06:50).
+    # La (b) si riconosce cosi' e usa lo snap all'etichetta, mai interpolare.
+    gaps = [t1 - t0 for (t0, _), (t1, _) in zip(pts, pts[1:])]
+    deltas = [m1 - m0 for (_, m0), (_, m1) in zip(pts, pts[1:])]
+    a_righe = (max(gaps) - min(gaps) < 3 and len(set(deltas)) > 1)
+    if a_righe:
+        assert all(d > 0 for d in deltas), "etichette non crescenti nella griglia a righe"
+
+        def t_of(y):
+            return min(pts, key=lambda p: abs(p[0] - y))[1]
+        return t_of
     for (t0, m0), (t1, m1) in zip(pts, pts[1:]):
         passo = (t1 - t0) / (m1 - m0) * 10
         assert m1 > m0 and 3 < passo < 12, \
@@ -297,6 +321,208 @@ def _celle_griglia(pg):
     return rects, grid_top, grid_bot, t_of
 
 
+# ── stime e tariffe -> previsione (sorgente='cairo_listino') ─────────────────
+# target nell'ordine di scansione: i nomi lunghi PRIMA dei loro prefissi
+# ('Res Acq 25-54' prima di 'Res.Acq.', 'ADULTI CSE' prima di 'Adulti')
+TARGET_CAIRO = [
+    (r"Res\s*Acq\s*25\s*-\s*54", "resacq_25_54", "responsabili acquisti 25-54"),
+    (r"Res\.?\s*Acq\.?", "res_acq", "responsabili acquisti"),
+    (r"Ad\.?\s*15\s*-\s*34", "15_34", "adulti 15-34"),
+    (r"ADULTI\s+CSE\s*3\.0\s*ALTA", "adulti_cse30_alta", "adulti CSE 3.0 alta"),
+    (r"Individui", "individui", "individui"),
+    (r"Adulti", "adulti", "adulti"),
+    (r"Uomini", "uomini", "uomini"),
+    (r"Donne", "donne", "donne"),
+]
+RE_RIGA_STIME = re.compile(r"^(.+?)((?:\s+\d{1,3}(?:\.\d{3})+){3,})\s*$")
+RE_RIGA_EURO = re.compile(
+    r"^(.+?)\s*€\s*([\d.]{4,})(?:\s+(?:massimo|Sconto))*(?:\s+(\d{1,3})\s*%)?\s*$")
+RE_PCT = re.compile(r"\b(\d{1,3})\s*%")
+RE_SOTTOPERIODO = re.compile(
+    rf"(\d{{1,2}})(?:\s+({_MESE_RX}))?(?:\s+(\d{{4}}))?\s*[–-]\s*"
+    rf"(\d{{1,2}})\s+({_MESE_RX})\s+(\d{{4}})", re.I)
+
+
+def _sottoperiodo_titolo(testa: str) -> tuple[date, date] | None:
+    """'4 – 31 gennaio 2026' | '5 gennaio – 1 marzo 2025' |
+    '21 dicembre 2025 – 3 gennaio 2026' -> (da, a)."""
+    m = RE_SOTTOPERIODO.search(testa)
+    if not m:
+        return None
+    g1, m1, a1, g2, m2, a2 = m.groups()
+    fine = date(int(a2), MESI[m2.upper()], int(g2))
+    inizio = date(int(a1) if a1 else int(a2),
+                  MESI[m1.upper()] if m1 else MESI[m2.upper()], int(g1))
+    if inizio > fine:
+        inizio = inizio.replace(year=fine.year - 1)
+    return inizio, fine
+
+
+def _targets_da_header(riga: str) -> list[tuple[str, str]] | None:
+    """Header 'Individui Adulti Uomini Donne ...' -> target ordinati per
+    posizione; None se la riga non è un header stime."""
+    trovati, occupato = [], []
+    for rx, tid, label in TARGET_CAIRO:
+        for m in re.finditer(rx, riga, flags=re.I):
+            if any(a < m.end() and m.start() < b for a, b in occupato):
+                continue                  # 'Adulti' dentro 'ADULTI CSE 3.0 ALTA'
+            occupato.append((m.start(), m.end()))
+            trovati.append((m.start(), tid, label))
+    if len(trovati) < 4:
+        return None
+    return [(tid, label) for _, tid, label in sorted(trovati)]
+
+
+def _righe_chars(pg) -> list[str]:
+    """Righe ricostruite dai CHARS (top/3 + gap>3.5): le pagine ruotate
+    (strenne, repliche CAIRORCS) hanno una matrice di render che spezza
+    extract_text in singole lettere — la geometria pero' e' orizzontale."""
+    per_riga = {}
+    for c in pg.chars:
+        per_riga.setdefault(round(c["top"] / 3), []).append(c)
+    out = []
+    for k in sorted(per_riga):
+        cs = sorted(per_riga[k], key=lambda c: c["x0"])
+        s = cs[0]["text"]
+        for a, b in zip(cs, cs[1:]):
+            s += (" " if b["x0"] - a["x1"] > 3.5 else "") + b["text"]
+        out.append(s)
+    return out
+
+
+def _unisci_orfane(linee: list[str]) -> list[str]:
+    """'Augias' su una riga e i suoi valori sulla successiva (arrotondamento
+    del top): si ricongiungono nome-senza-numeri + numeri-senza-nome."""
+    out, i = [], 0
+    while i < len(linee):
+        cur = linee[i].strip()
+        if (i + 1 < len(linee) and cur and re.search(r"[A-Za-z]", cur)
+                and not re.search(r"\d{1,3}(?:\.\d{3})+", cur)
+                and re.fullmatch(r"(?:\s*\d{1,3}(?:\.\d{3})+)+\s*",
+                                 linee[i + 1])):
+            out.append(cur + " " + linee[i + 1].strip())
+            i += 2
+            continue
+        out.append(cur)
+        i += 1
+    return out
+
+
+def _previsioni_cairo(pdf) -> list[dict]:
+    """Pagine 'Le stime … Tabellare' (testate × target, valori in INDIVIDUI ->
+    convertiti in migliaia: asse comune con Rai/Publitalia) e 'Listino
+    Tabellare' (€ 30'' + sconto massimo di gruppo). Le repliche ruotate
+    (letter-spaced) e le tabelle FASCE COMMERCIALI non producono righe valide
+    e si scartano da sole (guardia: >=2 righe per pagina). LA7d fuori.
+    Lo sconto è stampato UNA volta per gruppo: si assegna a ogni testata del
+    gruppo, anche a quelle già lette (retro-assegnazione)."""
+    def estrai_stime(linee, per):
+        # le tabelle FASCE COMMERCIALI sono FUORI perimetro (fasce, non
+        # testate); 'FASCIA GRUPPO NEWS' invece elenca programmi veri e resta
+        targets, pagina, in_fasce = None, [], False
+        for riga in _unisci_orfane(linee):
+            if "FASCE COMMERCIALI" in riga.upper():
+                in_fasce = True
+                continue
+            if re.match(r"^(?:TESTATE|FASCIA GRUPPO)\b", riga.strip(), re.I):
+                in_fasce = False
+            if in_fasce:
+                continue
+            nuovi = _targets_da_header(riga)
+            if nuovi:
+                targets = nuovi
+                continue
+            m = RE_RIGA_STIME.match(riga.strip())
+            if not m or targets is None:
+                continue
+            testata = m.group(1).strip()
+            valori = [int(v.replace(".", "")) for v in m.group(2).split()]
+            if len(valori) != len(targets) or len(testata) < 3 \
+                    or not re.search(r"[A-Za-z]", testata):
+                continue
+            for (tid, tlabel), v in zip(targets, valori):
+                pagina.append({
+                    "grana": "periodo", "periodo_da": per[0], "periodo_a": per[1],
+                    "rete": "LA7", "posizione": testata,
+                    "target": tid, "target_label": tlabel,
+                    "metrica": "amr_migliaia", "valore": v / 1000})
+        return pagina
+
+    def estrai_tariffe(linee, per):
+        gruppo_righe, pagina = [], []
+
+        def chiudi_gruppo(pct):
+            for r in gruppo_righe:
+                if pct is not None:
+                    pagina.append({**r, "metrica": "sconto_massimo_pct",
+                                   "valore": float(pct)})
+            gruppo_righe.clear()
+
+        pct_gruppo, in_fasce = None, False
+        for riga in linee:
+            if "FASCE COMMERCIALI" in riga.upper():
+                chiudi_gruppo(pct_gruppo)
+                pct_gruppo, in_fasce = None, True
+                continue
+            if re.match(r"^(?:TESTATE|FASCIA GRUPPO)\b", riga.strip(), re.I):
+                chiudi_gruppo(pct_gruppo)
+                pct_gruppo, in_fasce = None, False
+                continue
+            if in_fasce:
+                continue
+            m = RE_RIGA_EURO.match(riga.strip())
+            if m and re.search(r"[A-Za-z]", m.group(1)):
+                testata = re.sub(r"\s+(?:massimo|Sconto)$", "", m.group(1).strip())
+                r = {"grana": "periodo", "periodo_da": per[0], "periodo_a": per[1],
+                     "rete": "LA7", "posizione": testata,
+                     "target": "nd", "target_label": "non applicabile (prezzo)",
+                     "metrica": "tariffa_30s_eur",
+                     "valore": float(m.group(2).replace(".", ""))}
+                pagina.append(r)
+                gruppo_righe.append(r)
+                if m.group(3):
+                    pct_gruppo = int(m.group(3))
+                continue
+            mp = RE_PCT.search(riga)
+            if mp and "IVA" not in riga.upper():
+                pct_gruppo = int(mp.group(1))
+        chiudi_gruppo(pct_gruppo)
+        return pagina
+
+    righe = []
+    for pg in pdf.pages:
+        testo = pg.extract_text() or ""
+        prime_righe = [l.strip() for l in testo.split("\n")[:4]]
+        prime = " ".join(prime_righe)
+        per = _sottoperiodo_titolo(prime)
+        if per is None:
+            continue
+        if any(l.lower().startswith("le stime") for l in prime_righe) \
+                and "tabellare" in (prime + testo[:200]).lower():
+            estrai = estrai_stime
+        elif any(l.lower().startswith("listino tabellare") for l in prime_righe):
+            estrai = estrai_tariffe
+        else:
+            continue
+        # prova le righe native; se la pagina e' ruotata (extract_text la
+        # spezza in lettere) si ricade sulla ricostruzione dai chars
+        pagina = estrai(testo.split("\n"), per)
+        if len({r["posizione"] for r in pagina}) < 2:
+            pagina = estrai(_righe_chars(pg), per)
+        if len({r["posizione"] for r in pagina}) >= 2:
+            righe += pagina
+    # first-wins sulla PK di previsione: le repliche ruotate dei doc 2026
+    # duplicano le tabelle native (stesso sottoperiodo)
+    viste, uniche = set(), []
+    for r in righe:
+        k = (r["periodo_da"], r["posizione"], r["target"], r["metrica"])
+        if k in viste:
+            continue
+        viste.add(k)
+        uniche.append(r)
+    return uniche
+
+
 def parse_griglia(path: Path, conn) -> dict:
     """Parsa una politica commerciale Cairo e inserisce doc + slot base LA7.
     Idempotente (DELETE+INSERT per doc_id)."""
@@ -324,13 +550,21 @@ def parse_griglia(path: Path, conn) -> dict:
             tot = sum(t_of(r["bot"]) - t_of(r["top"]) for r in rects if ci in r["cols"])
             assert tot == span, f"{doc_id} col {GIORNI[ci]}: copertura {tot}' != {span}'"
 
+        conn.execute("DELETE FROM previsione WHERE doc_id = ?", [doc_id])
         conn.execute("DELETE FROM slot_eccezione WHERE doc_id = ?", [doc_id])
         conn.execute("DELETE FROM slot_programmato WHERE doc_id = ?", [doc_id])
         conn.execute("DELETE FROM doc_sorgente WHERE doc_id = ?", [doc_id])
         conn.execute("INSERT INTO doc_sorgente VALUES (?,?,?,?,?,?,?,?,?)", [
             doc_id, "cairo", "listino_griglia", str(path),
             periodo_da, periodo_a, pubblicato, fonte,
-            f"griglia editoriale LA7 p.{ed + 1}; LA7d fuori perimetro"])
+            "griglia editoriale LA7 + stime/tariffe (valori stime in INDIVIDUI "
+            f"nel PDF, convertiti in migliaia all'ingest) p.{ed + 1}; "
+            "LA7d e FASCE COMMERCIALI fuori perimetro"])
+
+        from .. import previsioni
+        righe_prev = _previsioni_cairo(pdf)
+        n_prev = previsioni.registra(conn, "cairo_listino", doc_id, pubblicato,
+                                     righe_prev, doc_id=doc_id)
 
         n_slot, n_celle = 0, 0
         for r in sorted(rects, key=lambda r: (r["top"], r["cols"][0])):
@@ -364,4 +598,5 @@ def parse_griglia(path: Path, conn) -> dict:
                         f"{slot_id}:solo", doc_id, slot_id, "solo",
                         json.dumps(p["date_list"])])
     return {"doc_id": doc_id, "periodo": (str(periodo_da), str(periodo_a)),
-            "pubblicato": str(pubblicato), "celle": n_celle, "slot": n_slot}
+            "pubblicato": str(pubblicato), "celle": n_celle, "slot": n_slot,
+            "previsioni": n_prev}

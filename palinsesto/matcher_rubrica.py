@@ -6,7 +6,9 @@ Fase 1 — solo doppia copertura:
   Rai: RAI1/2/3, finestre 21/12/2025-5/9/2026 (i tre doc rai_tvprogram 2026).
        Le 12 reti tematiche non hanno griglia: FUORI, contate nel report.
   Publitalia: CAN5/ITA1/RETE4, tutti i doc 2024-2026 (griglia nello stesso doc).
-       LA7 ha griglia ma nessun listino: FUORI.
+  Cairo/LA7 (fase 1b): testate delle stime cairo_listino vs griglia dello
+       stesso doc, 2025-2026; niente orari nelle stime -> match per titolo.
+       LA7d fuori perimetro, come le tematiche Rai.
 
 Fatti misurati che guidano il disegno (analisi 17/7/2026):
 - l'orario da solo aggancia ~55% delle rubriche Rai (delta mediano 5');
@@ -59,7 +61,10 @@ ALIAS_RETE = {"RAI MOVIE": "RAIMOVIE", "RAI NEWS": "RAINEWS",
 
 PRODOTTI_NOTI = {"BREAK-IN", "NEWS E SPORT", "GOLDEN MINUTE",
                  "LATE EVENING", "ENTERTAINMENT", "INLOGO"}
-PRODOTTI_MULTI = {"BREAK-IN", "LATE EVENING"}   # prodotti di break multi-slot
+PRODOTTI_MULTI = {"BREAK-IN", "LATE EVENING",   # prodotti di break multi-slot
+                  "SUPERSPOT"}                  # pacchetti Cairo a passaggi multipli
+# varianti ortografiche cifra/lettere nelle testate Cairo (deterministiche)
+SINONIMI_CAIRO = {"8 e mezzo": "Otto e Mezzo"}
 # nomi commerciali che identificano intervalli/contenitori, non programmi
 FASCE_COMMERCIALI = {
     "prima serata", "seconda serata", "preserale", "meridiana", "pomeriggio",
@@ -318,11 +323,45 @@ def _rubriche_publitalia(conn) -> list[dict]:
     return list(per_chiave.values())
 
 
+def _rubriche_cairo(conn) -> list[dict]:
+    """Testate LA7 dalle stime/tariffe cairo_listino: il nome della testata
+    E' il nome del programma ('Otto e Mezzo', 'TG LA7 Mentana') — niente
+    orari (le stime Cairo non li stampano), match per titolo sugli slot
+    della griglia dello STESSO doc."""
+    righe = conn.execute("""
+        SELECT doc_id, posizione, MIN(periodo_da), MAX(periodo_a)
+        FROM previsione WHERE sorgente='cairo_listino'
+        GROUP BY doc_id, posizione""").fetchall()
+    out, visti = [], set()
+    for doc_id, pos, da, a in righe:
+        chiave = (norm_chiave(pos), da)     # varianti di solo case: prima vince
+        if chiave in visti:
+            continue
+        visti.add(chiave)
+        out.append({
+            "sorgente": "cairo_listino", "rete_previsione": "LA7",
+            "posizione_norm": norm_chiave(pos), "tipo_giorno": "tutti",
+            "periodo_da": da, "periodo_a": a, "posizione_orig": pos,
+            "programma": SINONIMI_CAIRO.get(norm_chiave(pos), pos),
+            "prodotto": ("SUPERSPOT" if "superspot" in norm_chiave(pos) else None),
+            "t_ancora": None,
+            "giorni_mask": None, "famiglia": norm_chiave(pos), "suffisso": "",
+            "content": None,
+            # d'estate Cairo vende testate con nomi di fascia ('Prima Serata',
+            # 'Pomeriggio'): classificate fascia (0.50, mai KPI) come per Pub
+            "note": {"doc_id": doc_id,
+                     "fascia": (norm_chiave(pos) in FASCE_COMMERCIALI
+                                or norm_chiave(pos).startswith("access"))},
+        })
+    return out
+
+
 def ricostruisci_rubriche(conn) -> dict:
     rai = _rubriche_rai()
     pub = _rubriche_publitalia(conn)
+    cairo = _rubriche_cairo(conn)
     conn.execute("DELETE FROM rubrica_listino")
-    for r in rai + pub:
+    for r in rai + pub + cairo:
         conn.execute("""INSERT INTO rubrica_listino VALUES
             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", [
             r["sorgente"], r["rete_previsione"], r["posizione_norm"],
@@ -330,7 +369,7 @@ def ricostruisci_rubriche(conn) -> dict:
             r["posizione_orig"], r["programma"], r["prodotto"],
             r["t_ancora"], r["giorni_mask"], r["famiglia"], r["suffisso"],
             r["content"], json.dumps(r["note"])])
-    return {"rai": len(rai), "publitalia": len(pub)}
+    return {"rai": len(rai), "publitalia": len(pub), "cairo": len(cairo)}
 
 
 # ── candidati slot ───────────────────────────────────────────────────────────
@@ -349,6 +388,21 @@ def _slot_rai(conn):
             "slot_id": r[0], "rete": r[1], "dow_mask": r[2],
             "t_start": r[3], "t_end": r[4], "titolo": r[5], "gruppo": r[6],
             "da": r[7], "a": r[8], "alts": _alternative(r[5])})
+    return out
+
+
+def _slot_cairo(conn):
+    """Slot griglia LA7 per doc cairo (stesso doc delle stime, come Publitalia)."""
+    out = defaultdict(list)
+    for r in conn.execute("""
+        SELECT s.doc_id, s.slot_id, s.rete, s.dow_mask, s.t_start, s.t_end,
+               s.titolo_grezzo, s.gruppo_alt
+        FROM slot_programmato s
+        WHERE s.doc_id LIKE 'cairo_la7_%' AND s.kind='base'""").fetchall():
+        out[r[0]].append({
+            "slot_id": r[1], "rete": r[2], "dow_mask": r[3],
+            "t_start": r[4], "t_end": r[5], "titolo": r[6], "gruppo": r[7],
+            "alts": _alternative(r[6])})
     return out
 
 
@@ -567,11 +621,16 @@ def _demote_collisioni_sottoinsieme(righe: list[dict], rubriche_map: dict,
                 r["tipo_giorno"], r["periodo_da"])
 
     def boost_da_slot(rb, alts):
+        # sottoinsieme in ENTRAMBE le direzioni: 'LE IENE'(slot) ⊂ 'LE IENE
+        # SPECIALE'(rubrica), ma anche 'L'ARIA CHE TIRA'(rubrica) ⊂ 'L'ARIA
+        # CHE TIRA OGGI'(slot) — due prodotti distinti in entrambi i casi
         r_alts = _alternative(rb["programma"] or rb["posizione_orig"])
         for alt in alts:
             ta = set(alt.split())
-            if len(ta) >= 2 and any(ta < set(ra.split()) for ra in r_alts):
-                return True
+            for ra in r_alts:
+                tr = set(ra.split())
+                if (len(ta) >= 2 and ta < tr) or (len(tr) >= 2 and tr < ta):
+                    return True
         return False
 
     def ratio_grezzo(rb, alts):
@@ -586,19 +645,26 @@ def _demote_collisioni_sottoinsieme(righe: list[dict], rubriche_map: dict,
                     r["periodo_da"])].append(r)
     scarta = set()
     for rr in gruppi.values():
+        # TUTTE le famiglie che reclamano lo slot (anche chi matcha esatto,
+        # senza boost: altrimenti la collisione resta invisibile — il caso
+        # 'l'aria che tira' che ruba lo slot di 'l'aria che tira oggi')
         per_famiglia = defaultdict(list)
         for r in rr:
             rb = rubriche_map.get(chiave_rb(r))
-            if rb and boost_da_slot(rb, slot_alts.get(r["slot_id"], [])):
+            if rb:
                 per_famiglia[rb["famiglia"]].append((r, rb))
         if len(per_famiglia) < 2:
             continue
-        migliore = max(per_famiglia, key=lambda f: max(
-            ratio_grezzo(rb, slot_alts.get(r["slot_id"], []))
-            for r, rb in per_famiglia[f]))
+        raw = {f: max(ratio_grezzo(rb, slot_alts.get(r["slot_id"], []))
+                      for r, rb in coppie)
+               for f, coppie in per_famiglia.items()}
+        migliore = max(raw, key=raw.get)
         for fam, coppie in per_famiglia.items():
-            if fam != migliore:
-                scarta |= {id(r) for r, _ in coppie}
+            if fam == migliore or raw[fam] >= raw[migliore]:
+                continue
+            # si retrocede solo la pretesa nata dal boost di sottoinsieme
+            scarta |= {id(r) for r, rb in coppie
+                       if boost_da_slot(rb, slot_alts.get(r["slot_id"], []))}
     return [r for r in righe if id(r) not in scarta]
 
 
@@ -618,6 +684,7 @@ def esegui_match(conn) -> dict:
 
     slot_rai = _slot_rai(conn)
     slot_pub = _slot_publitalia(conn)
+    slot_cairo = _slot_cairo(conn)
     finestre_doc = conn.execute("""
         SELECT periodo_da, periodo_a FROM doc_sorgente
         WHERE doc_id LIKE 'rai_tvprogram_%'""").fetchall()
@@ -641,6 +708,8 @@ def esegui_match(conn) -> dict:
                 fuori["rai: finestra senza doc tvprogram"] += 1
                 continue
             out = _match_una_rai(rb, slot_rai.get(rb["rete_previsione"], []))
+        elif rb["sorgente"] == "cairo_listino":
+            out = _match_una_pub(rb, slot_cairo.get(rb["note"].get("doc_id"), []))
         else:
             doc = rb["note"].get("doc_id")
             out = _match_una_pub(rb, slot_pub.get(doc, []))
@@ -650,7 +719,8 @@ def esegui_match(conn) -> dict:
             senza.append(rb)
 
     slot_alts = {s["slot_id"]: s["alts"]
-                 for gruppo in list(slot_rai.values()) + list(slot_pub.values())
+                 for gruppo in (list(slot_rai.values()) + list(slot_pub.values())
+                                + list(slot_cairo.values()))
                  for s in gruppo}
     rubriche_map = {(rb["sorgente"], rb["rete_previsione"], rb["posizione_norm"],
                      rb["tipo_giorno"], rb["periodo_da"]): rb for rb in rubriche}
