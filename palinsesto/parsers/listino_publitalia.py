@@ -43,6 +43,12 @@ FIRME_RETE = [("CAN5", ("TG5", "MATTINO 5", "VERISSIMO")),
               ("ITA1", ("STUDIO APERTO", "LE IENE", "SPORT MEDIASET")),
               ("RETE4", ("TG4", "TEMPESTA D'AMORE", "QUARTO GRADO", "ZONA BIANCA"))]
 GIORNI = ["DOM", "LUN", "MAR", "MER", "GIO", "VEN", "SAB"]
+# rubriche di vendita note (insieme chiuso, stabile 2024-2026): il prodotto si
+# estrae cercando QUESTE nel titolo, non ripulendo il titolo — nei listini
+# 2024/2025 il titolo Stime include anche il periodo ("ESTATE 2025 BREAK-IN")
+# e lo strip per regex lascerebbe residui che sporcano le posizioni
+RUBRICHE = ["GOLDEN MINUTE", "BREAK-IN", "NEWS E SPORT", "LATE EVENING",
+            "ENTERTAINMENT", "INLOGO", "PRIME"]
 
 
 def _dimezza(txt: str) -> str:
@@ -236,20 +242,28 @@ def _target_da_titolo(titolo: str) -> tuple[str, str]:
     return "nd", titolo.strip()
 
 
-def _sottoperiodo(txt: str, anno: int) -> tuple[date, date] | None:
-    """'1-28/3' | '29/3-2/5' -> (da, a)."""
+def _sottoperiodo(txt: str, anno: int,
+                  pubblicato: date | None = None) -> tuple[date, date] | None:
+    """'1-28/3' | '29/3-2/5' -> (da, a).
+
+    Guardia semantica: una stima non puo' TERMINARE prima della pubblicazione
+    del listino. Senza, i listini strenne (stampati a ottobre -> anno inferito
+    = anno di stampa) retrodaterebbero di un anno intero il sottoperiodo che
+    scavalca gennaio ('22/12-4/1' -> 22/12/2023 con anno=2024)."""
     m = re.fullmatch(r"(\d{1,2})(?:/(\d{1,2}))?-(\d{1,2})/(\d{1,2})", txt)
     if not m:
         return None
     g1, m1, g2, m2 = m.groups()
     a = date(anno, int(m2), int(g2))
-    d = date(anno, int(m1) if m1 else int(m2), int(g1))
+    while pubblicato and a < pubblicato:
+        a = a.replace(year=a.year + 1)
+    d = date(a.year, int(m1) if m1 else int(m2), int(g1))
     if d > a:
-        d = d.replace(year=anno - 1)
+        d = d.replace(year=a.year - 1)
     return d, a
 
 
-def _stime_pagina(pg, anno: int):
+def _stime_pagina(pg, anno: int, pubblicato: date | None = None):
     """-> (titolo, righe_previsione_grezze) o None. Colonne dai token
     sottoperiodo dell'intestazione; 'PRIMISSIMA' marca le colonne premium."""
     words = [dict(w, text=_dimezza(w["text"])) for w in pg.extract_words()]
@@ -261,7 +275,7 @@ def _stime_pagina(pg, anno: int):
     for w in words:
         if w["top"] > 215:
             continue
-        per = _sottoperiodo(w["text"], anno)
+        per = _sottoperiodo(w["text"], anno, pubblicato)
         if per:
             colonne.append({"x": (w["x0"] + w["x1"]) / 2, "per": per,
                             "label": w["text"], "prim": False})
@@ -329,13 +343,16 @@ def parse_listino(path: Path, conn) -> dict:
             testa = (pg.extract_text() or "")[:200].upper()
             if "STIME" not in _dimezza(testa) and "STIME" not in testa:
                 continue
-            st = _stime_pagina(pg, anno)
+            st = _stime_pagina(pg, anno, pubblicato)
             if not st:
                 continue
             titolo, dati = st
             tid, tlabel = _target_da_titolo(titolo.upper())
-            prodotto = re.sub(r"STIME|\d{1,2}\s*-\s*\d{1,2}\s*ANNI\*?|ANNI\*?", "",
-                              titolo.upper()).strip(" *")
+            prodotto = next((r for r in RUBRICHE
+                             if re.search(rf"\b{re.escape(r)}\b", titolo.upper())),
+                            None) or re.sub(
+                r"STIME|\d{1,2}\s*-\s*\d{1,2}\s*ANNI\*?|ANNI\*?", "",
+                titolo.upper()).strip(" *")
             rete_pagina = None
             testo_pag = " ".join(e for e, _ in dati).upper()
             for rete, firme in FIRME_RETE:
@@ -400,8 +417,12 @@ def parse_listino(path: Path, conn) -> dict:
         n_slot, per_rete = 0, {}
         for i in range(2, min(21, len(pdf.pages))):
             pg = pdf.pages[i]
-            testa = _dimezza(((pg.extract_text() or "").split("\n") + ["", "", ""])[2].replace(" ", ""))
-            if "PROGRAMMI" not in testa.upper():
+            # l'header 'PALINSESTO PROGRAMMI' cambia riga tra le edizioni
+            # (l'ordine del blocco intestazione varia): si cerca riga per riga
+            # nelle prime 8 — 'PALINSESTO PUBBLICITARIO' non matcha
+            righe_testa = (pg.extract_text() or "").split("\n")[:8]
+            if not any("PROGRAMMI" in _dimezza(r.replace(" ", "")).upper()
+                       for r in righe_testa):
                 continue
             g = _griglia_pagina(pg)
             if not g:
