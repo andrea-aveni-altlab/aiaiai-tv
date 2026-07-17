@@ -5,6 +5,8 @@
   python -m palinsesto.build parse-rai <pdf> [...]
   python -m palinsesto.build giorno YYYY-MM-DD [--rete X] [--orizzonte YYYY-MM-DD]
   python -m palinsesto.build cache YYYY-MM-DD YYYY-MM-DD [--orizzonte ...]
+  python -m palinsesto.build rubriche          # registro rubrica_listino da CSV+previsione
+  python -m palinsesto.build match-rubriche    # matcher programma→rubrica → match_rubrica
   python -m palinsesto.build curatela          # lista slot da correggere
   python -m palinsesto.build plausibilita [doc] # flagga finestre implausibili
   python -m palinsesto.build applica-curatela  # applica curatela_slot.csv
@@ -68,6 +70,22 @@ def main(argv=None):
             print(f"  {Path(a).name}: {r['periodo'][0]}..{r['periodo'][1]} "
                   f"pubblicato={r['pubblicato']} v={r['versione']} "
                   f"slot={r['slot']} {r['per_rete']} previsioni={r['previsioni']}")
+
+    elif cmd == "rubriche":
+        from .matcher_rubrica import ricostruisci_rubriche
+        r = ricostruisci_rubriche(conn)
+        print(f"rubrica_listino: {r['rai']} rai + {r['publitalia']} publitalia")
+
+    elif cmd == "match-rubriche":
+        from .matcher_rubrica import esegui_match
+        r = esegui_match(conn)
+        print(f"match_rubrica: {r['righe_match']} righe "
+              f"({r['rubriche_collegate']} rubriche collegate, "
+              f"{r['kpi_ok']} righe usabili per KPI)")
+        print(f"  per livello: {dict(r['per_livello'])}")
+        print(f"  per metodo:  {dict(r['per_metodo'])}")
+        print(f"  fuori fase 1: {r['fuori_fase1']}")
+        print(f"  senza match (curatela): {r['senza_match']} -> {r['curatela']}")
 
     elif cmd == "giorno":
         g = date.fromisoformat(args.pop(0))

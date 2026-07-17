@@ -252,11 +252,52 @@ resta alla curatela. Agganciato a parse-rai/parse-cairo; CLI `plausibilita`.
 Correlato: RE_FINO accetta anche 'al 4/9' senza 'f.' (il \b non scatta
 dentro 'dal') — da solo ha dimezzato i falsi-finestra di estate2026.
 
+## Matcher programma→rubrica (fase 1 — FATTO, 17/7/2026)
+
+`matcher_rubrica.py` + tabelle `rubrica_listino` (registro: per Rai orario/
+giorni/programma vivono SOLO nel CSV `palinsesto_listini.csv`, non in
+previsione) e `match_rubrica` (M:N rubrica→slot, livelli slot | break_interno |
+fascia | prodotto_multi; metodo+confidenza; `usabile_per_kpi` = TRUE solo per
+slot/break_interno con confidenza ≥ 0,75 — REGOLA DI ANDREA: un match a fascia
+non è un AMR attribuibile). Cascata: orario ±10' → titolo per-alternativa
+(0,95) → gruppo monotitolo/selezione cifre (0,85) → giorni esatti (0,85) →
+titolo solo (0,75, Publitalia) → contenimento±titolo (0,75/0,60) → fascia
+(0,50) → curatela (`curatela_rubrica.csv`).
+
+Regole NON negoziabili incorporate (dalla verifica empirica + 2 round di
+refuter avversari, 25+16 match verificati):
+- CIFRE = pre-filtro ESCLUDENTE prima del fuzzy (mai TG5 su TG4), e anche
+  selettore positivo tra vicini; due titoli simili ≥0,85 tra loro sono lo
+  stesso programma OCR-variante e si uniscono, non competono.
+- il vincolo temporale si applica SLOT PER SLOT dentro il gruppo di titolo:
+  il gruppo unisce le EDIZIONI di un programma (TG5 8/13/20) e l'orario nel
+  nome della rubrica è ciò che le distingue — mai "any"→tutti.
+- NIENTE fallback orario-puro cross-rete lato Publitalia (coincidenza di
+  minuto ≠ identità: 'The wall 19:20'→'CSI: MIAMI'); solo selezione per cifre.
+- sottoinsieme di token (≥2) = stesso programma con appendici ('LE IENE' ⊂
+  'LE IENE SHOW'), MA con guardia anti-collisione: se due famiglie diverse
+  reclamano lo stesso slot via sottoinsieme, vince il ratio grezzo, l'altra
+  va in curatela (caso Iene Show vs Iene Speciale/INSIDE).
+- la colonna note del CSV Rai ('dal 22/4 al 13/5') RESTRINGE la finestra
+  della rubrica: senza, si aggancia la variante di gruppo_alt sbagliata.
+- previsione.rete lato Publitalia è la rete-CONTENITORE della pagina: si
+  matcha per doc_id su tutte le reti, la rete vera è `rete_slot`.
+- validità slot Publitalia: coalesce a doc_sorgente.periodo (valido_da/a NULL).
+- 'Anteprima X' si vende sul programma adiacente (e la forma integrale resta
+  tra le alternative: punta a slot 'ANTEPRIMA TG4'); '(di cui X - Tgcom)' e
+  '-brk H.MM' sono componenti → si riconducono al programma base.
+
+FUORI FASE 1 (documentato, non un buco): 12 reti tematiche Rai (listino senza
+griglia), LA7 (griglia senza listino), finestre Rai senza doc tvprogram
+(21/12/2025-3/1/2026 e autunno 2026), 388+885 rubriche contate nel report.
+
 ## CLI
 
 ```
 PYTHONPATH=<pylibs con pdfplumber/pypdf> python -m palinsesto.build init
 python -m palinsesto.build parse-pt <dir_settimanali>
+python -m palinsesto.build rubriche        # registro rubrica_listino (CSV+previsione)
+python -m palinsesto.build match-rubriche  # matcher → match_rubrica + curatela_rubrica.csv
 python -m palinsesto.build giorno 2026-04-15 [--rete CAN5] [--orizzonte 2026-04-01]
 python -m palinsesto.build cache 2026-01-01 2026-05-30 [--orizzonte ...]
 python -m palinsesto.build report

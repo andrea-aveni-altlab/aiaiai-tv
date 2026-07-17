@@ -182,3 +182,50 @@ CREATE TABLE IF NOT EXISTS previsione (
     PRIMARY KEY (sorgente, versione_sorgente, periodo_da, rete, posizione,
                  tipo_giorno, target_id, metrica_id)
 );
+
+-- ── matcher programma→rubrica (fase 1: RAI1/2/3 21/12/2025-5/9/2026 + CAN5/ITA1/RETE4 2024-26;
+--    tematiche Rai senza griglia e LA7 senza listino restano FUORI, per costruzione) ──
+-- registro delle rubriche di vendita con cio' che il listino dichiara di loro
+-- (per Rai orario/giorni vivono SOLO nel CSV dei tabellari, non in previsione)
+CREATE TABLE IF NOT EXISTS rubrica_listino (
+    sorgente        VARCHAR NOT NULL,        -- 'rai_listino' | 'publitalia_listino'
+    rete_previsione VARCHAR NOT NULL,        -- rete come in previsione ('' = multi-rete);
+                                             -- per Publitalia e' la rete-CONTENITORE della
+                                             -- pagina, NON la rete del programma
+    posizione_norm  VARCHAR NOT NULL,        -- lower + spazi collassati (i listini variano il case)
+    tipo_giorno     VARCHAR NOT NULL,        -- 'tutti' | 'weekend' (sentinella, mai NULL)
+    periodo_da      DATE NOT NULL, periodo_a DATE,
+    posizione_orig  VARCHAR,                 -- forma originale (per il join con previsione)
+    programma       VARCHAR,                 -- titolo dichiarato dal listino (Rai: colonna
+                                             -- 'programma' del CSV; Pub: base ripulita)
+    prodotto        VARCHAR,                 -- rubrica commerciale (BREAK-IN, INLOGO, ...)
+    t_ancora        INTEGER,                 -- orario dichiarato, secondi giorno TV 02-26h
+    giorni_mask     VARCHAR,                 -- 'DLMMGVS' (solo Rai)
+    famiglia        VARCHAR,                 -- base della famiglia suffissi ('r1 prime time')
+    suffisso        VARCHAR,                 -- 'b'|'c'|'start'|... o 'fpt [primissima]' (Pub)
+    content         VARCHAR,                 -- genere dal CSV Rai
+    note            JSON,
+    PRIMARY KEY (sorgente, rete_previsione, posizione_norm, tipo_giorno, periodo_da)
+);
+-- collegamento rubrica→slot: M:N (una rubrica aggrega gli slot spezzati per giorno;
+-- uno slot serve base/B/Start/FPT/[primissima]). slot_id='' per fascia/prodotto/nessuno.
+CREATE TABLE IF NOT EXISTS match_rubrica (
+    sorgente        VARCHAR NOT NULL,
+    rete_previsione VARCHAR NOT NULL,
+    posizione_norm  VARCHAR NOT NULL,
+    tipo_giorno     VARCHAR NOT NULL,
+    periodo_da      DATE NOT NULL, periodo_a DATE,
+    slot_id         VARCHAR NOT NULL,        -- '' se livello fascia/prodotto_multi/nessuno
+    rete_slot       VARCHAR,                 -- rete VERA del programma (dallo slot)
+    livello         VARCHAR NOT NULL,        -- slot | break_interno | fascia | prodotto_multi | nessuno
+    metodo          VARCHAR NOT NULL,        -- orario+titolo | orario | orario+giorni | titolo
+                                             -- | contenimento | contenimento+titolo | sinonimo
+                                             -- | prodotto | curatela
+    confidenza      DOUBLE,
+    usabile_per_kpi BOOLEAN NOT NULL DEFAULT FALSE,  -- TRUE solo per slot/break_interno con
+                                             -- confidenza >= 0.75: un match a fascia NON e'
+                                             -- un AMR attribuibile a una rubrica specifica
+    curato          BOOLEAN NOT NULL DEFAULT FALSE,
+    note            JSON,
+    PRIMARY KEY (sorgente, rete_previsione, posizione_norm, tipo_giorno, periodo_da, slot_id)
+);
