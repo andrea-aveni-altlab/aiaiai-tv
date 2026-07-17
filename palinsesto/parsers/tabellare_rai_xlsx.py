@@ -19,10 +19,12 @@ else:
 BASE = os.path.expanduser("~/Antigravity/palinsesti_pdf/listini_raipub")
 OUT = os.path.join(BASE, "palinsesto_listini.csv")
 FILES = [
+    "2023/excel/listino-tabellare_video_estate2023_aggiornamento-10maggio2023.xlsx",
     "2025/excel/listino_tabellare_video_inverno-2025_aggiornamento-12-dicembre-2024.xlsx",
     "2025/excel/listino_tabellare_video_primavera2025_aggiornamento18luglio2025.xlsx",
     "2025/excel/listino_tabellare_video_estate2025_aggiornamento18luglio2025.xlsx",
     "2025/excel/listino_tabellare_video__settembre_ottobre_2025__aggiornamento18luglio2025.xlsx",
+    "2025/excel/listino_tabellare_video_novembre-dicembre-2025_aggiornamento-19-settembre-2025.xlsx",
     "2025/excel/listino_novembre-dicembre-2025_tabellare-video_aggiornamento-6novembre2025.xlsx",
     "2025/excel/listino_feste2025-gennaio2026_tabellare_video_aggiorn_22-10-25.xlsx",
     "2026/excel/listino_tabellare_video_inverno2026_aggiornamento-8-gennaio-2026 (1).xlsx",
@@ -227,6 +229,19 @@ for rel in FILES:
                     "target": t if t in ("individui", "ra") else t,
                     "target_label": t, "metrica": "amr_migliaia",
                     "valore": v / 1000})
+            # tariffe -> previsione: metriche di prezzo, indipendenti dal
+            # target (sentinella 'nd' come nel parser Publitalia)
+            for metr, jt in (("tariffa_30s_eur", t30),
+                             ("tariffa_pu_30s_eur", tpu)):
+                v = riga[jt] if jt is not None and jt < len(riga) else None
+                if isinstance(v, (int, float)):
+                    prev_righe.append({
+                        "grana": "periodo", "periodo_label": lab,
+                        "periodo_da": d1, "periodo_a": d2,
+                        "rete": rete_std, "posizione": rubrica,
+                        "target": "nd",
+                        "target_label": "non applicabile (prezzo)",
+                        "metrica": metr, "valore": float(v)})
     wb.close()
 
     doc_id = os.path.splitext(nome)[0].replace(" (1)", "")
